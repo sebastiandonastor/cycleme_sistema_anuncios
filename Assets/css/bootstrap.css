@@ -5,27 +5,27 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
-  --blue: #007bff;
+  --blue: #2C3E50;
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
-  --red: #dc3545;
+  --red: #E74C3C;
   --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
+  --yellow: #F39C12;
+  --green: #18BC9C;
   --teal: #20c997;
-  --cyan: #17a2b8;
+  --cyan: #3498DB;
   --white: #fff;
-  --gray: #6c757d;
+  --gray: #95a5a6;
   --gray-dark: #343a40;
-  --primary: #007bff;
-  --secondary: #6c757d;
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #f8f9fa;
-  --dark: #343a40;
+  --primary: #2C3E50;
+  --secondary: #95a5a6;
+  --success: #18BC9C;
+  --info: #3498DB;
+  --warning: #F39C12;
+  --danger: #E74C3C;
+  --light: #ecf0f1;
+  --dark: #7b8a8b;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -56,6 +56,7 @@ html {
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
+
 }
 
 body {
@@ -67,6 +68,11 @@ body {
   color: #212529;
   text-align: left;
   background-color: #fff;
+}
+
+main{
+  padding: 16px;
+  margin-top: 40px;
 }
 
 [tabindex="-1"]:focus {
@@ -2975,6 +2981,7 @@ input[type="button"].btn-block {
 
 .collapse:not(.show) {
   display: none;
+  
 }
 
 .collapsing {
@@ -2988,6 +2995,7 @@ input[type="button"].btn-block {
   .collapsing {
     transition: none;
   }
+  
 }
 
 .dropup,
@@ -3881,11 +3889,13 @@ input[type="button"].btn-block {
 
 .nav-link {
   display: block;
+  color: #fff !important;
   padding: 0.5rem 1rem;
 }
 
 .nav-link:hover, .nav-link:focus {
   text-decoration: none;
+  color: #18BC9C !important;
 }
 
 .nav-link.disabled {
@@ -3918,7 +3928,7 @@ input[type="button"].btn-block {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #495057;
+  color: #18BC9C !important;
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
 }
@@ -4033,6 +4043,31 @@ input[type="button"].btn-block {
   flex-grow: 1;
   -ms-flex-align: center;
   align-items: center;
+  text-align: center;
+}
+/* agreado para rotar las lineas de separacion entre los links | Maximo */
+.navbar-collapse.show > .navbar-nav > .nav-line{
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  transition: 0.3s;
+  transform: rotate(90deg);
+
+}
+.navbar-collapse > .navbar-nav > .nav-line{
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  transition: 0.3s;
+
 }
 
 .navbar-toggler {
@@ -6066,13 +6101,13 @@ button.close {
 }
 
 .bg-primary {
-  background-color: #007bff !important;
+  background-color: #2C3E50 !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #0062cc !important;
+  background-color: #2C3E50 !important;
 }
 
 .bg-secondary {
@@ -7321,6 +7356,7 @@ button.bg-dark:focus {
   right: 0;
   left: 0;
   z-index: 1030;
+
 }
 
 .fixed-bottom {
