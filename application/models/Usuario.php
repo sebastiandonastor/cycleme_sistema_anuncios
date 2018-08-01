@@ -26,6 +26,12 @@ class Usuario extends CI_Model {
         }
     }
 
+    public function usrPorEmail($email){
+        $this->db->where('e-mail',$email);
+        $result = $this->db->get('usuario')->result_array();
+        return $result;
+    }
+
 
 
 

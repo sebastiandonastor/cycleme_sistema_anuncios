@@ -3,6 +3,10 @@
 class Cuentas extends CI_Controller{
 
     public function index(){
+        if($this->session->userdata('idUsuario')!= null){
+            redirect('Home');
+        }
+
         $data['main_view'] = 'Cuentas/Login';
         $data['titulo'] = 'Inicio Sesion';
         $this->load->view('Layouts/main',$data);
@@ -10,6 +14,9 @@ class Cuentas extends CI_Controller{
 
     public function Validar(){
 
+        if($this->session->userdata('idUsuario')!= null){
+            redirect('Home');
+        }
         //Definiendo el modelo.
         $this->load->model('Usuario');
 
@@ -56,7 +63,8 @@ class Cuentas extends CI_Controller{
             'email' => $this->input->post('email'),
             'password' => $this->input->post('pass')
             ))){
-
+            $datosUsr = $this->Usuario->usrPorEmail($this->input->post('email'));
+            $this->session->set_userdata($datosUsr[0]);
             redirect('Home/index');
         }
     }
@@ -97,6 +105,12 @@ class Cuentas extends CI_Controller{
             return !($this->Usuario->existeUsuario($usr));
         }
         return false;
+    }
+
+
+    function Cerrar(){
+        $this->session->sess_destroy();
+         redirect('Home');
     }
 
 

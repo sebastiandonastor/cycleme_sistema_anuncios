@@ -32,7 +32,11 @@
                 <li class="nav-item"><a class="nav-link" href="#">Noticias</a> </li>
                 <li class="nav-line" id="nav-line">|</li>
                 <li class="nav-item"><a class="nav-link" href="#">Nosotros</a> </li>
+                <?php if($this->session->userdata('idUsuario')!= null) : ?>
+                <li class="nav-item"><a class="nav-link btn btn-danger" href="<?php echo base_url('Cuentas/cerrar') ?>">Cerrar session</a> </li>
+                <?php endif; ?>
             </ul>
+
 
         </div>
         </nav>
