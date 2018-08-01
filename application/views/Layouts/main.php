@@ -8,6 +8,7 @@
     <title><?php echo $titulo ?></title>
     <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/style.css">
+	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>Assets/img/favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
 </head>
