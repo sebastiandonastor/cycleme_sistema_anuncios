@@ -32,3 +32,10 @@
 .rotated {
     transform: rotate(90deg);
   }
+
+.cuentas-container {
+    background: #fff !important;
+    padding: 30px !important;
+    border-radisu: 10px !important;
+    box-shadow: 0px 0px 10px 0px #000 !important;
+}
