@@ -54,7 +54,8 @@
             </label>
             <label class="float-right" >
                 <ul  class="list-inline ">
-                    <li class="list-inline-item" ><i class="fab fa-facebook big-icon"></i></li>
+                    <li class="list-inline-item" ><a target="_blank" href="https://www.facebook.com/Cyclememe-2097532823907045"><i class="fab fa-facebook big-icon"></i></a></li>
+                    
                     <li class="list-inline-item" ><i class="fab fa-twitter-square big-icon"></i></li>
                 </ul>
             </label>
