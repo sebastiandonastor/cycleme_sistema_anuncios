@@ -8,6 +8,7 @@
     <title><?php echo $titulo ?></title>
     <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/style.css">
+	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>Assets/img/favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
 </head>
@@ -63,8 +64,9 @@
             </label>
             <label class="float-right" >
                 <ul  class="list-inline ">
-                    <li class="list-inline-item" ><i class="fab fa-facebook big-icon"></i></li>
-                    <li class="list-inline-item" ><i class="fab fa-twitter-square big-icon"></i></li>
+                    <li class="list-inline-item"><a target="_blank" href="https://www.facebook.com/Cyclememe-2097532823907045"><i class="fab fa-facebook big-icon"></i></a></li>
+                    <li class="list-inline-item"><a target="_blank" href="https://twitter.com/cycleme_me"><i class="fab fa-twitter-square big-icon"></i></a></li>
+                    <li class="list-inline-item"><a target="_blank" href="https://www.instagram.com/cycleme.me/"><i class="fab fa-instagram big-icon"></i></a></li>
                 </ul>
             </label>
         </div>
