@@ -45,7 +45,7 @@ class Anuncio_model extends CI_Model {
     }
 
     // Actualziar Anuncios.
-    function UpdateArticle($idAnuncio, $$nombre, $modelo, $tipo, $marca, $tamanoAro, $tamanoCuadro, $accesorio, $accion, $importancia, $fechaCreacion, $fechaCaducidad, $descipcion, $categoria, $precio, $foto, $titulo, $provincia, $numeroVisitas, $idUsuario_fk){
+    function UpdateArticle($idAnuncio, $nombre, $modelo, $tipo, $marca, $tamanoAro, $tamanoCuadro, $accesorio, $accion, $importancia, $fechaCreacion, $fechaCaducidad, $descipcion, $categoria, $precio, $foto, $titulo, $provincia, $numeroVisitas, $idUsuario_fk){
         $this->db->where('idAnuncio',$idAnuncio);
 
 
@@ -82,6 +82,17 @@ class Anuncio_model extends CI_Model {
         $result = $this->db->delete('anuncios');
         return $result;
     }
+    
+    function GetCategorias( $categoriaPrincipal){
+        $this->db->where(['categoriaPrincipal' => $categoriaPrincipal]); 
+        $result  = $this->db->get('categorias');
+        return $result->result();
+    }
+    function GetProvincias( ){
+        $result  = $this->db->get('provincias');
+        return $result->result();
+    }
+
 }
 
 ?>

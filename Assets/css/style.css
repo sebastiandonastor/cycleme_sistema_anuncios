@@ -11,23 +11,14 @@
     font-size:30px;
 }
 .nav-line{
-    font-size:25px;
+    font-size:21px;
     color:white;
 }
-/* Footer css */
-.sticky{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 20px;
-    line-height: 20px;
+/* navbar font-size */
+.nav-text{
+    font-size:14px;
 }
-.footer-design{
-    border: #212529;
-    border-style: solid;
-    padding: 15px 10px 0 10px;
-    font-size: 20px;
-}
+
 
 .rotated {
     transform: rotate(90deg);
@@ -36,6 +27,44 @@
 .cuentas-container {
     background: #fff !important;
     padding: 30px !important;
-    border-radisu: 10px !important;
+    border-radius: 10px !important;
     box-shadow: 0px 0px 10px 0px #000 !important;
+}
+/* botton de salir */
+.log-out{
+color:white !important;
+background-color: #E74C3C;
+}
+.log-out:hover{
+    color:white !important;
+    background-color: #E74C3C;
+    }
+/* estilo de dropdown */
+
+.logOutAria{
+position: absolute; 
+will-change: transform;
+top: 0px; 
+left: 0px;
+transform: translate3d(0px, 39px, 0px);
+}
+
+.dropdown-width{
+    min-width:10rem;
+}
+ /*estilos de la creacion de anuncios*/
+
+ .crear-div{
+     text-align: center;
+     padding:10px;
+ }
+ .crear-div2{
+    text-align: none;
+    padding:10px;
+    width:500px;
+}
+
+select.btn-mini {
+    height: auto;
+    line-height: 20px;
 }

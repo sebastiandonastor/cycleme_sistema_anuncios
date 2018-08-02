@@ -3610,7 +3610,7 @@ input[type="button"].btn-block {
   height: calc(2.25rem + 2px);
   padding: 0.375rem 1.75rem 0.375rem 0.75rem;
   line-height: 1.5;
-  color: #495057;
+  color: #7b8a8b;
   vertical-align: middle;
   background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
   background-size: 8px 10px;
@@ -3622,7 +3622,7 @@ input[type="button"].btn-block {
 }
 
 .custom-select:focus {
-  border-color: #80bdff;
+  border-color: #7b8a8b;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(128, 189, 255, 0.5);
 }
@@ -3904,6 +3904,7 @@ input[type="button"].btn-block {
 
 .nav-tabs {
   border-bottom: 1px solid #dee2e6;
+
 }
 
 .nav-tabs .nav-item {
@@ -3914,23 +3915,30 @@ input[type="button"].btn-block {
   border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
+  color: #18BC9C !important;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
 }
+
+
+
 
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
   border-color: #e9ecef #e9ecef #dee2e6;
 }
 
 .nav-tabs .nav-link.disabled {
-  color: #6c757d;
+  color: #6c757d !important;
   background-color: transparent;
   border-color: transparent;
 }
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #18BC9C !important;
+  color: #7b8a8b !important;
   background-color: #fff;
   border-color: #dee2e6 #dee2e6 #fff;
+
 }
 
 .nav-tabs .dropdown-menu {
@@ -4047,16 +4055,7 @@ input[type="button"].btn-block {
 }
 /* agreado para rotar las lineas de separacion entre los links | Maximo */
 .navbar-collapse.show > .navbar-nav > .nav-line{
-  -ms-flex-preferred-size: 100%;
-  flex-basis: 100%;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
-  transition: 0.3s;
-  transform: rotate(90deg);
-
+ display:none;
 }
 .navbar-collapse > .navbar-nav > .nav-line{
   -ms-flex-preferred-size: 100%;

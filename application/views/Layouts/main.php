@@ -22,9 +22,9 @@
             </button>
   
         <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav ml-auto ">
-                <li class="nav-item"><a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a></li>
-                <li class="nav-line " id="nav-line">|</li>
+            <ul class="navbar-nav ml-auto nav-text">
+                <li class="nav-item"><a class="nav-link" href="<?php echo base_url() ?>" >Inicio<span class="sr-only">(current)</span></a></li>
+                <li class="nav-line" id="nav-line">|</li>
                 <li class="nav-item"><a class="nav-link" href="#">Categoría </a></li>
                 <li class="nav-line" id="nav-line">|</li>
                 <li class="nav-item"><a class="nav-link" href="#">Eventos</a></li>
@@ -32,17 +32,27 @@
                 <li class="nav-item"><a class="nav-link" href="#">Noticias</a> </li>
                 <li class="nav-line" id="nav-line">|</li>
                 <li class="nav-item"><a class="nav-link" href="#">Nosotros</a> </li>
-                <?php if($this->session->userdata('idUsuario')!= null) : ?>
-                <li class="nav-item"><a class="nav-link btn btn-danger" href="<?php echo base_url('Cuentas/cerrar') ?>">Cerrar session</a> </li>
-                <?php endif; ?>
+                <li class="nav-line" id="nav-line">|</li>
+                <?php if($this->session->userdata('idUsuario') == null) : ?>
+                    <li class="nav-item"><a class="nav-link" href="#">Registrate</a> </li>
+                    <li class="nav-line" id="nav-line">-</li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Cuentas') ?>" >Iniciar~Sesion</a> </li>
+                <?php elseif($this->session->userdata('idUsuario') != null): ?>
+                    <li class="nav-item dropdown dropdown-width">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle">~</i><?php echo $this->session->userdata('nombre')?></a>
+                        <div class="dropdown-menu logOutAria" x-placement="bottom-start ">
+                        <a class="dropdown-item" href="<?php echo base_url('Anuncios') ?>" >Publicar Anuncio</a>
+                        <div class="dropdown-divider"  ></div>
+                        <a class="dropdown-item log-out" href="<?php echo base_url('Cuentas/cerrar') ?>"> Cerrar Sesion </a>
+                        </div>
+                    </li>
+                <?php endif; ?> 
             </ul>
-
-
         </div>
         </nav>
     </header>
 
-    <main class="container fixed" >
+    <main class="container" >
         <?php $this->load->view($main_view); ?>
     </main> 
 
