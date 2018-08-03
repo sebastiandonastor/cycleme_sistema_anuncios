@@ -37,73 +37,105 @@
             <div class="tab-pane fade active show" id="categoria">
                 <?php echo form_open(base_url('Anuncios/Crear'),array('class' => 'mt-4 mb-5 ')); ?>
                     <div class="form-group">
-                        <select class="custom-select btn-mini small" id="categoriaPrincipal"  name="categoriaPrincipal" required >
-                        <option selected="">Elegir Categoría</option>
-                        <option value="Accesorios">Accesorios</option>
-                        <option value="Bicicletas">Bicicletas</option>
-                        <option value="Componentes">Componentes</option>
-                        <option value="Servicios">Servicios</option>
+                        <select class="custom-select btn-mini small" id="categoriaPrincipal"  name="categoria" value="<?php set_value('categoria') ?>" required >
+                            <option selected="">Elegir Categoría</option>
+                            <option value="Accesorios">Accesorios</option>
+                            <option value="Bicicletas">Bicicletas</option>
+                            <option value="Componentes">Componentes</option>
+                            <option value="Servicios">Servicios</option>
                         </select>
                     </div>
-                    <div class="form-group"  name="Subcategorias"  >
 
-                        <select class="custom-select btn-mini small" id="Accesorios" name="subCategoria" style="display:none;"  >
-                            <option selected="">Elegir Sub-Categoría</option>
+                    <div class="form-group"  name="Subcategorias"  >
+                        <select class="custom-select btn-mini small" id="Accesorios"  name="subCategoria"  value="<?php set_value('subCategoria') ?>"   onchange="suBcategoria('Accesorios')" style="display:none;"  >
+                            <option value="vacio" selected="">Elegir Sub-Categoría</option>
                             <?php $categorias = $this->Anuncio_model->GetCategorias('Accesorios'); ?>
                             <?php foreach($categorias as $info) { ?>
                             <option value=" <?php echo $info->categoria; ?> "> <?php echo $info->categoria; ?></option>
                             <?php } ?>
                         </select>
-                        <select class="custom-select btn-mini small" id="Bicicletas" name="subCategoria" style="display:none;"   >
-                            <option selected="">Elegir Sub-Categoría</option>
+                        <select class="custom-select btn-mini small" id="Bicicletas" name="subCategoria"  value="<?php set_value('subCategoria') ?>"  onchange="suBcategoria('Bicicletas')" style="display:none;"   >
+                            <option value="vacio"  selected="">Elegir Sub-Categoría</option>
                             <?php $categorias = $this->Anuncio_model->GetCategorias('Bicicletas'); ?>
                             <?php foreach($categorias as $info) { ?>
                             <option value=" <?php echo $info->categoria; ?> "> <?php echo $info->categoria; ?></option>
                             <?php } ?>
                         </select>
-                        <select class="custom-select btn-mini small" id="Componentes" name="subCategoria"  style="display:none;"  >
-                            <option selected="">Elegir Sub-Categoría</option>
+                        <select class="custom-select btn-mini small" id="Componentes" name="subCategoria" value="<?php set_value('subCategoria') ?>"   onchange="suBcategoria('Componentes')" style="display:none;"  >
+                            <option value="vacio"  selected="">Elegir Sub-Categoría</option>
                             <?php $categorias = $this->Anuncio_model->GetCategorias('Componentes'); ?>
                             <?php foreach($categorias as $info) { ?>
                             <option value=" <?php echo $info->categoria; ?> "> <?php echo $info->categoria; ?></option>
                             <?php } ?>
                         </select>
-                        <select class="custom-select btn-mini small" id="Servicios" name="subCategoria"  style="display:none;"  >
-                            <option selected="">Elegir Sub-Categoría</option>
+                        <select class="custom-select btn-mini small" id="Servicios" name="subCategoria"  value="<?php set_value('subCategoria') ?>"  onchange="suBcategoria('Servicios')"style="display:none;"  >
+                            <option value="vacio" selected="">Elegir Sub-Categoría</option>
                             <?php $categorias = $this->Anuncio_model->GetCategorias('Servicios'); ?>
                             <?php foreach($categorias as $info) { ?>
                             <option value=" <?php echo $info->categoria; ?> "> <?php echo $info->categoria; ?></option>
                             <?php } ?>
                         </select>
                     </div>
-                    <div name="mainForm" id="mainForm">
+                    <div name="mainForm" id="mainForm" style="display:none;">
 
-                        <div class="form-group">
+                        <div class="form-group" style="display:none;" name="detalle" id="accesorio">
                             <?php echo form_label('Accesorio','accesorio'); ?>
                             <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'accesorio','id' => 'precio','accesorio' => set_value('accesorio')); ?>
                             <?php echo form_input($datos); ?>
                             <span class="text-danger"><?php echo form_error('accesorio'); ?></span>
                         </div>
-                        <div class="form-group">
+
+                        <div class="form-group" style="display:none;" name="detalle" id="marca">
                             <?php echo form_label('Marca','marca'); ?>
-                            <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'marca','id' => 'precio','marca' => set_value('marca')); ?>
-                            <?php echo form_input($datos); ?>
+                            <select class="custom-select btn-mini small" id="marca" name="marca" value="<?php set_value('marca') ?>" >
+                                <option selected="">Elegir Marca</option>
+                                <?php $marcas = $this->Anuncio_model->GetDetalles(); ?>
+                                <?php foreach($marcas as $info) { if($info->marca != null)  {?>
+                                <option value=" <?php echo $info->marca; ?> "> <?php echo $info->marca; ?></option>
+                                <?php } } ?>
+                            </select>
                             <span class="text-danger"><?php echo form_error('marca'); ?></span>
                         </div>
-                        <div class="form-group">
+                        
+                        <div class="form-group" style="display:none;" name="detalle"  id="modelo">
                             <?php echo form_label('Modelo','modelo'); ?>
                             <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'modelo','id' => 'precio','modelo' => set_value('modelo')); ?>
                             <?php echo form_input($datos); ?>
                             <span class="text-danger"><?php echo form_error('modelo'); ?></span>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="display:none;" name="detalle" id="tipo">
                             <?php echo form_label('Tipo','tipo'); ?>
-                            <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'tipo','id' => 'precio','tipo' => set_value('tipo')); ?>
-                            <?php echo form_input($datos); ?>
+                            <select class="custom-select btn-mini small" id="tipo" name="tipo" value="<?php set_value('tipo') ?>" >
+                                <option selected="">Elegir Tipo</option>
+                                <?php $tipos = $this->Anuncio_model->GetDetalles(); ?>
+                                <?php foreach($tipos as $info) { if($info->tipo != null)  {?>
+                                <option value=" <?php echo $info->tipo; ?> "> <?php echo $info->tipo; ?></option>
+                                <?php } } ?>
+                            </select>
                             <span class="text-danger"><?php echo form_error('tipo'); ?></span>
                         </div>
-
-
+                        <div class="form-group" style="display:none;" name="detalle" id="tamanoAro">
+                            <?php echo form_label('Tamaño de Aro','tamanoAro'); ?>
+                            <select class="custom-select btn-mini small" id="provincia" name="tamanoAro" value="<?php set_value('tamanoAro') ?>" >
+                            <option selected="">Elegir Tipo</option>
+                                <?php $tipos = $this->Anuncio_model->GetDetalles(); ?>
+                                <?php foreach($tipos as $info) { if($info->tamanoAro != null)  {?>
+                                <option value=" <?php echo $info->tamanoAro; ?> "> <?php echo $info->tamanoAro; ?></option>
+                                <?php } } ?>
+                            </select>
+                            <span class="text-danger"><?php echo form_error('tamanoAro'); ?></span>
+                        </div>
+                        <div class="form-group" style="display:none;"  name="detalle" id="tamanoCuadro"> 
+                            <?php echo form_label('Tamaño de Cuadro','tamanoCuadro'); ?>
+                            <select class="custom-select btn-mini small" id="provincia" name="tamanoCuadro" value="<?php set_value('tamanoCuadro') ?>" >
+                                <option selected="">Elegir Tipo</option>
+                                <?php $tipos = $this->Anuncio_model->GetDetalles(); ?>
+                                <?php foreach($tipos as $info) { if($info->tamanoCuadro != null)  {?>
+                                <option value=" <?php echo $info->tamanoCuadro; ?> "> <?php echo $info->tamanoCuadro; ?></option>
+                                <?php } } ?>
+                            </select>
+                            <span class="text-danger"><?php echo form_error('tamanoCuadro'); ?></span>
+                        </div>
 
                         <div class="form-group">
                             <?php echo form_label('Provincia','provincia'); ?>
@@ -159,8 +191,9 @@
                             <?php echo form_textarea($datos); ?>
                             <span class="text-danger"><?php echo form_error('descripcion'); ?></span>
                         </div>
-
-
+                        <div class="form-group" >
+                            <?php echo form_submit( array( 'name' => 'crear', 'value' => 'Continuar', 'class' => 'btn btn-primary' ) ); ?>
+                        </div>
                     </div>
                 <?php echo form_close(); ?>
             </div>
@@ -179,8 +212,9 @@
 
 <script>
    // object.addEventListener("change",checkMark);
-
-    document.getElementById("categoriaPrincipal").addEventListener("change", categoria);
+    
+    
+    document.getElementById("categoriaPrincipal").addEventListener('change',categoria);
 
     function checkMark(){
         var seleccionado = document.getElementsByClassName("nav-link active show");
@@ -204,21 +238,69 @@
             }
         }
     }
-
-    function categoria() {
+////////////////////////
+    function categoria(evt) {
         var categoriaPrincipal = document.getElementById("categoriaPrincipal");
         var categoria = categoriaPrincipal.value;
         
         var select = document.getElementById(categoriaPrincipal.value);
         var todosSelect = document.querySelectorAll('select');
 
+          var mainForm = document.getElementById("mainForm");
+        
         for (var i=0; i<todosSelect.length; i++) 
         {
             if(todosSelect[i].id != 'categoriaPrincipal' && todosSelect[i].name == 'subCategoria' ){
                 todosSelect[i].style.display = 'none';
+                mainForm.style.display = 'none';
             }
         }
         select.style.display = 'block';
     }
+/////////////////// escondiendo los datos/////////
+    function suBcategoria(categoria) {
+        var mainForm = document.getElementById("mainForm");
+        mainForm.style.display = 'none';
+        var subCategoria = document.getElementById(categoria);
+        
+        if(subCategoria.value == 'vacio'){
+            mainForm.style.display = 'none';
+        }else{
+                document.getElementById("accesorio").style.display = 'none';
+                document.getElementById("marca").style.display = 'none';
+                document.getElementById("modelo").style.display = 'none';
+                document.getElementById("tipo").style.display = 'none';
+                document.getElementById("tamanoCuadro").style.display = 'none';
+                document.getElementById("tamanoAro").style.display = 'none';
+
+            if(categoria == 'Accesorios')
+            {
+                document.getElementById("accesorio").style.display = 'block';
+                document.getElementById("marca").style.display = 'block';
+                document.getElementById("modelo").style.display = 'block';
+            }
+            else if(categoria == 'Bicicletas')
+            {
+                document.getElementById("tipo").style.display = 'block';
+                document.getElementById("marca").style.display = 'block';
+                document.getElementById("modelo").style.display = 'block';
+                document.getElementById("tamanoCuadro").style.display = 'block';
+                document.getElementById("tamanoAro").style.display = 'block';
+            }
+            else if(categoria == 'Componentes')
+            {
+                document.getElementById("tipo").style.display = 'block';
+                document.getElementById("marca").style.display = 'block';
+                document.getElementById("modelo").style.display = 'block';
+            }
+            else if(categoria == 'Bicicletas')
+            {
+               
+            }
+            mainForm.style.display = 'block';
+        }
+    }
+
+
 
 </script>

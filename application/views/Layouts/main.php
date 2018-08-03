@@ -57,8 +57,8 @@
         <?php $this->load->view($main_view); ?>
     </main> 
 
-    <footer class="sticky" >
-        <div class="fixed-bottom footer-design">
+    <footer >
+        <div style="padding: 15px 10px 0 10px ; background:lightgray;" class="fixed-bottom footer-design">
             <label class="float-left" >
                 © 2018 Derechos Reservados
             </label>

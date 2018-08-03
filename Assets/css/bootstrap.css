@@ -1821,7 +1821,7 @@ pre code {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  color: #495057;
+  color: #7b8a8b;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
@@ -1845,7 +1845,7 @@ pre code {
   background-color: #fff;
   border-color: #80bdff;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(95, 95, 95, 0.25);
 }
 
 .form-control::-webkit-input-placeholder {
@@ -2370,14 +2370,14 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #2C3E50;
+  border-color: #2C3E50;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  background-color: #1e2b37;
+  border-color: #1a252f;
 }
 
 .btn-primary:focus, .btn-primary.focus {

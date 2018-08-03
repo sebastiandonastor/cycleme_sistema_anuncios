@@ -88,8 +88,12 @@ class Anuncio_model extends CI_Model {
         $result  = $this->db->get('categorias');
         return $result->result();
     }
-    function GetProvincias( ){
+    function GetProvincias(){
         $result  = $this->db->get('provincias');
+        return $result->result();
+    }
+    function GetDetalles(){
+        $result  = $this->db->get('detallesCategoria');
         return $result->result();
     }
 

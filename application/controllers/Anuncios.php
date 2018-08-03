@@ -14,8 +14,14 @@ class Anuncios extends CI_Controller
     }
     public function Crear()
     {
-        
 
+        $this->form_validation->set_rules('provincia','Provincia','callback_requerido'
+        ,array('requerido' => 'Debe seleccionar una provincia'));
+
+        if($this->form_validation->run() == FALSE ){
+            $this->index();
+            return;
+        }
     }
 
 
