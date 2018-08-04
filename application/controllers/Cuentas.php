@@ -24,7 +24,8 @@ class Cuentas extends CI_Controller{
                                             // INICIO REGLAS.
 
         $this->form_validation->set_rules('email','Email','callback_requerido|callback_user_check|min_length[5]',array(
-            'requerido' => '*El campo email tiene que estar lleno*'
+            'requerido' => '*El campo email tiene que estar lleno*',
+            'min_length' => '*El campo email tiene que tener más de 4 caracteres*'
         ));
 
         $this->form_validation->set_message('user_check', 'Cuenta erronea');
@@ -32,7 +33,7 @@ class Cuentas extends CI_Controller{
 
         $this->form_validation->set_rules('pass','Passowrd','callback_requerido|min_length[5]',array(
             'requerido' => '*El campo contraseña tiene que estar lleno*',
-            'min_length' => 'El campo contraseña tiene que tener más de 4 caracteres'
+            'min_length' => '*El campo contraseña tiene que tener más de 4 caracteres*'
         ));
                                          // FIN REGLAS.
 
@@ -59,7 +60,7 @@ class Cuentas extends CI_Controller{
 
 
         // Si el usr es exitoso :D, Utilizaria el arreglo usr de arriba sin embargo, por una rara razon cuando los validare aqui se ponen nulos.
-        if($this->Usuario->existeUsuario(array(
+        if($this->Usuario->comprobarPass(array(
             'email' => $this->input->post('email'),
             'password' => $this->input->post('pass')
             ))){
@@ -102,7 +103,7 @@ class Cuentas extends CI_Controller{
                 return false;
             }
 
-            return !($this->Usuario->existeUsuario($usr));
+            return !($this->Usuario->comprobarPass($usr));
         }
         return false;
     }
