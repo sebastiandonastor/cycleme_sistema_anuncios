@@ -42,7 +42,7 @@
                 'class' => 'btn btn-info btn-block'
             )); ?>
             <div class="text-center">
-            <span class="lead">¿No tienes cuenta?<br><a href="<?php echo base_url('Cuentas/Registro') ?>">Registrate Aqui</a></span>
+            <span class="lead">¿No tienes cuenta?<br><a href="<?php echo base_url('Registro') ?>">Registrate Aqui</a></span>
             </div>
             <?php echo form_close(); ?>
 

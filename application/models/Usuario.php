@@ -3,6 +3,14 @@
 class Usuario extends CI_Model {
 
 
+    public function crearUsuario($usuarioCrear){
+        $this->db->insert('usuario',$usuarioCrear);
+        return $this->usrPorEmail($usuarioCrear['e-mail']);
+    }
+
+
+
+
     public function existeUsuario($usuarioLogin){
         $this->db->where('e-mail',$usuarioLogin['email']);
         $this->db->where('contrasena',$usuarioLogin['password']);
@@ -13,6 +21,12 @@ class Usuario extends CI_Model {
         } else {
             return false;
         }
+    }
+
+    public function comprobarPass($usr){
+        $resultado = $this->usrPorEmail($usr['email']);
+        $usrDB = $resultado[0];
+        return password_verify($usr['password'],$usrDB['contrasena']);
     }
 
     public function existeMail($email){

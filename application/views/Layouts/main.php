@@ -28,14 +28,14 @@
                 <li class="nav-line" id="nav-line">|</li>
                 <li class="nav-item"><a class="nav-link" href="#">Categoría </a></li>
                 <li class="nav-line" id="nav-line">|</li>
-                <li class="nav-item"><a class="nav-link" href="#">Eventos</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Home/eventos'); ?>">Eventos</a></li>
                 <li class="nav-line" id="nav-line">|</li>
-                <li class="nav-item"><a class="nav-link" href="#">Noticias</a> </li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Home/Noticias'); ?>">Noticias</a> </li>
                 <li class="nav-line" id="nav-line">|</li>
-                <li class="nav-item"><a class="nav-link" href="#">Nosotros</a> </li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Home/nosotros'); ?>">Nosotros</a> </li>
                 <li class="nav-line" id="nav-line">|</li>
                 <?php if($this->session->userdata('idUsuario') == null) : ?>
-                    <li class="nav-item"><a class="nav-link" href="#">Registrate</a> </li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Registro'); ?>">Registrate</a> </li>
                     <li class="nav-line" id="nav-line">-</li>
                     <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Cuentas') ?>" >Iniciar~Sesion</a> </li>
                 <?php elseif($this->session->userdata('idUsuario') != null): ?>
