@@ -110,6 +110,7 @@ class Cuentas extends CI_Controller{
 
     function Cerrar(){
         $this->session->sess_destroy();
+        
          redirect('Home');
     }
 
