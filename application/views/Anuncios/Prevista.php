@@ -1,6 +1,8 @@
 <?php if($this->session->userdata('idUsuario') == null  ){
             redirect('Home');
         }  ?>
+
+<?php print_r($_FILES) ?>
 <div  class="crear-div ">
 <h4>Crear Anuncio</h4>
     <div class="text-black disabled">
@@ -115,6 +117,25 @@
                             <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'descripcion','id' => 'descripcion','value' =>  $poder , 'hidden'=>'true'); ?>
                             <?php echo form_input($datos); ?>
                         </div>
+
+                        <div class="form-group">
+                            <div class="custom-file">
+                                <?php echo form_upload(array(
+                                        'class' => 'form-control-file custom-file-input',
+                                        'multiple' => '',
+                                        'name' => 'upload[]',
+                                        'lang' => 'es'
+                                    )
+                                ); ?>
+                                <?php echo form_label('Subir Archivo','img_subir',array('class' => 'custom-file-label')) ?>
+                            </div>
+                            <?php if (form_error('upload[]')){  ?>
+                                <span class="text-danger"><?php echo form_error('upload[]'); ?></span>
+                            <?php  }  ?>
+
+                        </div>
+
+
                        
                         <div class="form-group" >
                             <a href="./" class="btn btn-danger">Reiniciar</a>

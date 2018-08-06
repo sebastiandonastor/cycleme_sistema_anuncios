@@ -48,8 +48,7 @@ class Anuncios extends CI_Controller
             $this->form_validation->set_rules('moneda','Moneda','callback_requerido',array('requerido' => 'Debe seleccionar una Moneda'));
             $this->form_validation->set_rules('precio','Precio','callback_requerido',array('requerido' => 'Debe digitar un Precio'));
             $this->form_validation->set_rules('titulo','Titulo','callback_requerido',array('requerido' => 'Debe dscribir un Titulo'));
-            $this->form_validation->set_rules('descripcion','Descripcion','callback_requerido|min_length[15]',
-            array('requerido' => 'Debe escribir una Descripcion','min_length' => 'La Descripción debe tener más de 15 caracteres'));
+            $this->form_validation->set_rules('descripcion','Descripcion','callback_requerido|min_length[15]', array('requerido' => 'Debe escribir una Descripcion','min_length' => 'La Descripción debe tener más de 15 caracteres'));
     
             $categoria = $this->input->post('categoria');
             
@@ -101,6 +100,10 @@ class Anuncios extends CI_Controller
 
                 $this->session->set_tempdata($data,  300);
                 //$this->Anuncio_model->create_anuncios($data);
+
+
+
+
                 $this->opcion('Prevista');
 
               
@@ -108,6 +111,12 @@ class Anuncios extends CI_Controller
     }
 
         public function Prevista(){
+
+            $this->form_validation->set_rules('upload[]','Subir','callback_error_img|callback_error_ext|callback_error_limite',
+                array(
+                    'error_img' => 'No subiste ninguna imagen',
+                    'error_ext' => 'Las imagenes debe de tener una extension png o jpg',
+                    'error_limite'=>'No puedes agregar mas de 5 imagenes'));
 
             $subCategoria = $this->input->post('subCategoria');
             $provincia = $this->input->post('provincia');
@@ -128,13 +137,51 @@ class Anuncios extends CI_Controller
             $fechaCreacion = date("Y-m-d");
             $fechaCaducidad = date('Y-m-d', strtotime($fechaCreacion. ' + 45 days'));
             $idUsuario_fk = $this->session->userdata('idUsuario');
-            $importancia = 0; 
+            $importancia = 0;
+
+
+            if($this->form_validation->run() == false){
+            $this->opcion('Prevista');
+            return;
+            }
+
+            $archivos = $_FILES['upload'];
+            $numero_imagenes = sizeof($_FILES['upload']['tmp_name']);
+            $config['upload_path'] = FCPATH. 'temp_img/';
+            $config['allowed_types'] = 'jpg|png';
+            $config['overwrite'] = false;
+            $imagenes = array();
+            for($i = 0 ; $i < $numero_imagenes ; $i++){
+                $_FILES['upload']['name'] = $archivos['name'][$i];
+                $_FILES['upload']['type'] = $archivos['type'][$i];
+                $_FILES['upload']['tmp_name'] = $archivos['tmp_name'][$i];
+                $_FILES['upload']['error'] = $archivos['error'][$i];
+                $_FILES['upload']['size'] = $archivos['size'][$i];
+                $this->upload->initialize($config);
+
+                if($this->upload->do_upload('upload')){
+                    $this->upload->data();
+                    array_push($imagenes,$archivos['name'][$i]);
+                }
+            }
+
+            $urlImg = '';
+            if(count($imagenes) > 1){
+                $urlImg = implode(',',$imagenes);
+            } else {
+                $urlImg = $imagenes[0];
+            }
+
+            // fin proceso.
 
             $data = array('categoria'=> $subCategoria,'provincia'=> $provincia,'telefono'=> $telefono,'accion'=> $accion,
             'precio'=> $moneda.$precio,'titulo'=> $titulo,'descripcion'=> $descripcion,'tipo'=> $tipo,'accesorio'=> $accesorio,'marca'=> $marca,'tamanoCuadro'=> $tamanoCuadro,'modelo'=> $modelo,
             'tamanoAro'=> $tamanoAro ,'fechaCreacion'=> $fechaCreacion ,'fechaCaducidad'=> $fechaCaducidad ,'idUsuario_fk'=> $idUsuario_fk ,
-            'importancia'=> $importancia  );
- 
+            'importancia'=> $importancia,
+            'foto' => $urlImg
+            );
+
+
             $this->Anuncio_model->create_anuncios($data);
 
             $this->opcion('Listo');
@@ -144,12 +191,31 @@ class Anuncios extends CI_Controller
     function requerido($value){
         if($value != ''){
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
+
+    function error_img($value){
+       $this->load->model('Imagenes_model');
+       return $this->Imagenes_model->hayContenido();
+    }
+
+
+    function error_ext($value){
+        $this->load->model('Imagenes_model');
+        return $this->Imagenes_model->esImagen();
+    }
+
+    function error_limite($value){
+        $this->load->model('Imagenes_model');
+        return $this->Imagenes_model->limiteImg();
+    }
+
+
+
+
 
 }
 
 
-?>

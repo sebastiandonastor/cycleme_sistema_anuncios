@@ -1,8 +1,11 @@
 <?php if($this->session->userdata('idUsuario') == null ){
             redirect('Home');
         }  ?>
-        
-<div  class="crear-div "  >
+
+<?php print_r(FCPATH); ?>
+
+
+<div class="crear-div">
 <h4>Crear Anuncio</h4>
     <div class="text-black disabled">
         <ul class="nav nav-tabs justify-content-center" >
@@ -195,6 +198,8 @@
                             <span class="text-danger"><?php echo form_error('descripcion'); ?></span>
                             <?php  }  ?>
                         </div>
+
+
                         <div class="form-group" >
                             <?php echo form_submit( array( 'name' => 'crear', 'value' => 'Continuar', 'class' => 'btn btn-primary' ) ); ?>
                         </div>
@@ -207,7 +212,8 @@
 
 <script>
    // object.addEventListener("change",checkMark);
-    
+
+
     
     window.addEventListener("load", suBcategoria);
 
@@ -289,3 +295,4 @@
 
 
 </script>
+
