@@ -75,3 +75,32 @@ select.btn-mini {
 
   /* for "disabled" effect */
 }
+
+/*dropdown del menu principal*/
+.drpespecial{
+    padding-right: 0px;
+    position: relative;
+}
+
+.dropdown-toggle::after{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    display: none;
+}
+                   /* el min de pixeles para aplicar esta condicion */
+@media screen and (min-width: 1024px){
+    .drpespecial{
+        padding-right: 17px;
+        position: relative;
+    }
+
+    .dropdown-toggle::after{
+        display:inline-block;
+    }
+}
+
+/* estilos todas_paginas */
+ol.black_circle {
+    list-style-type: inherit;
+}
