@@ -30,6 +30,30 @@
             $this->load->view('Layouts/main',$data);
         }
 
+        public function categorias_principales($categoria){
+            $data['main_view'] = 'Categorias/categoria';
+            $data['titulo'] = 'CycleMe categorias';
+            $data['categoria_deseada'] = $categoria;
+            $data['AccesoriosNum'] = $this->categorias('Accesorios');
+            $data['BicicletasNum'] = $this->categorias('Bicicletas');
+            $data['ComponentesNum'] = $this->categorias('Componentes');
+            $data['ServiciosNum'] = $this->categorias('Servicios');
+            $this->load->model('Categoria_model');
+            $this->load->view('Layouts/main', $data);
+        }
+
+        public function categorias_secundarias($categoria){
+            $data['main_view'] = 'Categorias/subcategoria';
+            $data['titulo'] = 'CycleMe subcategorias';
+            $data['categoria_deseada'] = $categoria;
+            $data['AccesoriosNum'] = $this->categorias('Accesorios');
+            $data['BicicletasNum'] = $this->categorias('Bicicletas');
+            $data['ComponentesNum'] = $this->categorias('Componentes');
+            $data['ServiciosNum'] = $this->categorias('Servicios');
+            $this->load->model('Categoria_model');
+            $this->load->view('Layouts/main', $data);
+        }
+
         public function eventos(){
             $data['main_view'] = 'vistas_secundarias/eventos';
             $data['titulo'] = 'CycleMe eventos';

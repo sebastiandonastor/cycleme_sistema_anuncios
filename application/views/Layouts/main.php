@@ -29,13 +29,13 @@
                 <li class="nav-item dropdown drpespecial">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Accesorios (<?php echo $AccesoriosNum ?>) </a>
+                        <a class="dropdown-item" href="<?php echo base_url('Home/categorias_principales/Accesorios') ?>">Accesorios (<?php echo $AccesoriosNum ?>) </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Bicicletas (<?php echo $BicicletasNum ?>) </a>
+                        <a class="dropdown-item" href="<?php echo base_url('Home/categorias_principales/Bicicletas') ?>">Bicicletas (<?php echo $BicicletasNum ?>) </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Componentes (<?php echo $ComponentesNum ?>) </a>
+                        <a class="dropdown-item" href="<?php echo base_url('Home/categorias_principales/Componentes') ?>">Componentes (<?php echo $ComponentesNum ?>) </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Servicios (<?php echo $ServiciosNum ?>) </a>
+                        <a class="dropdown-item" href="<?php echo base_url('Home/categorias_principales/Servicios') ?>">Servicios (<?php echo $ServiciosNum ?>) </a>
                         <div class="dropdown-divider"></div>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?php echo base_url('Home/pag_categorias') ?>">Todos...</a>

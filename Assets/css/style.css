@@ -101,6 +101,28 @@ select.btn-mini {
 }
 
 /* estilos todas_paginas */
-ol.black_circle {
+li.black_circle {
     list-style-type: inherit;
+    line-height: 50%;
+}
+div.estilo-border{
+    border-style: double;
+}
+
+div.estilo-border-encabezado{
+    padding: 20px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    border-style: groove;
+    border-radius: 10px;
+}
+
+/* publicacion por categorias */
+div.estilo-border-sub{
+    border-style: outset;
+    border-color: grey;
+    border-width: 7px;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px;
 }
