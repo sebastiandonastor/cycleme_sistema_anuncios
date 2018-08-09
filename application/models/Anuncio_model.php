@@ -121,7 +121,12 @@ class Anuncio_model extends CI_Model {
 
         $resultado = $this->db->get()->result_array();
         return $resultado;
+    }
 
+
+    public function getAnunciosVisi(){
+        $this->db->where('estado',1);
+        return $this->db->count_all_results('anuncios');
     }
 
 

@@ -15,18 +15,20 @@
 <body>
 
     <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-   
-            <a class="navbar-brand" href="<?php echo base_url(); ?>"><i class="fas fa-bicycle big-icon d-inline-block align-top"> CycleMe</i></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-  
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav ml-auto nav-text">
-                <li class="nav-item"><a class="nav-link" href="<?php echo base_url() ?>" >Inicio<span class="sr-only">(current)</span></a></li>
-                <li class="nav-line" id="nav-line">|</li>
-                <li class="nav-item dropdown drpespecial">
+    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+      <div class="container">
+      <a class="navbar-brand" href="<?php echo base_url(); ?>"><i class="fas fa-bicycle big-icon d-inline-block align-top"> CycleMe</i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          
+
+          <ul class="nav navbar-nav ml-auto nav-text">
+            <li class="nav-item ">
+                <a class="nav-link" href="<?php echo base_url() ?>" >Inicio<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown drpespecial">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="<?php echo base_url('Home/categorias_principales/Accesorios') ?>">Accesorios (<?php echo $AccesoriosNum ?>) </a>
@@ -37,24 +39,18 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?php echo base_url('Home/categorias_principales/Servicios') ?>">Servicios (<?php echo $ServiciosNum ?>) </a>
                         <div class="dropdown-divider"></div>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?php echo base_url('Home/pag_categorias') ?>">Todos...</a>
                     </div>
                 </li>
-                <li class="nav-line" id="nav-line">|</li>
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Home/eventos'); ?>">Eventos</a></li>
-                <li class="nav-line" id="nav-line">|</li>
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Home/Noticias'); ?>">Noticias</a> </li>
-                <li class="nav-line" id="nav-line">|</li>
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Home/nosotros'); ?>">Nosotros</a> </li>
-                <li class="nav-line" id="nav-line">|</li>
                 <?php if($this->session->userdata('idUsuario') == null) : ?>
                     <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Registro'); ?>">Registrate</a> </li>
-                    <li class="nav-line" id="nav-line">-</li>
-                    <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Cuentas') ?>" >Iniciar~Sesion</a> </li>
+                    <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Cuentas') ?>" target="_blank" >Iniciar Sesion</a> </li>
                 <?php elseif($this->session->userdata('idUsuario') != null): ?>
                     <li class="nav-item dropdown dropdown-width">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle">~</i><?php echo $this->session->userdata('nombre')?></a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i><?php echo $this->session->userdata('nombre')?></a>
                         <div class="dropdown-menu logOutAria" x-placement="bottom-start ">
                         <a class="dropdown-item" href="<?php echo base_url('Anuncios') ?>" >Publicar Anuncio</a>
                         <a class="dropdown-item" href="<?php echo base_url('Anuncios/opcion/Administrar') ?>" >Manejar Anuncio</a>
@@ -63,9 +59,16 @@
                         </div>
                     </li>
                 <?php endif; ?> 
-            </ul>
+
+
+
+          </ul>
+
         </div>
-        </nav>
+      </div>
+    </div>
+
+      
     </header>
 
     <main class="container" >
@@ -90,7 +93,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="<?php echo base_url(); ?>/Assets/js/bootstrap.js"></script>
-    <script src="<?php echo base_url(); ?>/Assets/js/styles2.js"></script>
     <script src="<?php echo base_url(); ?>/Assets/js/javascript.js"></script>
 
 </body>
