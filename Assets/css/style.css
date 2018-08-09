@@ -1,4 +1,13 @@
-
+html{
+    height: 100%;
+    box-sizing: border-box;
+}
+body{
+    position: relative;
+    margin: 0;
+    padding-bottom: 5rem;
+    min-height: 95%;
+}
 /* por que si */
 .float-left{
     float:left;
@@ -61,7 +70,7 @@ transform: translate3d(0px, 39px, 0px);
  .crear-div2{
     text-align: none;
     padding:10px;
-    width:500px;
+    max-width:500px;
 }
 
 select.btn-mini {
@@ -72,9 +81,71 @@ select.btn-mini {
 .disabled
 {
   pointer-events: none;
-
-  /* for "disabled" effect */
 }
+/*previe de img en prevista*/
+
+#image-preview{
+    display:none;
+    width : 250px;
+    height : 200px;
+    padding-top: 20px;
+
+}
+/*div informcion de administrar*/
+
+#misAnuncios{
+    padding:15px;
+    margin:15px;
+    max-width: 750px;
+    background-color:rgba(134, 156, 170, 0.486); 
+    top:0; 
+    border-radius: 20px; 
+}
+
+#miInfo{
+    padding:15px;
+    margin:15px;
+    max-width: 275px;
+    background-color:rgba(134, 156, 170, 0.486); 
+    top:0;  
+    max-height:250px;   
+    border-radius: 20px; 
+
+}
+.anunciosDeUsuario{
+    background-color:white;
+    max-width: 700px;
+
+    padding:10px;
+    margin:10px;  
+    border-radius: 20px;
+}
+
+/* fecha diminuta */
+.small{
+    font-size: 12px;
+}
+
+.two{
+    display: none;
+}
+
+@media only screen and (max-width: 450px) {
+    .one{
+        display: none;
+    }
+    .two{
+        display: block;
+    }
+}
+
+.table-hidden{
+    display: none;
+}
+.table-show{
+    display: block;
+}
+  /* for "disabled" effect */
 
 /*dropdown del menu principal*/
 .drpespecial{
@@ -155,6 +226,36 @@ textarea{
     cursor: text;
     white-space: pre-wrap;
     word-wrap: break-word;
+    resize: none;
+}
+
+input.sub{
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 /* tabs de anuncio */
+
+div.perfilPequeno{
+    padding: 10px;
+}
+p.contactar{
+    margin-bottom: 0px;
+}
+input.espaciado{
+    margin-bottom: 20px;
+}
+
+/* publicidad */
+div.espacioEntrePublicidad{
+    margin-top: 30px;
+    padding: 150px;
+}
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #cac7c7;
+
+  }

@@ -82,7 +82,7 @@ class Anuncios extends CI_Controller
                 $fechaCaducidad = date('Y-m-d', strtotime($fechaCreacion. ' + 45 days'));
                 $idUsuario_fk = $this->session->userdata('idUsuario');
                 $importancia = 0; 
-            // C:\Program Files (x86)\Ampps\www\web\ProyectoFinal\cycleme_sistema_anuncios\Assets\img
+            
             if($this->form_validation->run() == FALSE){
                 $data = array('categoria'=> "{$categoria}",'provincia'=> "{$provincia}",'telefono'=> "{$telefono}",'accion'=> "{$accion}",
                 'moneda'=> "{$moneda}" ,'precio'=> "{$precio}",'titulo'=> "{$titulo}",'descripcion'=> "{$descripcion}",'subCategoria'=> "{$subCategoria}",
@@ -101,11 +101,7 @@ class Anuncios extends CI_Controller
                 $this->session->set_tempdata($data,  300);
                 //$this->Anuncio_model->create_anuncios($data);
 
-
-
-
                 $this->opcion('Prevista');
-
               
             }
     }
@@ -118,7 +114,6 @@ class Anuncios extends CI_Controller
                     'error_ext' => 'Las imagenes debe de tener una extension png o jpg',
                     'error_limite'=>'No puedes agregar mas de 5 imagenes'));
 
-            $subCategoria = $this->input->post('subCategoria');
             $provincia = $this->input->post('provincia');
             $telefono = $this->input->post('telefono');
             $accion = $this->input->post('accion');
@@ -126,7 +121,7 @@ class Anuncios extends CI_Controller
             $precio = $this->input->post('precio');
             $titulo = $this->input->post('titulo');
             $descripcion = $this->input->post('descripcion');
-            
+
             $accesorio = $this->input->post('accesorio');
             $marca = $this->input->post('marca');
             $telefono = $this->input->post('telefono');
@@ -137,7 +132,10 @@ class Anuncios extends CI_Controller
             $fechaCreacion = date("Y-m-d");
             $fechaCaducidad = date('Y-m-d', strtotime($fechaCreacion. ' + 45 days'));
             $idUsuario_fk = $this->session->userdata('idUsuario');
+            $idCategorias_fk = $this->input->post('subCategoria');
+
             $importancia = 0;
+            $estado = 1;
 
 
             if($this->form_validation->run() == false){
@@ -174,11 +172,10 @@ class Anuncios extends CI_Controller
 
             // fin proceso.
 
-            $data = array('categoria'=> $subCategoria,'provincia'=> $provincia,'telefono'=> $telefono,'accion'=> $accion,
+            $data = array('provincia'=> $provincia,'telefono'=> $telefono,'accion'=> $accion,
             'precio'=> $moneda.$precio,'titulo'=> $titulo,'descripcion'=> $descripcion,'tipo'=> $tipo,'accesorio'=> $accesorio,'marca'=> $marca,'tamanoCuadro'=> $tamanoCuadro,'modelo'=> $modelo,
             'tamanoAro'=> $tamanoAro ,'fechaCreacion'=> $fechaCreacion ,'fechaCaducidad'=> $fechaCaducidad ,'idUsuario_fk'=> $idUsuario_fk ,
-            'importancia'=> $importancia,
-            'foto' => $urlImg
+            'importancia'=> $importancia,'estado'=> $estado,'foto' => $urlImg,'idCategorias_fk'=> $idCategorias_fk,
             );
 
 
@@ -210,6 +207,68 @@ class Anuncios extends CI_Controller
     function error_limite($value){
         $this->load->model('Imagenes_model');
         return $this->Imagenes_model->limiteImg();
+    }
+
+    function Eliminar($id){
+        $estado = $this->Anuncio_model->delete_anuncios($id);
+
+        if($estado > 0){
+            $data = array('exito'=> "Anuncio Eliminado");
+            $this->session->set_flashdata($data);
+            $this->opcion('Administrar');
+        }else{
+            $data = array('error'=> "Anuncio No Encontrado");
+            $this->session->set_flashdata($data);
+            $this->opcion('Administrar');
+        }
+    }
+
+    function Estado($id){
+        $estado = $this->Anuncio_model->estado_anuncios($id);
+        $this->opcion('Administrar');
+    }
+
+
+    function Editar($id){
+
+        $data = $this->Anuncio_model->get_anuncios($id);
+
+        $idCategorias_fk =  $data->idCategorias_fk;
+
+        $data2 = $this->Anuncio_model->GetsubCategorias($idCategorias_fk);
+        
+        $categoria = $data2->categoriaPrincipal;
+        $subCategoria = $data2->categoria;
+
+        $idUsuario_fk = $data->idUsuario_fk;
+        $provincia = $data->provincia;
+        $telefono = $data->telefono;
+        $accion = $data->accion;
+
+        $dinero = explode('$', $data->precio);
+        $precio = $dinero[1];
+        $moneda = $dinero[0].'$';
+
+        $titulo = $data->titulo;
+        $descripcion = $data->descripcion;
+        $accesorio = $data->accesorio;
+        $marca = $data->marca;
+
+        $tamanoCuadro = $data->tamanoCuadro;
+        $tamanoAro = $data->tamanoAro;
+        $tipo = $data->tipo;
+        $modelo = $data->modelo;
+        $foto = $data->foto;
+   
+
+        $data = array('categoria'=> $categoria , 'subCategoria'=> $subCategoria ,'provincia'=> $provincia,
+        'telefono'=> $telefono,'accion'=> $accion,'precio'=> $precio,'moneda'=> $moneda, 'titulo'=> $titulo, 'idUsuario_fk'=> $idUsuario_fk ,
+        'descripcion'=> $descripcion,'tipo'=> $tipo,'accesorio'=> $accesorio,'marca'=> $marca,
+        'tamanoCuadro'=> $tamanoCuadro,'modelo'=> $modelo, 'tamanoAro'=> $tamanoAro ,'foto' => $foto);
+
+        $this->session->set_tempdata($data, 300);
+
+        $this->opcion('Editar');
     }
 
 

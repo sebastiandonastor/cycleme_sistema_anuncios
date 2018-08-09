@@ -2,79 +2,6 @@
 
 class Anuncio_model extends CI_Model {
 
-    // // Obtener todos los Anuncios.
-    // function AllAnuncios(){
-    //     $query = $this->db->get("anuncios")->result_array();
-    //     return $query;
-    // }
-
-    // // Obtener Anuncios por id.
-    // function AnunciosById($idAnuncio){
-    //     $this->db->where('idAnuncio', $idArticulo);
-    //     $query = $this->db->get("anuncios")->result_array();
-    //     return $query[0];
-    // }
-
-    // // Crear Anuncios.
-    // function InsertArticle($nombre, $modelo, $tipo, $marca, $tamanoAro, $tamanoCuadro, $accesorio, $accion, $importancia, $fechaCreacion, $fechaCaducidad, $descipcion, $categoria, $precio, $foto, $titulo, $provincia, $numeroVisitas, $idUsuario_fk){
-
-    //     $datos = array(
-    //         'nombre' => $nombre,
-    //         'modelo' => $modelo,
-    //         'tipo' => $tipo,
-    //         'marca' => $marca,
-    //         'tamanoAro' => $tamanoAro,
-    //         'tamanoCuadro' => $tamanoCuadro,
-    //         'accesorio' => $accesorio,
-    //         'accion' => $accion,
-    //         'importancia' => $importancia,
-    //         'fechaCreacion' => $fechaCreacion,
-    //         'fechaCaducidad' => $fechaCaducidad,
-    //         'descripcion' => $descipcion,
-    //         'categoria' => $categoria,
-    //         'precio' => $precio,
-    //         'foto' => $foto,
-    //         'titulo' => $titulo,
-    //         'provincia' => $provincia,
-    //         'numeroVisitas' => $numeroVisitas,
-    //         'idUsuario_fk' => $idUsuario_fk
-    //     );
-
-    //     $result = $this->db->insert('anuncios', $datos);
-    //     return $result;
-    // }
-
-    // // Actualziar Anuncios.
-    // function UpdateArticle($idAnuncio, $nombre, $modelo, $tipo, $marca, $tamanoAro, $tamanoCuadro, $accesorio, $accion, $importancia, $fechaCreacion, $fechaCaducidad, $descipcion, $categoria, $precio, $foto, $titulo, $provincia, $numeroVisitas, $idUsuario_fk){
-    //     $this->db->where('idAnuncio',$idAnuncio);
-
-
-    //     $datos = array(
-    //         'nombre' => $nombre,
-    //         'modelo' => $modelo,
-    //         'tipo' => $tipo,
-    //         'marca' => $marca,
-    //         'tamanoAro' => $tamanoAro,
-    //         'tamanoCuadro' => $tamanoCuadro,
-    //         'accesorio' => $accesorio,
-    //         'accion' => $accion,
-    //         'importancia' => $importancia,
-    //         'fechaCreacion' => $fechaCreacion,
-    //         'fechaCaducidad' => $fechaCaducidad,
-    //         'descripcion' => $descipcion,
-    //         'categoria' => $categoria,
-    //         'precio' => $precio,
-    //         'foto' => $foto,
-    //         'titulo' => $titulo,
-    //         'provincia' => $provincia,
-    //         'numeroVisitas' => $numeroVisitas,
-    //         'idUsuario_fk' => $idUsuario_fk
-    //     );
-
-    //     $result = $this->db->update('anuncios', $datos);
-    //     return $result;
-    // }
-    
     public function create_anuncios($data)
     {
         $this->db->insert('anuncios',$data);
@@ -82,6 +9,7 @@ class Anuncio_model extends CI_Model {
 
     public function show_anuncios()
     {
+        $this->db->where(['estado' => 'true']); 
         $this->db->order_by("idAnuncio", "desc");
         $query = $this->db->get('anuncios');
         return $query->result();
@@ -89,10 +17,19 @@ class Anuncio_model extends CI_Model {
 
     public function get_anuncios($id)
     {
-       $this->db->where(['idAnuncio' => $id]); 
+       $this->db->where(['idAnuncio' => $id]);
+       $this->db->where(['idUsuario_fk' => $this->session->userdata('idUsuario')]); 
        $query  = $this->db->get('anuncios');
        return $query->row(0);
     }
+
+    public function get_anuncioLogueado()
+    {
+       $this->db->where(['idUsuario_fk' => $this->session->userdata('idUsuario')]); 
+       $query  = $this->db->get('anuncios');
+       return $query->result();
+    }
+
 
     public function update_anuncios($id , $data)
     {
@@ -102,15 +39,63 @@ class Anuncio_model extends CI_Model {
 
     public function delete_anuncios($id)
     {
-       $this->db->where(['idAnuncio'=>$id]);
-       $this->db->delete('anuncios');
+       $this->db->where(['idAnuncio' => $id ]);
+       $this->db->where(['idUsuario_fk' => $this->session->userdata('idUsuario')]); 
+       $existe = $this->db->get('anuncios'); 
+       
+       if($existe->row(0) != null){
+        $this->db->where(['idAnuncio' => $id ]);
+        $this->db->where(['idUsuario_fk' => $this->session->userdata('idUsuario')]); 
+        $this->db->delete('anuncios');
+        return 1;
+       }else{
+        return 0;
+       }
     }
+
+    public function estado_anuncios($id)
+    {
+       $this->db->where(['idAnuncio' => $id ]);
+       $this->db->where(['idUsuario_fk' => $this->session->userdata('idUsuario')]); 
+       $existe = $this->db->get('anuncios'); 
+       
+       if($existe->row(0) != null){
+        
+        $this->db->where(['idAnuncio' => $id ]);
+        $this->db->where(['idUsuario_fk' => $this->session->userdata('idUsuario')]); 
+        $existe = $this->db->get('anuncios'); 
+
+            if( $existe->row(0)->estado == 1){
+
+                $this->db->where(['idAnuncio' => $id ]);
+                $this->db->where(['idUsuario_fk' => $this->session->userdata('idUsuario')]);
+                $data = array('estado' => 0);
+                $this->db->update('anuncios',$data); 
+
+            }else if( $existe->row(0)->estado == 0){
+
+                $this->db->where(['idAnuncio' => $id ]);
+                $this->db->where(['idUsuario_fk' => $this->session->userdata('idUsuario')]);
+                $data = array('estado' => 1);
+                $this->db->update('anuncios',$data);  
+                
+            }
+       }
+    }
+
 
     function GetCategorias( $categoriaPrincipal){
         $this->db->where(['categoriaPrincipal' => $categoriaPrincipal]); 
         $result  = $this->db->get('categorias');
         return $result->result();
     }
+    
+    function GetsubCategorias( $id){
+        $this->db->where(['idCategoria' => $id]); 
+        $result  = $this->db->get('categorias');
+        return $result->row(0);
+    }
+    
     function GetProvincias(){
         $result  = $this->db->get('provincias');
         return $result->result();
@@ -119,6 +104,7 @@ class Anuncio_model extends CI_Model {
         $result  = $this->db->get('detallesCategoria');
         return $result->result();
     }
+
 
 }
 

@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,6 +57,7 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle">~</i><?php echo $this->session->userdata('nombre')?></a>
                         <div class="dropdown-menu logOutAria" x-placement="bottom-start ">
                         <a class="dropdown-item" href="<?php echo base_url('Anuncios') ?>" >Publicar Anuncio</a>
+                        <a class="dropdown-item" href="<?php echo base_url('Anuncios/opcion/Administrar') ?>" >Manejar Anuncio</a>
                         <div class="dropdown-divider"  ></div>
                         <a class="dropdown-item log-out" href="<?php echo base_url('Cuentas/cerrar') ?>"> Cerrar Sesion </a>
                         </div>
@@ -72,7 +73,7 @@
     </main> 
 
     <footer >
-        <div style="padding: 15px 10px 0 10px ; background:lightgray;" class="fixed-bottom footer-design">
+        <div style="padding: 15px 10px 0 10px ; " class="footer-design">
             <label class="float-left" >
                 © 2018 Derechos Reservados
             </label>
@@ -85,8 +86,13 @@
             </label>
         </div>
     </footer>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="<?php echo base_url(); ?>/Assets/js/bootstrap.js"></script>
     <script src="<?php echo base_url(); ?>/Assets/js/styles2.js"></script>
+    <script src="<?php echo base_url(); ?>/Assets/js/javascript.js"></script>
+
 </body>
 </html>
+
