@@ -40,7 +40,7 @@
                 <?php echo form_open_multipart(base_url('Anuncios/Detalles'),array('class' => 'mt-4 mb-5 ')); ?>
                
                     <div class="form-group" name="categoria" >
-                        <?php echo form_label('Categoria: '.$this->session->flashdata('categoria').'/'.$this->session->flashdata('subCategoria') ,'categoria'); $poder =  $this->session->flashdata('categoria'); ?>
+                        <?php echo form_label('Categoria: '.$this->session->flashdata('categoria') ,'categoria'); $poder =  $this->session->flashdata('categoria'); ?>
                         <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'categoria','id' => 'categoria','value' =>  $poder , 'hidden'=>'true'); ?>
                         <?php echo form_input($datos); ?>
                         

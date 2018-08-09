@@ -110,9 +110,8 @@ select.btn-mini {
     padding:10px;
     margin:10px;  
     border-radius: 20px;
-
-<<<<<<< HEAD
 }
+
 /* fecha diminuta */
 .small{
     font-size: 12px;
@@ -137,7 +136,6 @@ select.btn-mini {
 .table-show{
     display: block;
 }
-=======
   /* for "disabled" effect */
 }
 
@@ -191,4 +189,3 @@ div.estilo-border-sub{
     margin: 10px;
     padding: 10px;
 }
->>>>>>> 5a7e2788da620776749cbf49ff8e3f8497a476e9

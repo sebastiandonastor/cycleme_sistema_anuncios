@@ -4,9 +4,6 @@
 
 <div class="crear-div">
 <h4>Editar Anuncio</h4>
-    <div class="text-black disabled">
-       
-    </div>
                                         
     <div   class=" crear-div2 mx-auto" >
    
