@@ -105,6 +105,22 @@ class Anuncio_model extends CI_Model {
         return $result->result();
     }
 
+    function getAnunciosPorPagina($limite,$inicio){
+
+        $this->db->select('*');
+        $this->db->from('anuncios');
+        $this->db->join('categorias','idCategorias_fk = idCategoria');
+        $this->db->join('usuario','idUsuario_fk = idUsuario');
+
+        $this->db->limit($limite,$inicio);
+        $this->db->order_by('idAnuncio', 'DESC');
+        $this->db->where('estado',1);
+
+        $resultado = $this->db->get()->result_array();
+        return $resultado;
+
+    }
+
 
 }
 
