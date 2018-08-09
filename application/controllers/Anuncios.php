@@ -105,9 +105,10 @@ class Anuncios extends CI_Controller
                 $tamanoAro = $this->input->post('tamanoAro');
                 $tipo = $this->input->post('tipo');
                 $modelo = $this->input->post('modelo');
-                $fechaCreacion = date("Y-m-d");
-                $fechaCaducidad = date('Y-m-d', strtotime($fechaCreacion. ' + 45 days'));
+                $fechaCreacion = date('Y-m-d H:i:s');
+                $fechaCaducidad = date('Y-m-d H:i:s' , strtotime($fechaCreacion. ' + 45 days'));
                 $idUsuario_fk = $this->session->userdata('idUsuario');
+                $idCategorias_fk = $this->input->post('subCategoria');
                 $importancia = 0; 
             
             if($this->form_validation->run() == FALSE){
@@ -156,10 +157,10 @@ class Anuncios extends CI_Controller
             $tamanoAro = $this->input->post('tamanoAro');
             $tipo = $this->input->post('tipo');
             $modelo = $this->input->post('modelo');
-            $fechaCreacion = date("Y-m-d");
-            $fechaCaducidad = date('Y-m-d', strtotime($fechaCreacion. ' + 45 days'));
-            $idUsuario_fk = $this->session->userdata('idUsuario');
+            $fechaCreacion = date('Y-m-d H:i:s');
+            $fechaCaducidad = date('Y-m-d H:i:s' , strtotime($fechaCreacion. ' + 45 days'));
             $idCategorias_fk = $this->input->post('subCategoria');
+            $idUsuario_fk = $this->session->userdata('idUsuario');
 
             $importancia = 0;
             $estado = 1;
@@ -204,7 +205,6 @@ class Anuncios extends CI_Controller
             'tamanoAro'=> $tamanoAro ,'fechaCreacion'=> $fechaCreacion ,'fechaCaducidad'=> $fechaCaducidad ,'idUsuario_fk'=> $idUsuario_fk ,
             'importancia'=> $importancia,'estado'=> $estado,'foto' => $urlImg,'idCategorias_fk'=> $idCategorias_fk,
             );
-
 
             $this->Anuncio_model->create_anuncios($data);
 

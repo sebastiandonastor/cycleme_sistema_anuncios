@@ -1,6 +1,6 @@
 <?php if($this->session->userdata('idUsuario') == null ){
             redirect('Home');
-        }  ?>
+        }  echo $this->session->flashdata('subCategoria')  ?>
 
 <div class="crear-div">
 <h4>Crear Anuncio</h4>
@@ -44,7 +44,7 @@
                         <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'categoria','id' => 'categoria','value' =>  $poder , 'hidden'=>'true'); ?>
                         <?php echo form_input($datos); ?>
                         
-                        <a class="btn btn-primary text-white btn-sm"  onclick="  window.location  = './'">Cambiar Categoría</a>
+                        <a class="btn btn-primary text-white btn-sm"  onclick="  window.location  = '<?php echo base_url('Anuncios/opcion/Crear') ?>'">Cambiar Categoría</a>
                     </div>
 
                     <div class="form-group" name="subCategoria" hidden >
@@ -217,7 +217,7 @@
         var categoria = CategoriaPrincipal.value;
 
         if(categoria == ''){
-            window.location  = "/";
+            window.location  = "Home";
         }else{
                 document.getElementById("accesorio").style.display = 'none';
                 document.getElementById("marca").style.display = 'none';
