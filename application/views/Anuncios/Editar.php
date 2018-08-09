@@ -8,17 +8,27 @@
 <h4>Editar Anuncio</h4>
                                         
     <div   class=" crear-div2 mx-auto" >
-   
+
+
         <div  id="myTabContent" class="tab-content ">
             <div class="tab-pane fade active show">
-                <?php echo form_open_multipart(base_url('Anuncios/Detalles'),array('class' => 'mt-4 mb-5 ')); ?>
-               
+                <?php echo form_open_multipart(base_url('Anuncios/Save/'.$this->session->tempdata('idAnuncio')),array('class' => 'mt-4 mb-5 ')); ?>
+
+                    <div class="form-group" name="idUsuario_fk" hidden >
+                        <?php form_label('...:' ,'idUsuario_fk'); $poder =   $this->session->tempdata('idUsuario_fk'); ?>
+                        <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'idUsuario_fk','id' => 'idUsuario_fk','value' =>  $poder , 'hidden'=>''); ?>
+                    </div>
+
+                    <div class="form-group" name="idCategorias_fk" hidden >
+                        <?php echo form_label('..:' ,'idCategorias_fk'); $poder =   $this->session->tempdata('idCategorias_fk'); ?>
+                        <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'idCategorias_fk','id' => 'idCategorias_fk','value' =>  $poder , 'hidden'=>''); ?>
+                        <?php echo form_input($datos); ?>
+                    </div>
+
                     <div class="form-group" name="categoria" hidden >
                         <?php echo form_label('Categoria:' ,'categoria'); $poder =   $this->session->tempdata('categoria'); ?>
-                        <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'categoria','id' => 'categoria','value' =>  $poder , 'hidden'=>'true'); ?>
+                        <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'categoria','id' => 'categoria','value' =>  $poder , 'hidden'=>''); ?>
                         <?php echo form_input($datos); ?>
-                        
-                        <a class="btn btn-primary text-white btn-sm"  onclick="  window.location  = './'">Cambiar Categoría</a>
                     </div>
 
                     <div name="mainForm" id="mainForm" >
@@ -147,6 +157,7 @@
                             <?php echo form_input($datos); ?>
                             <span class="text-danger"><?php echo form_error('precio'); ?></span>
                         </div>
+                        
                         <div class="form-group">
                             <?php echo form_label('Título','titulo');  $poder = $this->session->tempdata('titulo'); ?>
                             <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'titulo','id' => 'titulo','value' => $poder); ?>
@@ -164,24 +175,29 @@
 
                         <div class="form-group">
                             <div class="custom-file">
-                                <?php  $poder = $this->session->tempdata('foto'); 
-                                        echo form_upload(array(
-                                        'class' => 'form-control-file custom-file-input',
-                                        'multiple' => 'true',
-                                        'name' => 'upload[]',
-                                        'lang' => 'es',
-                                        'id'=>'file-input',
-                                        'type'=>'file'
+
+                                <?php echo form_upload(array(
+                                       'class' => 'form-control-file custom-file-input',
+                                       'multiple' => 'true',
+                                       'name' => 'upload[]',
+                                       'lang' => 'es',
+                                       'id'=>'file-input',
+                                       'type'=>'file'
                                     )
                                 ); ?>
+
                                 <?php echo form_label('Subir Archivo','img_subir',array('class' => 'custom-file-label')) ?>
                             </div>
                             <?php if (form_error('upload[]')){  ?>
                                 <span class="text-danger"><?php echo form_error('upload[]'); ?></span>
                             <?php  }  ?>
-                            <div id="preview"></div>
+                            <div id="preview">
+                                <?php foreach($this->session->tempdata('foto') as $foto){ ?>
+                                    <img src="/cycleme_sistema_anuncios/temp_img/<?php echo $foto?>" style="height:100px;padding:5px;" >
+                                <?php } ?>
+                            </div>
                         </div>
-
+                        <br>
                         <div class="form-group" >
                             <?php echo form_submit( array( 'name' => 'crear', 'value' => 'Continuar', 'class' => 'btn btn-primary' ) ); ?>
                         </div>
@@ -211,14 +227,6 @@
                 document.getElementById("tipo").style.display = 'none';
                 document.getElementById("tamanoCuadro").style.display = 'none';
                 document.getElementById("tamanoAro").style.display = 'none';
-
-                  document.getElementById("accesorio").value = '';
-                document.getElementById("marca").value = '';
-                document.getElementById("modelo").value = '';
-                document.getElementById("tipo").value = '';
-                document.getElementById("tamanoCuadro").value = '';
-                document.getElementById("tamanoAro").value = '';
-
 
             if(categoria == 'Accesorios')
             {
