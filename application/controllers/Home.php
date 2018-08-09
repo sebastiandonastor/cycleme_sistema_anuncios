@@ -8,8 +8,6 @@
                 redirect('Home');
             }
 
-
-
             $data['main_view'] = 'home_view';
             $data['titulo'] = 'CycleMe';
             $data['AccesoriosNum'] = $this->categorias('Accesorios');

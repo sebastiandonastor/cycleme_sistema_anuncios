@@ -27,12 +27,9 @@
         </select>
         </div>
 
-
-
 </div>
 
 </div>
-
 
 <?php echo form_close(); ?>
 
@@ -44,7 +41,6 @@
 
 <?php foreach($Anuncios as $anuncio){ ?>
     <div class="row">
-
         <div class="col-lg-9">
             <div class="container estilo-border-sub">
                 <div class="row">
@@ -82,8 +78,6 @@
 <?php } ?>
 
 <div class="mx-auto">
-
-
 <nav aria-label="...">
     <ul class="pagination">
         <?php if($pagina == 1) : ?>
@@ -116,10 +110,5 @@
             </li>
         <?php endif; ?>
     </ul>
-
-
-
 </nav>
-
-
 </div>

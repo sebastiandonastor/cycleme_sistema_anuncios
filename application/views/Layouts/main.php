@@ -52,8 +52,8 @@
                     <li class="nav-item dropdown dropdown-width">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i><?php echo $this->session->userdata('nombre')?></a>
                         <div class="dropdown-menu logOutAria" x-placement="bottom-start ">
-                        <a class="dropdown-item" href="<?php echo base_url('Anuncios') ?>" >Publicar Anuncio</a>
-                        <a class="dropdown-item" href="<?php echo base_url('Anuncios/opcion/Administrar') ?>" >Manejar Anuncio</a>
+                        <a class="dropdown-item" href="<?php echo base_url('Anuncios/opcion/Crear') ?>" >Publicar Anuncio</a>
+                        <a class="dropdown-item" href="<?php echo base_url('Anuncios') ?>" >Manejar Anuncio</a>
                         <div class="dropdown-divider"  ></div>
                         <a class="dropdown-item log-out" href="<?php echo base_url('Cuentas/cerrar') ?>"> Cerrar Sesion </a>
                         </div>

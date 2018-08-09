@@ -2,14 +2,15 @@
 
 class Anuncios extends CI_Controller
 {
-    public function index()
+    public function index($id = 1)
     {
         if($this->session->userdata('idUsuario') == null){
             redirect('Home');
         }
-
-        $data['main_view'] = 'Anuncios/Crear';
-        $data['titulo'] = 'Crear Anuncios';
+        if(!is_numeric($id)){
+            redirect('Anuncios');
+        }
+     
 
         //Esta parte la puse porque no supe como hacer funcionar el boton categorias de otra forma, si encuentras otra eres libre de borrarlo entonces
         $data['AccesoriosNum'] = $this->categorias('Accesorios');
@@ -18,8 +19,19 @@ class Anuncios extends CI_Controller
         $data['ServiciosNum'] = $this->categorias('Servicios');
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        $pagina = $id;
+        $postPorPagina = 10;
+        $inicio = ($pagina > 1) ? ($postPorPagina * $pagina - $postPorPagina) : 0;
+        $data['AnunciosUser'] = $this->Anuncio_model->getAnunciosPorPaginaUser($postPorPagina,$inicio);
+        $data['cantidadAnunciosUser'] = ceil($this->Anuncio_model->getAnunciosVisiUser() / $postPorPagina);
+
+        $data['pagina'] = $id;
+
+        $data['main_view'] = 'Anuncios/Administrar';
         $this->load->view('Layouts/main',$data);
+
     }
+
     public function opcion($donde)
     {
         if($this->session->userdata('idUsuario') == null){
@@ -230,17 +242,17 @@ class Anuncios extends CI_Controller
         if($estado > 0){
             $data = array('exito'=> "Anuncio Eliminado");
             $this->session->set_flashdata($data);
-            $this->opcion('Administrar');
+            $this->index();
         }else{
             $data = array('error'=> "Anuncio No Encontrado");
             $this->session->set_flashdata($data);
-            $this->opcion('Administrar');
+            $this->index();
         }
     }
 
     function Estado($id){
         $estado = $this->Anuncio_model->estado_anuncios($id);
-        $this->opcion('Administrar');
+        $this->index();
     }
 
 
@@ -397,7 +409,7 @@ class Anuncios extends CI_Controller
 
             $this->Anuncio_model->update_anuncios( $idAnuncio ,$data );
 
-            $this->opcion('Administrar');
+            $this->index();
             
         }
 	}
