@@ -23,18 +23,21 @@ class Anuncio_model extends CI_Model {
        return $query->row(0);
     }
 
-    public function get_anuncioLogueado()
+     public function get_anuncioLogueado()
     {
+
+       $this->db->order_by("idAnuncio", "desc");
        $this->db->where(['idUsuario_fk' => $this->session->userdata('idUsuario')]); 
        $query  = $this->db->get('anuncios');
        return $query->result();
     }
 
 
-    public function update_anuncios($id , $data)
+     public function update_anuncios($idAnuncio , $data)
     {
-        $this->db->where(['idAnuncio' => $id]); 
-        $this->db->update('anuncios',$data);
+        $this->db->where(['idAnuncio' => $idAnuncio]); 
+        $this->db->where(['idUsuario_fk' => $this->session->userdata('idUsuario')]); 
+        $this->db->update('anuncios', $data);
     }
 
     public function delete_anuncios($id)
