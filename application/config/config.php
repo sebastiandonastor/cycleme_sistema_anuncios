@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://localhost/cycleme_sistema_anuncios/';
+$config['base_url'] = 'http://localhost:8080/cycleme_sistema_anuncios/';
 
 
 /*

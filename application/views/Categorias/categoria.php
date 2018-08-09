@@ -29,7 +29,7 @@
                     <h5><a href="#"><?php echo $titulo; ?></a></h5>
                     <div class="clr"></div>
                     <p class="post-meta">
-                        <span class="dashicons-before folder"><i class="fa fa-list"></i><a href="#" rel="tag"><font size="-1"> <?php echo $subCategoria; ?> (subcategoria) </font></a></span> <span class="dashicons-before owner"><i class="fas fa-user-tie"></i><font size="-1"> croco_online_store (usuario) </font></a></span> <span class="dashicons-before clock"><span><i class="fas fa-clock"></i><font size="-1"><?php echo $fechaCreacion; ?> (fecha creacion)</font></span></span>
+                        <span class="dashicons-before folder"><i class="fa fa-list"></i><a href="<?php echo base_url("Home/categorias_secundarias/$subCategoria"); ?>" rel="tag"><font size="-1"> <?php echo $subCategoria; ?> (subcategoria) </font></a></span> <span class="dashicons-before owner"><i class="fas fa-user-tie"></i><font size="-1"> croco_online_store (usuario) </font></a></span> <span class="dashicons-before clock"><span><i class="fas fa-clock"></i><font size="-1"><?php echo $fechaCreacion; ?> (fecha creacion)</font></span></span>
                     </p>
                     <div class="clr"></div>
                     <p class=""><font size="-1"><?php echo $descripcion; ?> </font><a class="moretag" href="#"><font size="-1">PULSE AQUI (Link para su red social)</font></a></p>
