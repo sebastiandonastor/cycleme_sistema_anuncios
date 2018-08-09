@@ -18,7 +18,7 @@
                                 $number = $this->Categoria_model->subCategoriasNum($nombre);
                                 echo <<<TR
                                 <ul>
-                                    <li class="black_circle" ><a href="">{$nombre}</a> ($number)</li>
+                                    <li class="black_circle" ><a href="categorias_secundarias/{$nombre}">{$nombre}</a> ($number)</li>
                                 </ul>
                                 
 TR;

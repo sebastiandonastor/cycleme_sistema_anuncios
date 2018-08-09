@@ -55,7 +55,8 @@
         }
 
         public function eventos(){
-            $data['main_view'] = 'vistas_secundarias/eventos';
+            //$data['main_view'] = 'vistas_secundarias/eventos';
+            $data['main_view'] = 'Anuncios/Plantilla_anuncios';
             $data['titulo'] = 'CycleMe eventos';
             $data['AccesoriosNum'] = $this->categorias('Accesorios');
             $data['BicicletasNum'] = $this->categorias('Bicicletas');

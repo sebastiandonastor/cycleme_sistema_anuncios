@@ -126,3 +126,35 @@ div.estilo-border-sub{
     margin: 10px;
     padding: 10px;
 }
+
+/* vista de anuncio */
+p.price{
+    float: right;
+}
+
+div.anuncio-ver{
+    padding: 50px;
+}
+
+div.anuncio-ver2{
+    padding: 50px;
+    margin-top: 50px;
+}
+
+span.color{
+    color: blue;
+}
+
+/* textarea */
+textarea{
+    -webkit-appearance: textarea;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    flex-direction: column;
+    resize: auto;
+    cursor: text;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* tabs de anuncio */
