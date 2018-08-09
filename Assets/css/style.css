@@ -325,14 +325,7 @@ footer {
     box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.1) !important;
 }
 
-
 .link-unstyled {
-&,
-&:visited,
-&:hover,
-&:active,
-&:focus,
-&:active:hover {
      font-style: inherit;
      color: inherit;
      background-color: transparent;
@@ -349,4 +342,11 @@ footer {
      padding: inherit;
      vertical-align: inherit;
  }
-}
+
+ .demo-2 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 500px;
+  }
+  
