@@ -39,7 +39,7 @@
 <div class="mt-4 row">
     <h2 class="col-sm-12 col-md-9">Anuncios Recientes</h2>
     <button class="col-sm-12 col-md-3 btn btn-dark" onclick="location.href =
-        '<?php $redireccion = ($this->session->userdata('idUsuario') == null) ? 'Cuentas' : 'Anuncios' ; echo base_url($redireccion); ?>';">Anuciate</button>
+        '<?php $redireccion = ($this->session->userdata('idUsuario') == null) ? 'Cuentas' : 'Anuncios' ; echo base_url($redireccion); ?>';">Anunciate</button>
 </div>
 
 <?php foreach($Anuncios as $anuncio){ ?>
@@ -50,23 +50,23 @@
                 <div class="row">
                     <div class="col-lg-3 text-center">
                         <a href="#" title="Prueba" class="preview" data-rel="#">
-                            <img  width="120" height="120"  src="/cycleme_sistema_anuncios/temp_img/<?php echo $anuncio['foto'];?>" class="attachment-ad-medium size-ad-medium" alt="promo 2 croco" srcset="" sizes="(max-width: 120px) 100vw, 120px" >
+                            <img  width="150" height="150"  src="/cycleme_sistema_anuncios/temp_img/<?php echo $anuncio['foto'];?>" class="attachment-ad-medium size-ad-medium" alt="promo 2 croco" srcset="" sizes="(max-width: 120px) 100vw, 120px" >
                         </a>
                     </div> <!-- fin row img -->
 
                     <div class="col-lg-9">
-                        <br>
-                        <h5 class="text-wrap "><a href="#"><?php echo $anuncio['titulo']; ?></a></h5>
-                        <p class="post-meta">
-                            <span class="dashicons-before folder"><i class="fa fa-list"></i><a href="#" rel="tag"><font size="-1"> <?php echo $anuncio['categoria'] ?> (subcategoria) </font></a></span> <span class="dashicons-before owner"><i class="fas fa-user-tie"></i><font size="-1"> <?php echo $anuncio['nombre'] ?>(usuario) </font></a></span> <span class="dashicons-before clock"><span><i class="fas fa-clock"></i><font size="-1">22 horas atrás (fecha creacion)</font></span></span>
+                        
+                        <h5 class="text-wrap"><a href="#"><?php echo $anuncio['titulo']; ?></a></h5>
+                        <p class="post-meta espaciadoDeAnuncio">
+                            <span class="dashicons-before folder"><i class="fa fa-list"></i><a href="#" rel="tag"><font size="-1"> <?php echo $anuncio['categoria'] ?> (subcategoria) </font></a></span> <span class="dashicons-before owner"><i class="fas fa-user-tie"></i><font size="-1"> <?php echo $anuncio['nombre'] ?>(usuario) </font></a></span> <span class="dashicons-before clock"><span><i class="fas fa-clock"></i><font size="-1">22 horas atrás</font></span></span>
                         </p>
-                        <p class="lead block-with-text"><font size="-1"> <?php echo $anuncio['descripcion'];?> </font> </p>
+                        <p class="lead block-with-text espaciadoDeAnuncio"><font size="-1"> <?php echo $anuncio['descripcion'];?> </font> </p>
                         <p class="text-black-50"><font size="-1"></font></p>
 
-                        <span class="tag-head text-md-left text-center h5 float-left">
+                        <span class="tag-head text-md-left text-center h5 float-left espaciadoDeAnuncio">
                         <p class="text-black-50"><font size="-1"><?php //echo $numeroVisitas; ?> total vistas</font></p>
                         </span>
-                        <span class="tag-head text-md-left text-center h5 float-right">
+                        <span class="tag-head text-md-left text-center h5 float-right espaciadoDeAnuncio">
                             <p class="post-price badge badge-secondary"><?php echo $anuncio['precio']; ?></p>
                         </span>
 

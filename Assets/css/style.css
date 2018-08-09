@@ -275,6 +275,10 @@ div.anuncio-ver2{
 span.color{
     color: blue;
 }
+.espaciadoDeAnuncio{
+    margin-bottom: -3px;
+    
+}
 
 /* styles for '...' */ 
 .block-with-text {
