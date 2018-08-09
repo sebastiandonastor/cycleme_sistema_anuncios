@@ -26,13 +26,7 @@
             </select>
         </div>
 
-<<<<<<< HEAD
-
-
-    </div>
-=======
 </div>
->>>>>>> 67c31ec62b341e9ba5ffcbd7ef6fa52f9434beeb
 
 </div>
 
@@ -40,12 +34,7 @@
 
 <div class="mt-4 row">
     <h2 class="col-sm-12 col-md-9">Anuncios Recientes</h2>
-    <button class="col-sm-12 col-md-3 btn btn-dark" onclick="location.href =
-<<<<<<< HEAD
-            '<?php $redireccion = ($this->session->userdata('idUsuario') == null) ? 'Cuentas' : 'Anuncios' ; echo base_url($redireccion); ?>';">Anuciate</button>
-=======
-        '<?php $redireccion = ($this->session->userdata('idUsuario') == null) ? 'Cuentas' : 'Anuncios' ; echo base_url($redireccion); ?>';">Anunciate</button>
->>>>>>> 67c31ec62b341e9ba5ffcbd7ef6fa52f9434beeb
+    <button class="col-sm-12 col-md-3 btn btn-dark" onclick="location.href ='<?php $redireccion = ($this->session->userdata('idUsuario') == null) ? 'Cuentas' : 'Anuncios' ; echo base_url($redireccion); ?>';">Anunciate</button>
 </div>
 
 <?php foreach($Anuncios as $anuncio){ ?>
@@ -54,29 +43,16 @@
             <div class="container estilo-border-sub">
                 <div class="row">
                     <div class="col-lg-3 text-center">
-<<<<<<< HEAD
-                        <?php $fotos  = explode(',', $anuncio['foto']); ?>
-                        <a href="#" title="Prueba" class="preview" data-rel="#">
-                            <img  width="120" height="120"  src="/cycleme_sistema_anuncios/temp_img/<?php echo $fotos[0];?>" class="attachment-ad-medium size-ad-medium" alt="" srcset="" sizes="(max-width: 120px) 100vw, 120px" >
-                        </a>
-                    </div> <!-- fin row img -->
-
-                    <div class="col-lg-9 align-self-lg-end">
-                        <h5 class="text-wrap "><a href="<?php $urlAnuncio = 'Anuncios/ver/'.$anuncio['idAnuncio']; echo base_url($urlAnuncio); ?>"><?php echo $anuncio['titulo']; ?></a></h5>
-                        <p class="post-meta">
-                            <span class="dashicons-before folder"><i class="fa fa-list"></i><a href="#" rel="tag"><font size="-1"> <?php echo $anuncio['categoria'] ?> (subcategoria) </font></a></span> <span class="dashicons-before owner"><i class="fas fa-user-tie"></i><font size="-1"> <?php echo $anuncio['nombre'] ?>(usuario) </font></a></span> <span class="dashicons-before clock"><span><i class="fas fa-clock"></i><font size="-1">22 horas atrás (fecha creacion)</font></span></span>
-=======
                         <a href="#" title="Prueba" class="preview" data-rel="#">
                             <img  width="150" height="150"  src="/cycleme_sistema_anuncios/temp_img/<?php echo $anuncio['foto'];?>" class="attachment-ad-medium size-ad-medium" alt="promo 2 croco" srcset="" sizes="(max-width: 120px) 100vw, 120px" >
                         </a>
                     </div> <!-- fin row img -->
 
                     <div class="col-lg-9">
-                        
-                        <h5 class="text-wrap"><a href="#"><?php echo $anuncio['titulo']; ?></a></h5>
+
+                        <h5 class="text-wrap"><a href="<?php $urlAnuncio = 'Anuncios/ver/'.$anuncio['idAnuncio']; echo base_url($urlAnuncio); ?>"><?php echo $anuncio['titulo']; ?></a> </h5>
                         <p class="post-meta espaciadoDeAnuncio">
-                            <span class="dashicons-before folder"><i class="fa fa-list"></i><a href="#" rel="tag"><font size="-1"> <?php echo $anuncio['categoria'] ?> (subcategoria) </font></a></span> <span class="dashicons-before owner"><i class="fas fa-user-tie"></i><font size="-1"> <?php echo $anuncio['nombre'] ?>(usuario) </font></a></span> <span class="dashicons-before clock"><span><i class="fas fa-clock"></i><font size="-1">22 horas atrás</font></span></span>
->>>>>>> 67c31ec62b341e9ba5ffcbd7ef6fa52f9434beeb
+                            <span class="dashicons-before folder"><i class="fa fa-list"></i><a href="#" rel="tag"><font size="-1"> <?php echo $anuncio['categoria'] ?></font></a></span> <span class="dashicons-before owner"><i class="fas fa-user-tie"></i><font size="-1"> <?php echo $anuncio['nombre'] ?>(usuario) </font></a></span> <span class="dashicons-before clock"><span><i class="fas fa-clock"></i><font size="-1">22 horas atrás</font></span></span>
                         </p>
                         <p class="lead block-with-text espaciadoDeAnuncio"><font size="-1"> <?php echo $anuncio['descripcion'];?> </font> </p>
                         <p class="text-black-50"><font size="-1"></font></p>
@@ -100,23 +76,12 @@
 <?php } ?>
 
 <div class="mx-auto">
-<<<<<<< HEAD
-
-
-    <nav aria-label="...">
-        <ul class="pagination">
-            <?php if($pagina == 1) : ?>
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">Anterior</a>
-                </li>
-=======
 <nav aria-label="...">
     <ul class="pagination">
         <?php if($pagina == 1) : ?>
         <li class="page-item disabled">
             <a class="page-link" href="#">Anterior</a>
         </li>
->>>>>>> 67c31ec62b341e9ba5ffcbd7ef6fa52f9434beeb
 
             <?php elseif($pagina > 1) : ?>
                 <a class="page-link" href="<?php $url = 'Home/index/'.($pagina-1);
@@ -136,21 +101,6 @@
                     <a class="page-link" href="#">Siguiente</a>
                 </li>
 
-<<<<<<< HEAD
-            <?php elseif($pagina < $cantidadAnuncios): ?>
-                <li class="page-item">
-                    <a class="page-link" href="<?php $url = 'Home/index/'.($pagina+1);
-                    echo base_url($url);?>">Siguiente</a>
-                </li>
-            <?php endif; ?>
-        </ul>
-
-
-
-    </nav>
-
-
-=======
         <?php elseif($pagina < $cantidadAnuncios): ?>
             <li class="page-item">
                 <a class="page-link" href="<?php $url = 'Home/index/'.($pagina+1);
@@ -159,5 +109,4 @@
         <?php endif; ?>
     </ul>
 </nav>
->>>>>>> 67c31ec62b341e9ba5ffcbd7ef6fa52f9434beeb
 </div>

@@ -16,8 +16,6 @@
 
 
 
-
-
 <div class="d-inline-block  " id="misAnuncios" >
 <h4>Anuncios de Usuario</h4>
 <p>En esta pantalla podra administrar sus anuncios, solo siga las intrucciones de la accion que desea realizar.</p>

@@ -1,6 +1,6 @@
 <?php if($this->session->userdata('idUsuario') == null ){
             redirect('Home');
-        }  echo $this->session->flashdata('subCategoria')  ?>
+        }   ?>
 
 <div class="crear-div">
 <h4>Crear Anuncio</h4>

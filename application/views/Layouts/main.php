@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/style.css">
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>Assets/img/favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/new-style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link href="css/lightbox.min.css" rel="stylesheet">
+    <link href="css/lity.min.css" rel="stylesheet">
+
 
 </head>
 <body>
@@ -94,6 +100,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="<?php echo base_url(); ?>/Assets/js/bootstrap.js"></script>
     <script src="<?php echo base_url(); ?>/Assets/js/javascript.js"></script>
+    <script src="js/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="js/popper.js"></script> 
+    <script src="js/bootstrap.min.js"></script> 
+    <script src="js/core.js"></script>
+    <script src="js/lightbox-plus-jquery.min.js"></script> 
+    <script src="js/lity.min.js"></script> 
 
 </body>
 </html>
