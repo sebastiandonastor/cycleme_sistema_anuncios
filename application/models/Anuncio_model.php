@@ -121,7 +121,6 @@ class Anuncio_model extends CI_Model {
 
         $resultado = $this->db->get()->result_array();
         return $resultado;
-
     }
 
 

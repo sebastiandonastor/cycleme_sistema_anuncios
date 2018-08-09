@@ -29,11 +29,10 @@
     <table class="table one">
         <thead>
             <tr>
-            <th scope="col">Titulo</th>
-            <th scope="col">Vistas</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Opciones</th>
-
+                <th scope="col">Titulo</th>
+                <th scope="col">Vistas</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Opciones</th>
             </tr>
         </thead>
         <tbody  >

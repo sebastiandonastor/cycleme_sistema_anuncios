@@ -43,6 +43,13 @@
                         <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'categoria','id' => 'categoria','value' =>  $poder , 'hidden'=>'true'); ?>
                         <?php echo form_input($datos); ?>
                     </div>
+
+                    <div class="form-group" name="subCategoria"  >
+                        <?php echo form_label('Sub-Categoria: '. $this->session->tempdata('subCategoria')); $poder = $this->session->tempdata('subCategoria'); ?>
+                        <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'subCategoria','id' => 'subCategoria','value' =>  $poder , 'hidden'=>'true'); ?>
+                        <?php echo form_input($datos); ?>
+                    </div>
+
                     <div name="mainForm" id="mainForm" >
                         <div class="form-group" style="display:none;" name="detalle" id="accesorio">
                             <?php echo form_label('Accesorio: '. $this->session->tempdata('accesorio')); $poder = $this->session->tempdata('accesorio'); ?>

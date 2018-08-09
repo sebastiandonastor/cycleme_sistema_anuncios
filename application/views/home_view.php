@@ -50,8 +50,14 @@
                 <div class="row">
                     <div class="col-lg-3 text-center">
                     <a href="#" title="Prueba" class="preview" data-rel="#">
-                            <img  width="120" height="120"  src="/cycleme_sistema_anuncios/temp_img/<?php echo $anuncio['foto'];?>" class="attachment-ad-medium size-ad-medium" alt="promo 2 croco" srcset="" sizes="(max-width: 120px) 100vw, 120px" >
-                        </a>
+                    <?php $fotos  = explode(',', $anuncio['foto']);
+                      
+                    foreach($fotos  as $foto){ ?>
+            <img  width="120" height="120"  src="/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>" class="attachment-ad-medium size-ad-medium" alt="<?php echo $foto[0]; ?>" srcset="" sizes="(max-width: 120px) 100vw, 120px" >
+
+                     <?php } ?>  
+                        
+                    </a>
                     </div> <!-- fin row img -->
 
                     <div class="col-lg-9 align-self-lg-end">
