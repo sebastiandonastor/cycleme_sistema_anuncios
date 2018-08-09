@@ -123,9 +123,26 @@ class Anuncio_model extends CI_Model {
         return $resultado;
     }
 
-
     public function getAnunciosVisi(){
         $this->db->where('estado',1);
+        return $this->db->count_all_results('anuncios');
+    }
+
+    function getAnunciosPorPaginaUser($limite,$inicio){
+        $this->db->select('*');
+        $this->db->from('anuncios');
+        $this->db->join('categorias','idCategorias_fk = idCategoria');
+        $this->db->join('usuario','idUsuario_fk = idUsuario');
+
+        $this->db->limit($limite,$inicio);
+        $this->db->order_by('idAnuncio', 'DESC');
+        $this->db->where('idUsuario_fk',$this->session->userdata('idUsuario'));
+
+        $resultado = $this->db->get()->result_array();
+        return $resultado;
+    }
+    public function getAnunciosVisiUser(){
+        $this->db->where('idUsuario_fk',$this->session->userdata('idUsuario'));
         return $this->db->count_all_results('anuncios');
     }
 
