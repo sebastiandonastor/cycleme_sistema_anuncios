@@ -60,9 +60,12 @@
                         <p class="post-meta">
                             <span class="dashicons-before folder"><i class="fa fa-list"></i><a href="#" rel="tag"><font size="-1"> <?php echo $anuncio['categoria'] ?> (subcategoria) </font></a></span> <span class="dashicons-before owner"><i class="fas fa-user-tie"></i><font size="-1"> <?php echo $anuncio['nombre'] ?>(usuario) </font></a></span> <span class="dashicons-before clock"><span><i class="fas fa-clock"></i><font size="-1">22 horas atrás (fecha creacion)</font></span></span>
                         </p>
-                        <p class="lead text-truncate float-left demo-2"><font size="-1"> <?php echo $anuncio['descripcion'];?> </font> </p>
+                        <p class="lead block-with-text"><font size="-1"> <?php echo $anuncio['descripcion'];?> </font> </p>
                         <p class="text-black-50"><font size="-1"></font></p>
 
+                        <span class="tag-head text-md-left text-center h5 float-left">
+                        <p class="text-black-50"><font size="-1"><?php //echo $numeroVisitas; ?> total vistas</font></p>
+                        </span>
                         <span class="tag-head text-md-left text-center h5 float-right">
                             <p class="post-price badge badge-secondary"><?php echo $anuncio['precio']; ?></p>
                         </span>
