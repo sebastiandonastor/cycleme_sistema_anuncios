@@ -67,7 +67,7 @@ class Registro extends CI_Controller {
         $datos = array(
             'e-mail' => $this->input->post('email'),
             'tipoUsuario' => 'cliente',
-            'fechaCreacion' => date('m.d.y'),
+            'fechaCreacionUsr' => date('Y-m-d H:i:s'),
             'contrasena' => password_hash($this->input->post('pass'), PASSWORD_DEFAULT),
             'nombre' => $this->input->post('nombre'),
             'telefono' => $this->input->post('telefono')

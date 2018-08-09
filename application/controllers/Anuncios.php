@@ -20,6 +20,32 @@ class Anuncios extends CI_Controller
 
         $this->load->view('Layouts/main',$data);
     }
+
+
+    public function ver($id = 0){
+
+        $this->load->model('Anuncio_model');
+        if($id == 0 || !(is_numeric($id)) || !($this->Anuncio_model->existeAnuncio($id))){
+            redirect('Home');
+        }
+
+        $anuncio = $this->Anuncio_model->getAnuncioVisi($id);
+
+        if($anuncio == null){
+            redirect('Home');
+        }
+
+        $data['infoAnuncio'] = $anuncio;
+
+        $data['main_view'] = 'Anuncios/plantilla_anuncio';
+        $data['titulo'] = 'Prueba ver';
+
+        $this->load->view('Layouts/main',$data);
+
+    }
+
+
+
     public function opcion($donde)
     {
         if($this->session->userdata('idUsuario') == null){
