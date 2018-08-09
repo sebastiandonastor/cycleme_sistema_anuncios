@@ -49,6 +49,7 @@
             <div class="container estilo-border-sub">
                 <div class="row">
                     <div class="col-lg-3 text-center">
+<<<<<<< HEAD
                     <a href="#" title="Prueba" class="preview" data-rel="#">
                     <?php $fotos  = explode(',', $anuncio['foto']);
                       
@@ -58,6 +59,11 @@
                      <?php } ?>  
                         
                     </a>
+=======
+                        <a href="#" title="Prueba" class="preview" data-rel="#">
+                            <img  width="120" height="120"  src="/cycleme_sistema_anuncios/temp_img/<?php echo $anuncio['foto'];?>" class="attachment-ad-medium size-ad-medium" alt="promo 2 croco" srcset="" sizes="(max-width: 120px) 100vw, 120px" >
+                        </a>
+>>>>>>> 97d61c685c038eb75c7658b7fcb4a689e7be3ea7
                     </div> <!-- fin row img -->
 
                     <div class="col-lg-9 align-self-lg-end">
@@ -71,7 +77,7 @@
                         <span class="tag-head text-md-left text-center h5 float-right">
                             <p class="post-price badge badge-secondary"><?php echo $anuncio['precio']; ?></p>
                         </span>
-                     
+
                     </div>
 
                     <div class="clr"></div>
@@ -82,3 +88,46 @@
 
 
 <?php } ?>
+
+<div class="mx-auto">
+
+
+<nav aria-label="...">
+    <ul class="pagination">
+        <?php if($pagina == 1) : ?>
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Anterior</a>
+        </li>
+
+        <?php elseif($pagina > 1) : ?>
+            <a class="page-link" href="<?php $url = 'Home/index/'.($pagina-1);
+            echo base_url($url);?>">Anterior</a>
+
+        <?php endif; ?>
+
+        <?php for($i = 0; $i < $cantidadAnuncios; $i++) { ?>
+        <li class="page-item">
+            <a class="page-link" href="<?php $url = 'Home/index/'.($i+1);
+           echo base_url($url); ?>"><?php echo $i + 1; ?></a></li>
+
+        <?php } ?>
+
+        <?php if($pagina >= $cantidadAnuncios) : ?>
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Siguiente</a>
+        </li>
+
+        <?php elseif($pagina < $cantidadAnuncios): ?>
+            <li class="page-item">
+                <a class="page-link" href="<?php $url = 'Home/index/'.($pagina+1);
+                echo base_url($url);?>">Siguiente</a>
+            </li>
+        <?php endif; ?>
+    </ul>
+
+
+
+</nav>
+
+
+</div>
