@@ -8,8 +8,6 @@
                 redirect('Home');
             }
 
-
-
             $data['main_view'] = 'home_view';
             $data['titulo'] = 'CycleMe';
             $data['AccesoriosNum'] = $this->categorias('Accesorios');
@@ -93,7 +91,7 @@
         }
 
         public function noticias(){
-            $data['main_view'] = 'vistas_secundarias/noticias';
+            $data['main_view'] = 'Anuncios/Plantilla_buscar';
             $data['titulo'] = 'CycleMe noticias';
             $data['AccesoriosNum'] = $this->categorias('Accesorios');
             $data['BicicletasNum'] = $this->categorias('Bicicletas');

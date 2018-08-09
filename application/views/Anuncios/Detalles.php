@@ -217,7 +217,7 @@
         var categoria = CategoriaPrincipal.value;
 
         if(categoria == ''){
-            window.location  = "./";
+            window.location  = "/";
         }else{
                 document.getElementById("accesorio").style.display = 'none';
                 document.getElementById("marca").style.display = 'none';
