@@ -73,7 +73,7 @@
     </main> 
 
     <footer >
-        <div style="padding: 15px 10px 0 10px ; " class="fixed-bottom footer-design">
+        <div style="padding: 15px 10px 0 10px ; " class="footer-design">
             <label class="float-left" >
                 © 2018 Derechos Reservados
             </label>

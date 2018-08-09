@@ -82,7 +82,7 @@ class Anuncios extends CI_Controller
                 $fechaCaducidad = date('Y-m-d', strtotime($fechaCreacion. ' + 45 days'));
                 $idUsuario_fk = $this->session->userdata('idUsuario');
                 $importancia = 0; 
-            // C:\Program Files (x86)\Ampps\www\web\ProyectoFinal\cycleme_sistema_anuncios\Assets\img
+            
             if($this->form_validation->run() == FALSE){
                 $data = array('categoria'=> "{$categoria}",'provincia'=> "{$provincia}",'telefono'=> "{$telefono}",'accion'=> "{$accion}",
                 'moneda'=> "{$moneda}" ,'precio'=> "{$precio}",'titulo'=> "{$titulo}",'descripcion'=> "{$descripcion}",'subCategoria'=> "{$subCategoria}",
@@ -233,18 +233,22 @@ class Anuncios extends CI_Controller
 
         $data = $this->Anuncio_model->get_anuncios($id);
 
-        $categoriaId = $data->idCategorias_fk;
+        $idCategorias_fk =  $data->idCategorias_fk;
 
-        $data2 = $this->Anuncio_model->GetsubCategorias($categoriaId);
+        $data2 = $this->Anuncio_model->GetsubCategorias($idCategorias_fk);
         
         $categoria = $data2->categoriaPrincipal;
         $subCategoria = $data2->categoria;
- 
+
+        $idUsuario_fk = $data->idUsuario_fk;
         $provincia = $data->provincia;
         $telefono = $data->telefono;
         $accion = $data->accion;
-        
-        $precio = $data->precio;
+
+        $dinero = explode('$', $data->precio);
+        $precio = $dinero[1];
+        $moneda = $dinero[0].'$';
+
         $titulo = $data->titulo;
         $descripcion = $data->descripcion;
         $accesorio = $data->accesorio;
@@ -255,10 +259,10 @@ class Anuncios extends CI_Controller
         $tipo = $data->tipo;
         $modelo = $data->modelo;
         $foto = $data->foto;
+   
 
-
-        $data = array('categoria'=> $categoria , 'subCategoria'=> $subCategoria   ,'provincia'=> $provincia,
-        'telefono'=> $telefono,'accion'=> $accion,'precio'=> $precio,'titulo'=> $titulo,
+        $data = array('categoria'=> $categoria , 'subCategoria'=> $subCategoria ,'provincia'=> $provincia,
+        'telefono'=> $telefono,'accion'=> $accion,'precio'=> $precio,'moneda'=> $moneda, 'titulo'=> $titulo, 'idUsuario_fk'=> $idUsuario_fk ,
         'descripcion'=> $descripcion,'tipo'=> $tipo,'accesorio'=> $accesorio,'marca'=> $marca,
         'tamanoCuadro'=> $tamanoCuadro,'modelo'=> $modelo, 'tamanoAro'=> $tamanoAro ,'foto' => $foto);
 

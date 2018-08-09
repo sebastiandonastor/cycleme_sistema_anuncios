@@ -226,8 +226,6 @@ function suBcategoria() {
     }
 }
 
-
-
 function previewImages() {
 
 var preview = document.querySelector('#preview');

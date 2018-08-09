@@ -33,7 +33,7 @@
         </ul>
     </div>
                                         
-    <div   class=" crear-div2 mx-auto" >
+    <div class="crear-div2 mx-auto" >
        <h6>Los Anuncios solo duraran 45 días.</h6>
         <h6>Publicación gratuita.</h6>
         <div  id="myTabContent" class="tab-content ">

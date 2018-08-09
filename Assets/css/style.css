@@ -1,4 +1,13 @@
-
+html{
+    height: 100%;
+    box-sizing: border-box;
+}
+body{
+    position: relative;
+    margin: 0;
+    padding-bottom: 5rem;
+    min-height: 95%;
+}
 /* por que si */
 .float-left{
     float:left;
@@ -61,7 +70,7 @@ transform: translate3d(0px, 39px, 0px);
  .crear-div2{
     text-align: none;
     padding:10px;
-    width:500px;
+    max-width:500px;
 }
 
 select.btn-mini {
@@ -189,3 +198,12 @@ div.estilo-border-sub{
     margin: 10px;
     padding: 10px;
 }
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #cac7c7;
+
+  }
