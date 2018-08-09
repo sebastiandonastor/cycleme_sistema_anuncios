@@ -25,7 +25,6 @@ class Anuncio_model extends CI_Model {
 
      public function get_anuncioLogueado()
     {
-
        $this->db->order_by("idAnuncio", "desc");
        $this->db->where(['idUsuario_fk' => $this->session->userdata('idUsuario')]); 
        $query  = $this->db->get('anuncios');
@@ -144,6 +143,29 @@ class Anuncio_model extends CI_Model {
     public function getAnunciosVisiUser(){
         $this->db->where('idUsuario_fk',$this->session->userdata('idUsuario'));
         return $this->db->count_all_results('anuncios');
+    }
+
+
+    public function getAnuncioVisi($id){
+        $this->db->select('*');
+        $this->db->from('anuncios');
+        $this->db->join('usuario','idUsuario_fk = idUsuario');
+        $this->db->where('estado',1);
+        $this->db->where('idAnuncio',$id);
+        $resultado = $this->db->get()->result_array();
+        return $resultado;
+
+    }
+
+    public function existeAnuncio($id){
+        $this->db->where('idAnuncio',$id);
+        $anuncio = $this->db->count_all_results('anuncios');
+
+        if($anuncio == 1){
+            return true;
+        }
+
+        return false;
     }
 
 

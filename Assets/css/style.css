@@ -252,7 +252,10 @@ div.estilo-border-sub{
     border-width: 7px;
     border-radius: 20px;
     margin: 10px;
-    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;    
 }
 
 /* vista de anuncio */
@@ -272,6 +275,53 @@ div.anuncio-ver2{
 span.color{
     color: blue;
 }
+.espaciadoDeAnuncio{
+    margin-bottom: -3px;
+    
+}
+
+/* styles for '...' */ 
+.block-with-text {
+    /* hide text if it more than N lines  */
+    overflow: hidden;
+    /* for set '...' in absolute position */
+    position: relative; 
+    /* use this value to count block height */
+    line-height: 1.2em;
+    /* max-height = line-height (1.2) * lines max number (3) */
+    max-height: 2.4em; 
+    /* fix problem when last visible word doesn't adjoin right side  */
+    text-align: justify;  
+    /* place for '...' */
+    margin-right: -1em;
+    padding-right: 1em;
+  }
+  /* create the ... */
+  .block-with-text:before {
+    /* points in the end */
+    content: '...';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of block */
+    right: 0;
+    bottom: 0;
+  }
+  /* hide ... if we have text, which is less than or equal to max lines */
+  .block-with-text:after {
+    /* points in the end */
+    content: '';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of text */
+    right: 0;
+    /* set width and height */
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    /* bg color = bg color under block */
+    background: white;
+  }
+
 
 /* textarea */
 textarea{
@@ -314,7 +364,6 @@ footer {
     bottom: 0;
     left: 0;
     background-color: #cac7c7;
-
   }
   
 /*estilo de fornt de jorge */

@@ -17,7 +17,7 @@
 
 
             $pagina = $id;
-            $postPorPagina = 15;
+            $postPorPagina = 5;
             $inicio = ($pagina > 1) ? ($postPorPagina * $pagina - $postPorPagina) : 0;
             $data['Anuncios'] = $this->Anuncio_model->getAnunciosPorPagina($postPorPagina,$inicio);
             $data['cantidadAnuncios'] = ceil($this->Anuncio_model->getAnunciosVisi() / $postPorPagina);
@@ -91,7 +91,7 @@
         }
 
         public function noticias(){
-            $data['main_view'] = 'vistas_secundarias/noticias';
+            $data['main_view'] = 'Anuncios/Plantilla_buscar';
             $data['titulo'] = 'CycleMe noticias';
             $data['AccesoriosNum'] = $this->categorias('Accesorios');
             $data['BicicletasNum'] = $this->categorias('Bicicletas');
