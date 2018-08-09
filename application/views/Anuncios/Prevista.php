@@ -2,7 +2,6 @@
             redirect('Home');
         }  ?>
 
-<?php print_r($_FILES) ?>
 <div  class="crear-div ">
 <h4>Crear Anuncio</h4>
     <div class="text-black disabled">
@@ -122,9 +121,11 @@
                             <div class="custom-file">
                                 <?php echo form_upload(array(
                                         'class' => 'form-control-file custom-file-input',
-                                        'multiple' => '',
+                                        'multiple' => 'true',
                                         'name' => 'upload[]',
-                                        'lang' => 'es'
+                                        'lang' => 'es',
+                                        'id'=>'file-input',
+                                        'type'=>'file'
                                     )
                                 ); ?>
                                 <?php echo form_label('Subir Archivo','img_subir',array('class' => 'custom-file-label')) ?>
@@ -132,11 +133,9 @@
                             <?php if (form_error('upload[]')){  ?>
                                 <span class="text-danger"><?php echo form_error('upload[]'); ?></span>
                             <?php  }  ?>
-
+                            <div id="preview"></div>
                         </div>
 
-
-                       
                         <div class="form-group" >
                             <a href="./" class="btn btn-danger">Reiniciar</a>
                             <?php echo form_submit( array( 'name' => 'crear', 'value' => 'Continuar', 'class' => 'btn btn-primary' ) ); ?>
@@ -227,5 +226,37 @@ function suBcategoria() {
     }
 }
 
-    
+
+
+function previewImages() {
+
+var preview = document.querySelector('#preview');
+preview.innerHTML = "";
+if (this.files) {
+  [].forEach.call(this.files, readAndPreview);
+}
+
+function readAndPreview(file) {
+        // Make sure `file.name` matches our extensions criteria
+        if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+            return alert(file.name + " No es un tipo de img soportado.");
+        } // else...
+        
+        var reader = new FileReader();
+        
+        reader.addEventListener("load", function() {
+            var image = new Image();
+            image.height = 100;
+            image.title  = file.name;
+            image.src    = this.result;
+            image.style = 'padding:5px';
+          
+            preview.appendChild(image);
+        }, false);
+        
+        reader.readAsDataURL(file);
+    }
+}
+
+document.querySelector('#file-input').addEventListener("change", previewImages, false);
 </script>

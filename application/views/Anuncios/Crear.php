@@ -48,34 +48,34 @@
                             <option value="Servicios">Servicios</option>
                         </select>
                     </div>
-
+                       
                     <div class="form-group"  name="Subcategorias"  >
                         <select class="custom-select btn-mini small" id="Accesorios"   name = "subCategoriaVista"  onchange="suBcategoria('Accesorios')" style="display:none;"  >
                             <option  value="vacio" selected="">Elegir Sub-Categoría</option>
                             <?php $categorias = $this->Anuncio_model->GetCategorias('Accesorios'); ?>
                             <?php foreach($categorias as $info) { ?>
-                            <option value=" <?php echo $info->categoria; ?> "> <?php echo $info->categoria; ?></option>
+                            <option value=" <?php echo $info->idCategoria; ?> "> <?php echo $info->categoria; ?></option>
                             <?php } ?>
                         </select>
                         <select class="custom-select btn-mini small" id="Bicicletas" name = "subCategoriaVista"  onchange="suBcategoria('Bicicletas')" style="display:none;"   >
                             <option value="vacio"  selected="">Elegir Sub-Categoría</option>
                             <?php $categorias = $this->Anuncio_model->GetCategorias('Bicicletas'); ?>
                             <?php foreach($categorias as $info) { ?>
-                            <option value=" <?php echo $info->categoria; ?> "> <?php echo $info->categoria; ?></option>
+                            <option value=" <?php echo $info->idCategoria; ?> "> <?php echo $info->categoria; ?></option>
                             <?php } ?>
                         </select>
                         <select class="custom-select btn-mini small" id="Componentes"  name = "subCategoriaVista"  onchange="suBcategoria('Componentes')" style="display:none;"  >
                             <option value="vacio"  selected="">Elegir Sub-Categoría</option>
                             <?php $categorias = $this->Anuncio_model->GetCategorias('Componentes'); ?>
                             <?php foreach($categorias as $info) { ?>
-                            <option value=" <?php echo $info->categoria; ?> "> <?php echo $info->categoria; ?></option>
+                            <option value=" <?php echo $info->idCategoria; ?> "> <?php echo $info->categoria; ?></option>
                             <?php } ?>
                         </select>
                         <select class="custom-select btn-mini small" id="Servicios" name = "subCategoriaVista"   onchange="suBcategoria('Servicios')" style="display:none;"  >
                             <option value="vacio" selected="">Elegir Sub-Categoría</option>
                             <?php $categorias = $this->Anuncio_model->GetCategorias('Servicios'); ?>
                             <?php foreach($categorias as $info) { ?>
-                            <option value=" <?php echo $info->categoria; ?> "> <?php echo $info->categoria; ?></option>
+                            <option value=" <?php echo $info->idCategoria; ?> "> <?php echo $info->categoria; ?></option>
                             <?php } ?>
                         </select>
                     </div>

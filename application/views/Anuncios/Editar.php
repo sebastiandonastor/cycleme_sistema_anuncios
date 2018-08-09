@@ -3,72 +3,42 @@
         }  ?>
 
 <div class="crear-div">
-<h4>Crear Anuncio</h4>
+<h4>Editar Anuncio</h4>
     <div class="text-black disabled">
-        <ul class="nav nav-tabs justify-content-center" >
-            <li class="nav-item" >
-                <a id="1" class="nav-link"  data-toggle="tab" href="#categoria">Selecione Categoria</a>
-                <div class="iconoSi" id="1"  ><i class="far fa-check-circle"></i></div>
-            </li>
-            <li class="nav-item">
-                <a id="2" class="nav-link active show" data-toggle="tab" href="#detallesDeAnuncio" >Detalles de Anuncio</a>
-                <div  class="iconoSi" id="2"  ><i class="far fa-check-circle"></i></div>
-            </li>
-            <li class="nav-item">
-                <a id="3" class="nav-link" data-toggle="tab" href="#profile">Vista Previa</a>
-                <div   class="icono" id="3"  ><i class="far fa-circle"></i></div>
-                <div  class="iconoSi" id="3" style="display:none;" ><i class="far fa-check-circle"></i></div>
-            </li>
-            <!-- <li class="nav-item">
-                <a id="4" class="nav-link"  data-toggle="tab" href="#">Opciones/Mejora</a>
-                <div   class="icono" id="4" ><i class="far fa-circle"></i></div>
-                <div  class="iconoSi" id="4"style="display:none;" ><i class="far fa-check-circle"></i></div>
-            </li> -->
-            <li class="nav-item">
-                <a id="5" class="nav-link" data-toggle="tab" href="#">Listo!</a>
-                <div   class="icono" id="5"  ><i class="far fa-circle"></i></div>
-                <div  class="iconoSi" id="5" style="display:none;" ><i class="far fa-check-circle"></i></div>
-            </li>
-        </ul>
+       
     </div>
                                         
     <div   class=" crear-div2 mx-auto" >
-       <h6>Los Anuncios solo duraran 45 días.</h6>
+   
 
         <div  id="myTabContent" class="tab-content ">
             <div class="tab-pane fade active show">
                 <?php echo form_open_multipart(base_url('Anuncios/Detalles'),array('class' => 'mt-4 mb-5 ')); ?>
                
-                    <div class="form-group" name="categoria" >
-                        <?php echo form_label('Categoria: '.$this->session->flashdata('categoria').'/'.$this->session->flashdata('subCategoria') ,'categoria'); $poder =  $this->session->flashdata('categoria'); ?>
+                    <div class="form-group" name="categoria" hidden >
+                        <?php echo form_label('Categoria:' ,'categoria'); $poder =   $this->session->tempdata('categoria'); ?>
                         <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'categoria','id' => 'categoria','value' =>  $poder , 'hidden'=>'true'); ?>
                         <?php echo form_input($datos); ?>
                         
                         <a class="btn btn-primary text-white btn-sm"  onclick="  window.location  = './'">Cambiar Categoría</a>
                     </div>
 
-                    <div class="form-group" name="subCategoria" hidden >
-                        <?php echo form_label('SubCategoria: '.$this->session->flashdata('subCategoria') ,'subCategoria'); $poder =  $this->session->flashdata('subCategoria'); ?>
-                        <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'subCategoria','id' => 'subCategoria','value' =>  $poder , 'hidden'=>'true'); ?>
-                        <?php echo form_input($datos); ?>
-                    </div>
-
                     <div name="mainForm" id="mainForm" >
                       
                         <div class="form-group" style="display:none;" name="accesorio" id="accesorio">
-                            <?php echo form_label('Accesorio','accesorio'); ?>
-                            <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'accesorio','id' => 'accesorio','value' => set_value('accesorio')); ?>
+                            <?php echo form_label('Accesorio','accesorio'); $poder =   $this->session->tempdata('accesorio'); ?>
+                            <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'accesorio','id' => 'accesorio','value' => $poder ); ?>
                             <?php echo form_input($datos); ?>
                             <span class="text-danger"><?php echo form_error('accesorio'); ?></span>
                         </div>
 
                         <div class="form-group" style="display:none;" name="marca" id="marca">
-                            <?php echo form_label('Marca','marca'); ?>
-                            <select class="custom-select btn-mini small"  name="marca" value="<?php  set_value('marca') ?>"  >
+                            <?php echo form_label('Marca','marca'); $poder =   $this->session->tempdata('marca'); ?>
+                            <select class="custom-select btn-mini small"  name="marca" value="<?php echo $poder ?>"  >
                                 <<?php if( $this->session->flashdata('marca') == null) {  ?>
                                 <option value="" selected="">Elegir Marca</option>
                                 <?php } else {  ?>
-                                <option selected="" value=" <?php echo $this->session->flashdata('marca') ?>  ">  <?php echo $this->session->flashdata('marca') ?></option>
+                                <option selected="" value=" <?php echo $poder?>  ">  <?php echo $poder?></option>
                                 <?php } $marcas = $this->Anuncio_model->GetDetalles(); ?>
                                 <?php foreach($marcas as $info) { if($info->marca != null)  {?>
                                 <option value=" <?php echo $info->marca; ?> "> <?php echo $info->marca; ?></option>
@@ -212,12 +182,11 @@
 /////////////////// escondiendo los datos/////////
     function suBcategoria() {
     
-        var subCategoria = document.getElementById("subCategoria");
         var CategoriaPrincipal = document.getElementById("categoria");
         var categoria = CategoriaPrincipal.value;
 
         if(categoria == ''){
-            window.location  = "./";
+            window.location  =  "./";
         }else{
                 document.getElementById("accesorio").style.display = 'none';
                 document.getElementById("marca").style.display = 'none';
