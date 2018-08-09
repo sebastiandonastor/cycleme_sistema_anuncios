@@ -101,7 +101,7 @@
                     </div> <!-- fin row img -->
 
                     <div class="col-lg-9 align-self-lg-end">
-                        <h5 class="text-wrap "><a href="#"><?php echo $anuncio['titulo']; ?></a></h5>
+                        <h5 class="text-wrap"><a href="#"><?php echo $anuncio['titulo']; ?></a></h5>
                         <div class="clr"></div>
                         <p class="post-meta">
                             <span class="dashicons-before folder"><i class="fa fa-list"></i><a href="#" rel="tag"><font size="-1"> <?php echo $anuncio['categoria'] ?> (subcategoria) </font></a></span> <span class="dashicons-before owner"><i class="fas fa-user-tie"></i><font size="-1"> <?php echo $anuncio['nombre'] ?>(usuario) </font></a></span> <span class="dashicons-before clock"><span><i class="fas fa-clock"></i><font size="-1">22 horas atrás (fecha creacion)</font></span></span>
@@ -123,3 +123,46 @@
 
 
 <?php } ?>
+
+<div class="mx-auto">
+
+
+<nav aria-label="...">
+    <ul class="pagination">
+        <?php if($pagina == 1) : ?>
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Anterior</a>
+        </li>
+
+        <?php elseif($pagina > 1) : ?>
+            <a class="page-link" href="<?php $url = 'Home/index/'.($pagina-1);
+            echo base_url($url);?>">Anterior</a>
+
+        <?php endif; ?>
+
+        <?php for($i = 0; $i < $cantidadAnuncios; $i++) { ?>
+        <li class="page-item">
+            <a class="page-link" href="<?php $url = 'Home/index/'.($i+1);
+           echo base_url($url); ?>"><?php echo $i + 1; ?></a></li>
+
+        <?php } ?>
+
+        <?php if($pagina >= $cantidadAnuncios) : ?>
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Siguiente</a>
+        </li>
+
+        <?php elseif($pagina < $cantidadAnuncios): ?>
+            <li class="page-item">
+                <a class="page-link" href="<?php $url = 'Home/index/'.($pagina+1);
+                echo base_url($url);?>">Siguiente</a>
+            </li>
+        <?php endif; ?>
+    </ul>
+
+
+
+</nav>
+
+
+</div>

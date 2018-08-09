@@ -22,9 +22,9 @@
             $postPorPagina = 15;
             $inicio = ($pagina > 1) ? ($postPorPagina * $pagina - $postPorPagina) : 0;
             $data['Anuncios'] = $this->Anuncio_model->getAnunciosPorPagina($postPorPagina,$inicio);
+            $data['cantidadAnuncios'] = ceil($this->Anuncio_model->getAnunciosVisi() / $postPorPagina);
 
-
-
+            $data['pagina'] = $id;
             $this->load->model('Usuario');
             $this->load->view('Layouts/main',$data);
         }
