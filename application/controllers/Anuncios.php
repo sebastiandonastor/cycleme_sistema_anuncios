@@ -32,7 +32,6 @@ class Anuncios extends CI_Controller
 
     }
 
-<<<<<<< HEAD
 
     public function ver($id = 0){
 
@@ -58,8 +57,6 @@ class Anuncios extends CI_Controller
 
 
 
-=======
->>>>>>> 67c31ec62b341e9ba5ffcbd7ef6fa52f9434beeb
     public function opcion($donde)
     {
         if($this->session->userdata('idUsuario') == null){
