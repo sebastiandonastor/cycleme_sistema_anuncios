@@ -26,7 +26,21 @@
             <ul class="navbar-nav ml-auto nav-text">
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url() ?>" >Inicio<span class="sr-only">(current)</span></a></li>
                 <li class="nav-line" id="nav-line">|</li>
-                <li class="nav-item"><a class="nav-link" href="#">Categoría </a></li>
+                <li class="nav-item dropdown drpespecial">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="<?php echo base_url('Home/categorias_principales/Accesorios') ?>">Accesorios (<?php echo $AccesoriosNum ?>) </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo base_url('Home/categorias_principales/Bicicletas') ?>">Bicicletas (<?php echo $BicicletasNum ?>) </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo base_url('Home/categorias_principales/Componentes') ?>">Componentes (<?php echo $ComponentesNum ?>) </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo base_url('Home/categorias_principales/Servicios') ?>">Servicios (<?php echo $ServiciosNum ?>) </a>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo base_url('Home/pag_categorias') ?>">Todos...</a>
+                    </div>
+                </li>
                 <li class="nav-line" id="nav-line">|</li>
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url('Home/eventos'); ?>">Eventos</a></li>
                 <li class="nav-line" id="nav-line">|</li>

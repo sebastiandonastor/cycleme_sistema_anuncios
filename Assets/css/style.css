@@ -111,6 +111,7 @@ select.btn-mini {
     margin:10px;  
     border-radius: 20px;
 
+<<<<<<< HEAD
 }
 /* fecha diminuta */
 .small{
@@ -136,3 +137,58 @@ select.btn-mini {
 .table-show{
     display: block;
 }
+=======
+  /* for "disabled" effect */
+}
+
+/*dropdown del menu principal*/
+.drpespecial{
+    padding-right: 0px;
+    position: relative;
+}
+
+.dropdown-toggle::after{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    display: none;
+}
+                   /* el min de pixeles para aplicar esta condicion */
+@media screen and (min-width: 1024px){
+    .drpespecial{
+        padding-right: 17px;
+        position: relative;
+    }
+
+    .dropdown-toggle::after{
+        display:inline-block;
+    }
+}
+
+/* estilos todas_paginas */
+li.black_circle {
+    list-style-type: inherit;
+    line-height: 50%;
+}
+div.estilo-border{
+    border-style: double;
+}
+
+div.estilo-border-encabezado{
+    padding: 20px;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    border-style: groove;
+    border-radius: 10px;
+}
+
+/* publicacion por categorias */
+div.estilo-border-sub{
+    border-style: outset;
+    border-color: grey;
+    border-width: 7px;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px;
+}
+>>>>>>> 5a7e2788da620776749cbf49ff8e3f8497a476e9

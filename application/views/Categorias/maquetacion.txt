@@ -1,0 +1,73 @@
+<br><br>
+<div class="row">
+
+    <div class="col-lg-9">
+        <div class="container estilo-border-sub">
+            <div class="row">
+                <div class="col-lg-3">
+                    <br>
+                    <a href="#" title="Prueba" class="preview" data-rel="#"><img width="200" height="200" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="attachment-ad-medium size-ad-medium" alt="promo 2 croco" srcset="" sizes="(max-width: 250px) 100vw, 250px" /></a>
+                </div> <!-- fin row img -->
+                    
+                <div class="col-lg-9">
+                    <div class="tags price-wrap">
+                        <span class="tag-head"><p class="post-price"><i class="fas fa-dollar-sign"></i>1,450.00</p></span>
+                    </div>
+                    <h5><a href="#">Luces Led trasera y delantera Recargables bomba de aire</a></h5>
+                    <div class="clr"></div>
+                    <p class="post-meta">
+                        <span class="dashicons-before folder"><i class="fa fa-list"></i><a href="#" rel="tag"><font size="-1"> Iluminación (subcategoria) </font></a></span> <span class="dashicons-before owner"><i class="fas fa-user-tie"></i><font size="-1"> croco_online_store (usuario) </font></a></span> <span class="dashicons-before clock"><span><i class="fas fa-clock"></i><font size="-1">22 horas atrás (fecha creacion)</font></span></span>
+                    </p>
+                    <div class="clr"></div>
+                        <p class=""><font size="-1">pack de Luces Led trasera y delantera Recargables, bomba de aire ····GRATIS PORTA TERMO DE ALUMINIO···· ····GRATIS CADENA ANTIRROBO···· Whatsapp 829-861-0889 SOMOS TIENDA VIRTUAL FACEBOOK: </font><a class="moretag" href="#"><font size="-1">PULSE AQUI (Link para su red social)</font></a></p>
+                        <p class="text-black-50"><font size="-1">21 total vistas, 5 hoy</font></p>
+                        <div class="clr"></div>
+                </div>
+
+                <div class="clr"></div>
+            </div> <!-- fin row texto -->
+        </div> <!-- fin row de anuncios individuales -->
+
+        <!-------------------------------------------------------------------------------------------------------------------------->
+
+        <div class="container estilo-border-sub">
+            <div class="row">
+                <div class="col-lg-3">
+                    <br>
+                    <a href="#" title="Prueba" class="preview" data-rel="#"><img width="200" height="200" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="attachment-ad-medium size-ad-medium" alt="promo 2 croco" srcset="" sizes="(max-width: 250px) 100vw, 250px" /></a>
+                </div> <!-- fin row img -->
+                    
+                <div class="col-lg-9">
+                    <div class="tags price-wrap">
+                        <span class="tag-head"><p class="post-price"><i class="fas fa-dollar-sign"></i>1,450.00</p></span>
+                    </div>
+                    <h5><a href="#">Luces Led trasera y delantera Recargables bomba de aire</a></h5>
+                    <div class="clr"></div>
+                    <p class="post-meta">
+                        <span class="dashicons-before folder"><i class="fa fa-list"></i><a href="#" rel="tag"><font size="-1"> Iluminación (subcategoria) </font></a></span> <span class="dashicons-before owner"><i class="fas fa-user-tie"></i><font size="-1"> croco_online_store (usuario) </font></a></span> <span class="dashicons-before clock"><span><i class="fas fa-clock"></i><font size="-1">22 horas atrás (fecha creacion)</font></span></span>
+                    </p>
+                    <div class="clr"></div>
+                        <p class=""><font size="-1">pack de Luces Led trasera y delantera Recargables, bomba de aire ····GRATIS PORTA TERMO DE ALUMINIO···· ····GRATIS CADENA ANTIRROBO···· Whatsapp 829-861-0889 SOMOS TIENDA VIRTUAL FACEBOOK: </font><a class="moretag" href="#"><font size="-1">PULSE AQUI (Link para su red social)</font></a></p>
+                        <p class="text-black-50"><font size="-1">21 total vistas, 5 hoy</font></p>
+                        <div class="clr"></div>
+                </div>
+
+                <div class="clr"></div>
+            </div> <!-- fin row texto -->
+        </div> <!-- fin row de anuncios individuales -->
+
+        <!-------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+    </div> <!-- fin del row de anuncios -->
+
+    <div class="col-lg-3">
+        <!-- aqui publicidad -->
+    </div>
+    
+</div>
+
+
+<br><br><br>

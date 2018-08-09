@@ -9,6 +9,14 @@ class Cuentas extends CI_Controller{
 
         $data['main_view'] = 'Cuentas/Login';
         $data['titulo'] = 'Inicio Sesion';
+
+        //Esta parte la puse porque no supe como hacer funcionar el boton categorias de otra forma, si encuentras otra eres libre de borrarlo entonces
+        $data['AccesoriosNum'] = $this->categorias('Accesorios');
+        $data['BicicletasNum'] = $this->categorias('Bicicletas');
+        $data['ComponentesNum'] = $this->categorias('Componentes');
+        $data['ServiciosNum'] = $this->categorias('Servicios');
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         $this->load->view('Layouts/main',$data);
     }
 
@@ -116,8 +124,34 @@ class Cuentas extends CI_Controller{
     }
 
 
+        //Esta parte la puse porque no supe como hacer funcionar el boton categorias de otra forma, si encuentras otra eres libre de borrarlo entonces
+        public function categorias($categoria){
+            $result = $this->db->query("SELECT * FROM anuncios INNER JOIN categorias ON anuncios.idCategorias_fk = categorias.idCategoria WHERE categorias.categoriaPrincipal='".$categoria."'"); 
+            return $result->num_rows();
+        }
 
+        public function pag_categorias(){
+            $data['main_view'] = 'Categorias/Todas_categorias';
+            $data['titulo'] = 'CycleMe categorias';
+            $data['AccesoriosNum'] = $this->categorias('Accesorios');
+            $data['BicicletasNum'] = $this->categorias('Bicicletas');
+            $data['ComponentesNum'] = $this->categorias('Componentes');
+            $data['ServiciosNum'] = $this->categorias('Servicios');
+            $this->load->model('Categoria_model');
+            $this->load->view('Layouts/main',$data);
+        }
 
-
+        public function categorias_principales($categoria){
+            $data['main_view'] = 'Categorias/categoria';
+            $data['titulo'] = 'CycleMe categorias';
+            $data['categoria_deseada'] = $categoria;
+            $data['AccesoriosNum'] = $this->categorias('Accesorios');
+            $data['BicicletasNum'] = $this->categorias('Bicicletas');
+            $data['ComponentesNum'] = $this->categorias('Componentes');
+            $data['ServiciosNum'] = $this->categorias('Servicios');
+            $this->load->model('Categoria_model');
+            $this->load->view('Layouts/main', $data);
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
