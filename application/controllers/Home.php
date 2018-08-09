@@ -2,14 +2,29 @@
 
     class Home extends CI_Controller
     {
-        public function index()
+        public function index($id = 1)
         {
+            if(!is_numeric($id)){
+                redirect('Home');
+            }
+
+
+
             $data['main_view'] = 'home_view';
             $data['titulo'] = 'CycleMe';
             $data['AccesoriosNum'] = $this->categorias('Accesorios');
             $data['BicicletasNum'] = $this->categorias('Bicicletas');
             $data['ComponentesNum'] = $this->categorias('Componentes');
             $data['ServiciosNum'] = $this->categorias('Servicios');
+
+
+            $pagina = $id;
+            $postPorPagina = 15;
+            $inicio = ($pagina > 1) ? ($postPorPagina * $pagina - $postPorPagina) : 0;
+            $data['Anuncios'] = $this->Anuncio_model->getAnunciosPorPagina($postPorPagina,$inicio);
+
+
+
             $this->load->model('Usuario');
             $this->load->view('Layouts/main',$data);
         }
