@@ -68,8 +68,7 @@
         }
 
         public function eventos(){
-            //$data['main_view'] = 'vistas_secundarias/eventos';
-            $data['main_view'] = 'Anuncios/Plantilla_anuncios';
+            $data['main_view'] = 'vistas_secundarias/eventos';
             $data['titulo'] = 'CycleMe eventos';
             $data['AccesoriosNum'] = $this->categorias('Accesorios');
             $data['BicicletasNum'] = $this->categorias('Bicicletas');
@@ -91,7 +90,7 @@
         }
 
         public function noticias(){
-            $data['main_view'] = 'Anuncios/Plantilla_buscar';
+            $data['main_view'] = 'vistas_secundarias/noticias';
             $data['titulo'] = 'CycleMe noticias';
             $data['AccesoriosNum'] = $this->categorias('Accesorios');
             $data['BicicletasNum'] = $this->categorias('Bicicletas');
