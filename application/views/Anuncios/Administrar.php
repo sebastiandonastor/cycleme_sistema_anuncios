@@ -13,9 +13,6 @@
     </div>
 <?php  }  ?>
 
-
-
-
 <div class="d-inline-block  " id="misAnuncios" >
 <h4>Anuncios de Usuario</h4>
 <p>En esta pantalla podra administrar sus anuncios, solo siga las intrucciones de la accion que desea realizar.</p>
@@ -36,7 +33,7 @@
         <tbody  >
             <?php
              $numero = 0;
-             foreach( $losAnuncios as $anuncio ) { 
+             foreach( $AnunciosUser as $anuncio ) { 
                 $numero = $numero + 1;
                 ?>
                 <tr class="anunciosDeUsuario" >
@@ -44,29 +41,30 @@
                     <?php       
 
                         setlocale(LC_ALL, 'es_ES');
-                        $string = $anuncio->fechaCreacion;
+                        $string = $anuncio['fechaCreacion'];
                         $date = DateTime::createFromFormat("Y-m-d", $string);
-                        echo $numero.'.<b>'.$anuncio->titulo.'</b><br>'.strftime("%d-%B-%Y",$date->getTimestamp());
+                        echo $numero.'.<b>'.$anuncio['titulo'].'</b><br>'.strftime("%d-%B-%Y",$date->getTimestamp());
+                        
                         ?>
                     </td>
                     <td  >
-                        <?php echo $anuncio->numeroVisitas; ?>
+                        <?php echo $anuncio['numeroVisitas']; ?>
                     </td>
                         <?php 
-                        $string2 =  $anuncio->fechaCaducidad; 
+                        $string2 =  $anuncio['fechaCaducidad']; 
                         $date2 = DateTime::createFromFormat("Y-m-d", $string2);
-                        if($anuncio->estado > 0 ){ ?>
+                        if($anuncio['estado'] > 0 ){ ?>
                             <td > <b class="text-success" >Activo</b>  <br><i class="small">( <?php echo strftime("%d-%B-%Y",$date2->getTimestamp()); ?> )</i></td>
                             <td >
-                                <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio->idAnuncio ?>" 
+                                <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio['idAnuncio'] ?>" 
                                 class="btn btn-sm text-warning" data-toggle="tooltip" data-placement="bottom" 
                                 title="Editar Anuncio"><i class="fas fa-pencil-alt"></i></a>
                             
-                                <a href="<?php echo base_url(); ?>Anuncios/Eliminar/<?php echo $anuncio->idAnuncio ?>" 
+                                <a href="<?php echo base_url(); ?>Anuncios/Eliminar/<?php echo $anuncio['idAnuncio'] ?>" 
                                 onclick="return confirm('Seguro que desea realizar esta acción?');" class="btn btn-sm text-danger" 
                                 data-toggle="tooltip" data-placement="bottom" title="Eliminar Anuncio"><i class="fas fa-trash-alt"></i></a>
 
-                                <a href="<?php echo base_url(); ?>Anuncios/Estado/<?php echo $anuncio->idAnuncio ?>" 
+                                <a href="<?php echo base_url(); ?>Anuncios/Estado/<?php echo $anuncio['idAnuncio'] ?>" 
                                 class="btn btn-sm text-muted" data-toggle="tooltip" data-placement="bottom" 
                                 title="Desactivar Anuncio"><i class="far fa-eye-slash"></i></a>
 
@@ -74,15 +72,15 @@
                         <?php }else{  ?>
                         <td >Inactivo</td>
                         <td >
-                        <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio->idAnuncio ?>" 
+                        <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio['idAnuncio'] ?>" 
                             class="btn btn-sm text-warning" data-toggle="tooltip" data-placement="bottom" 
                             title="Editar Anuncio"><i class="fas fa-pencil-alt"></i></a>
 
-                            <a href="<?php echo base_url(); ?>Anuncios/Eliminar/<?php echo $anuncio->idAnuncio ?>" 
+                            <a href="<?php echo base_url(); ?>Anuncios/Eliminar/<?php echo $anuncio['idAnuncio'] ?>" 
                             onclick="return confirm('Seguro que desea realizar esta acción?');" class="btn btn-sm text-danger" 
                             data-toggle="tooltip" data-placement="bottom" title="Eliminar Anuncio"><i class="fas fa-trash-alt"></i></a>
 
-                            <a href="<?php echo base_url(); ?>Anuncios/Estado/<?php echo $anuncio->idAnuncio ?>" 
+                            <a href="<?php echo base_url(); ?>Anuncios/Estado/<?php echo $anuncio['idAnuncio'] ?>" 
                             class="btn btn-sm text-success" data-toggle="tooltip" data-placement="bottom" 
                             title="Activar Anuncio"><i class="far fa-eye"></i></a>
 
@@ -98,67 +96,66 @@
     <table class="table two">
         <thead>
             <tr>
-         
             <th scope="col">Titulo</th>
             </tr>
         </thead>
         <tbody  >
             <?php
              $numero = 0;
-             foreach( $losAnuncios as $anuncio ) { 
+             foreach( $AnunciosUser as $anuncio ) { 
                 $numero = $numero + 1;
                 ?>
                 <tr >
                     <td >  
-                    <a style="font-size:30px; float:right;" id="botonmas<?php echo $anuncio->idAnuncio; ?>" onclick="detalles('<?php echo $anuncio->idAnuncio; ?>');"  class="btn btn-sm text-primary" data-toggle="tooltip" data-placement="top" 
+                    <a style="font-size:30px; float:right;" id="botonmas<?php echo $anuncio['idAnuncio']; ?>" onclick="detalles('<?php echo $anuncio['idAnuncio']; ?>');"  class="btn btn-sm text-primary" data-toggle="tooltip" data-placement="top" 
                     title="Mas Detalles"><i class="fas fa-plus"></i></a>
-                    <a style="font-size:30px; display:none; float:right;" id="botonmenos<?php echo $anuncio->idAnuncio; ?>" onclick="detalles('<?php echo $anuncio->idAnuncio; ?>');"  class="btn btn-sm text-primary" data-toggle="tooltip" data-placement="top" 
+                    <a style="font-size:30px; display:none; float:right;" id="botonmenos<?php echo $anuncio['idAnuncio']; ?>" onclick="detalles('<?php echo $anuncio['idAnuncio']; ?>');"  class="btn btn-sm text-primary" data-toggle="tooltip" data-placement="top" 
                     title="Menos Detalles"><i class="fas fa-minus"></i></a>
                     <?php   
                         setlocale(LC_ALL, 'es_ES');
-                        $string = $anuncio->fechaCreacion;
+                        $string = $anuncio['fechaCreacion'];
                         $date = DateTime::createFromFormat("Y-m-d", $string);
-                        echo $numero.'.<b>'.$anuncio->titulo.'</b><br> <i class="far fa-calendar-alt"></i> '.strftime("%d-%B-%Y",$date->getTimestamp());
+                        echo $numero.'.<b>'.$anuncio['titulo'].'</b><br> <i class="far fa-calendar-alt"></i> '.strftime("%d-%B-%Y",$date->getTimestamp());
                     ?>
                  
                     </td>
                     </tr>
               
-                        <tr class="table-hidden" id="<?php echo $anuncio->idAnuncio; ?>" >
+                        <tr class="table-hidden" id="<?php echo $anuncio['idAnuncio']; ?>" >
                         <td  >
-                        <b>Vistas:</b> <?php echo $anuncio->numeroVisitas; ?>
+                        <b>Vistas:</b> <?php echo $anuncio['numeroVisitas']; ?>
                        <br>
                        <?php 
-                            $string2 =  $anuncio->fechaCaducidad; 
+                            $string2 =  $anuncio['fechaCaducidad']; 
                             $date2 = DateTime::createFromFormat("Y-m-d", $string2);
-                            if($anuncio->estado > 0 ){ ?>
+                            if($anuncio['estado'] > 0 ){ ?>
                             <b>Estado:</b> <b class="text-success" >Activo</b><i class="small">( <?php echo strftime("%d-%B-%Y",$date2->getTimestamp()); ?> )</i>
                           <br>
                             <b>Opciones:</b> 
-                            <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio->idAnuncio ?>" 
+                            <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio['idAnuncio'] ?>" 
                                 class="btn btn-sm text-warning" data-toggle="tooltip" data-placement="bottom" 
                                 title="Editar Anuncio"><i class="fas fa-pencil-alt"></i></a>
                             
-                                <a href="<?php echo base_url(); ?>Anuncios/Eliminar/<?php echo $anuncio->idAnuncio ?>" 
+                                <a href="<?php echo base_url(); ?>Anuncios/Eliminar/<?php echo $anuncio['idAnuncio'] ?>" 
                                 onclick="return confirm('Seguro que desea realizar esta acción?');" class="btn btn-sm text-danger" 
                                 data-toggle="tooltip" data-placement="bottom" title="Eliminar Anuncio"><i class="fas fa-trash-alt"></i></a>
 
-                                <a href="<?php echo base_url(); ?>Anuncios/Estado/<?php echo $anuncio->idAnuncio ?>" 
+                                <a href="<?php echo base_url(); ?>Anuncios/Estado/<?php echo $anuncio['idAnuncio'] ?>" 
                                 class="btn btn-sm text-muted" data-toggle="tooltip" data-placement="bottom" 
                                 title="Desactivar Anuncio"><i class="far fa-eye-slash"></i></a>
                             <?php }else{  ?>
                                     <b>Estado:</b> <b class="text-secondary" >Inactivo</b>  <br><i class="small"></i>
                               
                                     <b>Opciones:</b> 
-                                    <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio->idAnuncio ?>" 
+                                    <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio['idAnuncio'] ?>" 
                                          class="btn btn-sm text-warning" data-toggle="tooltip" data-placement="bottom" 
                                         title="Editar Anuncio"><i class="fas fa-pencil-alt"></i></a>
                                     
-                                        <a href="<?php echo base_url(); ?>Anuncios/Eliminar/<?php echo $anuncio->idAnuncio ?>" 
+                                        <a href="<?php echo base_url(); ?>Anuncios/Eliminar/<?php echo $anuncio['idAnuncio'] ?>" 
                                         onclick="return confirm('Seguro que desea realizar esta acción?');" class="btn btn-sm text-danger" 
                                         data-toggle="tooltip" data-placement="bottom" title="Eliminar Anuncio"><i class="fas fa-trash-alt"></i></a>
 
-                                        <a href="<?php echo base_url(); ?>Anuncios/Estado/<?php echo $anuncio->idAnuncio ?>" 
+                                        <a href="<?php echo base_url(); ?>Anuncios/Estado/<?php echo $anuncio['idAnuncio'] ?>" 
                                         class="btn btn-sm text-success" data-toggle="tooltip" data-placement="bottom" 
                                         title="Activar Anuncio"><i class="far fa-eye"></i></a>
                             <?php } ?> 
@@ -167,6 +164,42 @@
             <?php } ?>
         </tbody>
     </table>
+</div>
+
+<div class="mx-auto">
+<nav aria-label="...">
+    <ul class="pagination">
+        <?php if($pagina == 1) : ?>
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Anterior</a>
+        </li>
+
+            <?php elseif($pagina > 1) : ?>
+                <a class="page-link" href="<?php $url = 'Anuncios/index/'.($pagina-1);
+                echo base_url($url);?>">Anterior</a>
+
+            <?php endif; ?>
+
+            <?php for($i = 0; $i < $cantidadAnunciosUser; $i++) { ?>
+                <li class="page-item">
+                    <a class="page-link" href="<?php $url = 'Anuncios/index/'.($i+1);
+                    echo base_url($url); ?>"><?php echo $i + 1; ?></a></li>
+
+            <?php } ?>
+
+            <?php if($pagina >= $cantidadAnunciosUser) : ?>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">Siguiente</a>
+                </li>
+
+        <?php elseif($pagina < $cantidadAnunciosUser): ?>
+            <li class="page-item">
+                <a class="page-link" href="<?php $url = 'Anuncios/index/'.($pagina+1);
+                echo base_url($url);?>">Siguiente</a>
+            </li>
+        <?php endif; ?>
+    </ul>
+</nav>
 </div>
 <?php }else{ ?>
     <div class=" anunciosDeUsuario">
@@ -182,14 +215,6 @@
 </div>
 <script>
 
-//     document.getElementById("confirm").addEventListener('click',categoria);
-
-// function confirmacion(){
-//     var result = confirm("Seguro que desea realizar esta acciòn?");
-//     if (result) {
-//         location.replace("<?php echo base_url(); ?>Anuncios/Eliminar/<?php echo $anuncio->idAnuncio ?>");
-//     }
-// }
 function detalles(id){
     let trToShow = document.getElementById(id);
     let btnToShowPlus = document.getElementById('botonmas'+id);
