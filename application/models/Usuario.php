@@ -46,6 +46,11 @@ class Usuario extends CI_Model {
         return $result;
     }
 
+    public function getUser($id){
+        $this->db->where('idUsuario',$id);
+        $result = $this->db->get('usuario');
+        return $result->row(0);
+    }
 
 
 

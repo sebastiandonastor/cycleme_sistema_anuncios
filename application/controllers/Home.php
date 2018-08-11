@@ -17,7 +17,7 @@
 
 
             $pagina = $id;
-            $postPorPagina = 5;
+            $postPorPagina = 15;
             $inicio = ($pagina > 1) ? ($postPorPagina * $pagina - $postPorPagina) : 0;
             $data['Anuncios'] = $this->Anuncio_model->getAnunciosPorPagina($postPorPagina,$inicio);
             $data['cantidadAnuncios'] = ceil($this->Anuncio_model->getAnunciosVisi() / $postPorPagina);

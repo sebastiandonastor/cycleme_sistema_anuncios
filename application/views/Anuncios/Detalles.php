@@ -217,7 +217,7 @@
         var categoria = CategoriaPrincipal.value;
 
         if(categoria == ''){
-            window.location  = "Home";
+            window.location  = "Anuncios/opcion/Crear";
         }else{
                 document.getElementById("accesorio").style.display = 'none';
                 document.getElementById("marca").style.display = 'none';
@@ -226,7 +226,7 @@
                 document.getElementById("tamanoCuadro").style.display = 'none';
                 document.getElementById("tamanoAro").style.display = 'none';
 
-                  document.getElementById("accesorio").value = '';
+                document.getElementById("accesorio").value = '';
                 document.getElementById("marca").value = '';
                 document.getElementById("modelo").value = '';
                 document.getElementById("tipo").value = '';
@@ -254,7 +254,7 @@
                 document.getElementById("marca").style.display = 'block';
                 document.getElementById("modelo").style.display = 'block';
             }
-            else if(categoria == 'Bicicletas')
+            else if(categoria == 'Servicios')
             {
                
             }

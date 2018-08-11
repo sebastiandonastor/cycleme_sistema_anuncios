@@ -46,10 +46,17 @@ class Anuncios extends CI_Controller
             redirect('Home');
         }
 
-        $data['infoAnuncio'] = $anuncio;
+        $cantidad = $anuncio[0]['numeroVisitas'];
+        $this->Anuncio_model->visitasInsertar($id,$cantidad);
 
+        $idCategorias_fk = $anuncio[0]['idCategorias_fk'];
+        $data2 = $this->Anuncio_model->GetsubCategorias($idCategorias_fk);
+        $data['categoria'] = $data2->categoriaPrincipal;
+
+        $data['foto']  = explode(',', $anuncio[0]['foto']);
+
+        $data['infoAnuncio'] = $anuncio;
         $data['main_view'] = 'Anuncios/plantilla_anuncio';
-        $data['titulo'] = 'Prueba ver';
 
         $this->load->view('Layouts/main',$data);
 
@@ -100,7 +107,9 @@ class Anuncios extends CI_Controller
             $this->form_validation->set_rules('moneda','Moneda','callback_requerido',array('requerido' => 'Debe seleccionar una Moneda'));
             $this->form_validation->set_rules('precio','Precio','callback_requerido',array('requerido' => 'Debe digitar un Precio'));
             $this->form_validation->set_rules('titulo','Titulo','callback_requerido',array('requerido' => 'Debe dscribir un Titulo'));
-            $this->form_validation->set_rules('descripcion','Descripcion','callback_requerido|min_length[15]', array('requerido' => 'Debe escribir una Descripcion','min_length' => 'La Descripción debe tener más de 15 caracteres'));
+            $this->form_validation->set_rules('descripcion','Descripcion','callback_requerido|min_length[15]|max_length[300]', 
+            array('requerido' => 'Debe escribir una Descripcion','min_length' => 'La Descripción debe tener más de 15 caracteres',
+            'max_length' => 'La Descripción debe tener un minimo 300 de  caracteres'));
     
             $categoria = $this->input->post('categoria');
             
@@ -151,7 +160,7 @@ class Anuncios extends CI_Controller
                 'tamanoCuadro'=> $tamanoCuadro,'modelo'=> $modelo, 'tamanoAro'=> $tamanoAro ,'fechaCreacion'=> $fechaCreacion ,'fechaCaducidad'=> $fechaCaducidad ,
                 'idUsuario_fk'=> $idUsuario_fk , 'importancia'=> $importancia ,'moneda'=> $moneda   );
 
-                $this->session->set_tempdata($data,  300);
+                $this->session->set_tempdata($data, 300);
                 //$this->Anuncio_model->create_anuncios($data);
 
                 $this->opcion('Prevista');
@@ -189,6 +198,7 @@ class Anuncios extends CI_Controller
 
             $importancia = 0;
             $estado = 1;
+            $numeroVisitas = 1;
 
 
             if($this->form_validation->run() == false){
@@ -229,7 +239,7 @@ class Anuncios extends CI_Controller
             'precio'=> $moneda.$precio,'titulo'=> $titulo,'descripcion'=> $descripcion,'tipo'=> $tipo,'accesorio'=> $accesorio,'marca'=> $marca,'tamanoCuadro'=> $tamanoCuadro,'modelo'=> $modelo,
             'tamanoAro'=> $tamanoAro ,'fechaCreacion'=> $fechaCreacion ,'fechaCaducidad'=> $fechaCaducidad ,'idUsuario_fk'=> $idUsuario_fk ,
             'importancia'=> $importancia,'estado'=> $estado,'foto' => $urlImg,'idCategorias_fk'=> $idCategorias_fk,
-            );
+            'numeroVisitas'=>$numeroVisitas);
 
             $this->Anuncio_model->create_anuncios($data);
 
@@ -467,9 +477,36 @@ class Anuncios extends CI_Controller
         $this->load->model('Categoria_model');
         $this->load->view('Layouts/main', $data);
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////anuncios de ese usuario ene specifico/////////////////////////////////////////////////////////////
 
+    public function AnunciosUsuario( $idUser , $id = 1)
+    {
+        
+        if(!is_numeric($id)){
+            redirect('Home');
+        }
+     
+        //Esta parte la puse porque no supe como hacer funcionar el boton categorias de otra forma, si encuentras otra eres libre de borrarlo entonces
+        $data['AccesoriosNum'] = $this->categorias('Accesorios');
+        $data['BicicletasNum'] = $this->categorias('Bicicletas');
+        $data['ComponentesNum'] = $this->categorias('Componentes');
+        $data['ServiciosNum'] = $this->categorias('Servicios');
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        $pagina = $id;
+        $postPorPagina = 10;
+        $inicio = ($pagina > 1) ? ($postPorPagina * $pagina - $postPorPagina) : 0;
+        $data['AnunciosUserUni'] = $this->Anuncio_model->getAnunciosPorPaginaUserAny($postPorPagina,$inicio,$idUser);
+        $data['cantidadAnunciosUserUni'] = ceil($this->Anuncio_model->getAnunciosVisiUserAny($idUser) / $postPorPagina);
+        $data['pagina'] = $id;
+
+        $this->load->model('Usuario');
+        $data['usuario'] =  $this->Usuario->getUser($idUser);
+
+        $data['main_view'] = 'Anuncios/AnunciosUsuario';
+        $this->load->view('Layouts/main',$data);
+
+    }
 
 
 

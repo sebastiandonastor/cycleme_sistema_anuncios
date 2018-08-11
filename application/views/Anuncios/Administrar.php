@@ -17,7 +17,7 @@
 <h4>Anuncios de Usuario</h4>
 <p>En esta pantalla podra administrar sus anuncios, solo siga las intrucciones de la accion que desea realizar.</p>
 
-<?php $losAnuncios = $this->Anuncio_model->get_anuncioLogueado(); ?>
+<?php   setlocale(LC_ALL, 'es_ES'); $losAnuncios = $this->Anuncio_model->get_anuncioLogueado(); ?>
 <?php if($losAnuncios){ ?>
 
     <div class=" table table-sm">
@@ -37,24 +37,26 @@
                 $numero = $numero + 1;
                 ?>
                 <tr class="anunciosDeUsuario" >
-                    <td>
-                    <?php       
-
-                        setlocale(LC_ALL, 'es_ES');
-                        $string = $anuncio['fechaCreacion'];
-                        $date = DateTime::createFromFormat("Y-m-d", $string);
-                        echo $numero.'.<b>'.$anuncio['titulo'].'</b><br>'.strftime("%d-%B-%Y",$date->getTimestamp());
-                        
+                    <td style="width:300px">
+                    <h6 class="limitartitulo" >
+                        <?php  echo $numero.'.<b >'.$anuncio['titulo'].'</b>' ?>
+                    </h6>
+                    <p>
+                        <?php    
+                        $fechaCreacion = date_create_from_format('Y-m-d H:i:s', $anuncio['fechaCreacion']);
+                        echo strftime("%d de %B, %Y",$fechaCreacion->getTimestamp()); 
                         ?>
+                    </p>
+                     
                     </td>
                     <td  >
                         <?php echo $anuncio['numeroVisitas']; ?>
                     </td>
                         <?php 
-                        $string2 =  $anuncio['fechaCaducidad']; 
-                        $date2 = DateTime::createFromFormat("Y-m-d", $string2);
+               
+                        $fechaCaducidad = date_create_from_format('Y-m-d H:i:s', $anuncio['fechaCaducidad']);
                         if($anuncio['estado'] > 0 ){ ?>
-                            <td > <b class="text-success" >Activo</b>  <br><i class="small">( <?php echo strftime("%d-%B-%Y",$date2->getTimestamp()); ?> )</i></td>
+                            <td > <b class="text-success" >Activo</b>  <br><i class="small">( <?php echo strftime("%d de %B, %Y",$fechaCaducidad->getTimestamp()); ?> )</i></td>
                             <td >
                                 <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio['idAnuncio'] ?>" 
                                 class="btn btn-sm text-warning" data-toggle="tooltip" data-placement="bottom" 
@@ -86,9 +88,7 @@
 
                         </td>
                     <?php } ?>
-                  
                     </tr>
-             
             <?php } ?>
         </tbody>
     </table>
@@ -113,9 +113,8 @@
                     title="Menos Detalles"><i class="fas fa-minus"></i></a>
                     <?php   
                         setlocale(LC_ALL, 'es_ES');
-                        $string = $anuncio['fechaCreacion'];
-                        $date = DateTime::createFromFormat("Y-m-d", $string);
-                        echo $numero.'.<b>'.$anuncio['titulo'].'</b><br> <i class="far fa-calendar-alt"></i> '.strftime("%d-%B-%Y",$date->getTimestamp());
+                        $fechaCreacion = date_create_from_format('Y-m-d H:i:s', $anuncio['fechaCreacion']);
+                        echo $numero.'.<b>'.$anuncio['titulo'].'</b><br>'.strftime("%d de %B, %Y",$fechaCreacion->getTimestamp());
                     ?>
                  
                     </td>
@@ -126,11 +125,10 @@
                         <b>Vistas:</b> <?php echo $anuncio['numeroVisitas']; ?>
                        <br>
                        <?php 
-                            $string2 =  $anuncio['fechaCaducidad']; 
-                            $date2 = DateTime::createFromFormat("Y-m-d", $string2);
-                            if($anuncio['estado'] > 0 ){ ?>
-                            <b>Estado:</b> <b class="text-success" >Activo</b><i class="small">( <?php echo strftime("%d-%B-%Y",$date2->getTimestamp()); ?> )</i>
-                          <br>
+                        $fechaCaducidad = date_create_from_format('Y-m-d H:i:s', $anuncio['fechaCaducidad']);
+                        if($anuncio['estado'] > 0 ){ ?>
+                            <td > <b class="text-success" >Activo</b>  <br><i class="small">( <?php echo strftime("%d de %B, %Y",$fechaCaducidad->getTimestamp()); ?> )</i></td>
+                            <td >
                             <b>Opciones:</b> 
                             <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio['idAnuncio'] ?>" 
                                 class="btn btn-sm text-warning" data-toggle="tooltip" data-placement="bottom" 
@@ -144,20 +142,20 @@
                                 class="btn btn-sm text-muted" data-toggle="tooltip" data-placement="bottom" 
                                 title="Desactivar Anuncio"><i class="far fa-eye-slash"></i></a>
                             <?php }else{  ?>
-                                    <b>Estado:</b> <b class="text-secondary" >Inactivo</b>  <br><i class="small"></i>
-                              
-                                    <b>Opciones:</b> 
-                                    <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio['idAnuncio'] ?>" 
-                                         class="btn btn-sm text-warning" data-toggle="tooltip" data-placement="bottom" 
-                                        title="Editar Anuncio"><i class="fas fa-pencil-alt"></i></a>
-                                    
-                                        <a href="<?php echo base_url(); ?>Anuncios/Eliminar/<?php echo $anuncio['idAnuncio'] ?>" 
-                                        onclick="return confirm('Seguro que desea realizar esta acción?');" class="btn btn-sm text-danger" 
-                                        data-toggle="tooltip" data-placement="bottom" title="Eliminar Anuncio"><i class="fas fa-trash-alt"></i></a>
+                                <b>Estado:</b> <b class="text-secondary" >Inactivo</b>  <br><i class="small"></i>
+                            
+                                <b>Opciones:</b> 
+                                <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio['idAnuncio'] ?>" 
+                                class="btn btn-sm text-warning" data-toggle="tooltip" data-placement="bottom" 
+                                title="Editar Anuncio"><i class="fas fa-pencil-alt"></i></a>
+                            
+                                <a href="<?php echo base_url(); ?>Anuncios/Eliminar/<?php echo $anuncio['idAnuncio'] ?>" 
+                                onclick="return confirm('Seguro que desea realizar esta acción?');" class="btn btn-sm text-danger" 
+                                data-toggle="tooltip" data-placement="bottom" title="Eliminar Anuncio"><i class="fas fa-trash-alt"></i></a>
 
-                                        <a href="<?php echo base_url(); ?>Anuncios/Estado/<?php echo $anuncio['idAnuncio'] ?>" 
-                                        class="btn btn-sm text-success" data-toggle="tooltip" data-placement="bottom" 
-                                        title="Activar Anuncio"><i class="far fa-eye"></i></a>
+                                <a href="<?php echo base_url(); ?>Anuncios/Estado/<?php echo $anuncio['idAnuncio'] ?>" 
+                                class="btn btn-sm text-success" data-toggle="tooltip" data-placement="bottom" 
+                                title="Activar Anuncio"><i class="far fa-eye"></i></a>
                             <?php } ?> 
                           </td>
                         </tr>
@@ -204,7 +202,7 @@
 <?php }else{ ?>
     <div class=" anunciosDeUsuario">
         <h5>No tiene anuncios por el momento.</h5>
-        <p><a href="<?php echo base_url('Anuncios') ?>">Desea agregar?</a></p>
+        <p><a href="<?php echo base_url('Anuncios/opcion/Crear') ?>">Desea agregar?</a></p>
     </div>
 <?php } ?>
 

@@ -5,17 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?php echo $titulo ?></title>
+    <title>CycleMe</title>
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>Assets/img/favicon.ico">
+
     <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/style.css">
-	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>Assets/img/favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/new-style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
-    <link href="css/lightbox.min.css" rel="stylesheet">
-    <link href="css/lity.min.css" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Lora|Montserrat" rel="stylesheet">
+    
+    <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/lightbox.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/lity.min.css">
+    
 
 </head>
 <body>

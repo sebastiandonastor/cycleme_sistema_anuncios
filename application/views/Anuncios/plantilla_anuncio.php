@@ -1,72 +1,122 @@
-<br><br>
-<div class="row">
-    <!-- row izquierdo de anuncio y respuesta -->
-    <div class="col-lg-8">
-        <div class="container estilo-border-sub anuncio-ver">
-            <div class="row">
-                <div class="col-lg-9">
-                    <h5><a href="#"><?php echo $infoAnuncio[0]['titulo']; ?></a></h5>
+<?php
+
+setlocale(LC_ALL, 'es_ES');
+
+?>
+<div class="row " >
+    <div class="col-sm col-lg-8" >
+        <div class="col-sm bg-light plantilla-Anuncio" > 
+            <div class="row tituloAnuncio titulo-plantilla justify-content-between">
+                <div  class="titulo-encodigo" >
+                    <h5  ><?php echo $infoAnuncio[0]['titulo']; ?></h5>
                 </div>
-                <div class="col-lg-3">
-                    <div class="tags price-wrap">
-                        <span class="badge badge-info"><p class=""><?php echo $infoAnuncio[0]['precio']; ?></p></span>
-                    </div>
+                <div >
+                    <i class="fas fa-tag"></i><?php echo $infoAnuncio[0]['precio']; ?>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <br>
+            <div class="row justify-content-between">
+                <div class="col-sm"  >
+                    <div class="col-sm text-center"  >
+                    <img onclick="imgGrande('/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>');" src="/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>" width="180" height="200">
+                        <div class="row imgDivStyle">
+                        <?php $fotosTotal = sizeof($foto);
+                                if($fotosTotal > 1){  
+                                $fotoActual = 1;
+                                foreach($foto as $fotico ){
+                                    if($fotoActual <= $fotosTotal - 1){ ?>
+                                    <div class="col-sm previeImg"  >
+                                        <img onclick="imgGrande('/cycleme_sistema_anuncios/temp_img/<?php echo $foto[$fotoActual];?>');"  src="/cycleme_sistema_anuncios/temp_img/<?php echo $foto[$fotoActual];?>" width="55" height="55">   
+                                    </div>
+                                <?php }
+                                $fotoActual++; 
+                                } }?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm ">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item2 rounded border-bottom"><span class="color">Provincia:</span> <?php echo $infoAnuncio[0]['provincia'];?></li>
+                        <li class="list-group-item2 rounded border-bottom"><span class="color">Tel/Cel:</span> <?php echo $infoAnuncio[0]['telefono'];?></li>
+                        <li class="list-group-item2 rounded border-bottom"><span class="color">Accion:</span> <?php echo $infoAnuncio[0]['accion'];?></li>
+               
 
-                    <a href="#" title="Prueba" class="preview" data-rel="#"><img width="200" height="200" src="/cycleme_sistema_anuncios/temp_img/<?php echo $infoAnuncio[0]['foto'];?>" class="attachment-ad-medium size-ad-medium" alt="promo 2 croco" srcset="" sizes="(max-width: 250px) 100vw, 250px" /></a>
-                </div> <!-- fin row img -->
+                        <div class="form-group" name="categoria" hidden >
+                        <?php  form_label('Categoria:' ,'categoria');  ?>
+                        <?php $datos= array( 'type' => 'text','class' => 'form-control form-control-sm','name' => 'categoria','id' => 'categoria','value' =>  $categoria , 'hidden'=>''); ?>
+                        <?php echo form_input($datos); ?>
+                        </div>
+                        
+                            <li style="display:none" id="accesorio" class="list-group-item2 rounded border-bottom"><span class="color">Accesorio:</span> <?php echo $infoAnuncio[0]['accesorio'];?></li>
+                            <li style="display:none" id="modelo"  class="list-group-item2 rounded border-bottom"><span class="color">Modelo:</span> <?php echo $infoAnuncio[0]['modelo'];?></li>
+                            <li style="display:none" id="marca" class="list-group-item2 rounded border-bottom"><span class="color">Marca:</span> <?php echo $infoAnuncio[0]['marca'];?></li>
+                            <li style="display:none" id="tipo" class="list-group-item2 rounded border-bottom"><span class="color">Tipo:</span> <?php echo $infoAnuncio[0]['tipo'];?></li>
+                            <li style="display:none" id="tamanoCuadro" class="list-group-item2 rounded border-bottom"><span class="color">Tamaño de Cuadro:</span> <?php echo $infoAnuncio[0]['tamanoCuadro'];?></li>
+                            <li style="display:none" id="tamanoAro" class="list-group-item2 rounded border-bottom"><span class="color">Tamaño de Aro:</span> <?php echo $infoAnuncio[0]['tamanoAro'];?></li>
+                     
+                        <li class="list-group-item2 rounded border-bottom"><span class="color">Tiempo restante:</span> 
 
-                <div class="col-lg-6">
+                        <?php 
+                        $now = time(); // or your date as well
+                        $your_date = strtotime($infoAnuncio[0]['fechaCaducidad']);
+                        $datediff = $your_date - $now;
 
-                    <br>
-                    <ul>
-                        <li><span class="color">Provincia:</span> <?php echo $infoAnuncio[0]['provincia'];?></li>
-                        <li><span class="color">Tel / Cel:</span> <?php echo $infoAnuncio[0]['telefono'];?></li>
-                        <li><span class="color">Accesorio:</span> <?php echo $infoAnuncio[0]['accesorio'];?></li>
-                        <li><span class="color">Marca:</span> <?php echo $infoAnuncio[0]['marca'];?></li>
-                        <li><span class="color">Modelo:</span> <?php echo $infoAnuncio[0]['modelo'];?></li>
-                        <li><span class="color">Accion:</span> <?php echo $infoAnuncio[0]['accion'];?></li>
-                        <li><span class="color">Caduca:</span> <?php echo $infoAnuncio[0]['fechaCaducidad'];?></li>
+                        $end    = date_create($infoAnuncio[0]['fechaCaducidad']);
+                        $start 	= date_create(); // Current time and date
+                        $diff  	= date_diff( $start ,  $end );
+                        
+                        if($diff->days > 1){
+                            echo  $diff->days. ' dias, ';
+                        }else if ($diff->days == 1){
+                            echo  $diff->days. ' dia, ';
+                        }                       
+                        if($diff->h > 1){
+                            echo  $diff->h. ' horas y ';
+                        }else if ($diff->h == 1){
+                            echo  $diff->h. ' hora y ';
+                        }   
+                        if($diff->i > 1){
+                            echo  $diff->i. ' minutos.';
+                        }else if ($diff->i == 1){
+                            echo  $diff->i. 'minuto.';
+                        }   
+           
+                        ?> </li>
                     </ul>
-
                 </div>
-
-                <div>
-                    <br>
-                    <p><strong>Descripcion</strong></p>
-                    <p><?php echo $infoAnuncio[0]['descripcion']; ?></p>
+            </div>
+            <div class="contenidoAnuncioPlantilla">
+                <div class="row " >
+                    <h5>Descripcion de Anuncio.</h5>
                 </div>
-
-                <br>
-                <p><i class="fas fa-chart-bar"> <?php echo $infoAnuncio[0]['numeroVisitas']; ?> total vistas</i></p>
-
-                <div class="clr"></div>
-            </div> <!-- fin row texto -->
-        </div> <!-- fin row de anuncios individuales -->
-
-        <div class="container estilo-border-sub anuncio-ver2">
-            <h2 class="dotted">Dejar una Respuesta</h2>
-            <p>Conectado como <a href="#"><?php echo $infoAnuncio[0]['nombre'];?></a>
-            <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" autocomplete="off">
-                <div class="form-group">
-                    <td><textarea name="comment" rows="4" cols="80" id="comment" class="required form-control" tabindex="4"></textarea></td>
+                <div  class="row " >
+                    <?php echo $infoAnuncio[0]['descripcion'];?>
                 </div>
-                <input type="submit" name="submit" value="Enviar" class="btn btn-info sub">
-            </form>
+                <div class="row" >
+                    <p>
+                        <i class="far fa-chart-bar"></i> Cantidad Total de Visitas: <?php echo $infoAnuncio[0]['numeroVisitas'];?>
+                    </p>
+                 
+                </div>
+            </div>
         </div>
+<!--         
+        <div class="col-sm divPerfectoAnuncios" > 
+            <div class="container estilo-border-sub anuncio-ver2">
+                <h2 class="dotted">Dejar una Respuesta</h2>
+                <p>Conectado como <a href="#"><?php echo $infoAnuncio[0]['nombre'];?></a>
+                <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" autocomplete="off">
+                    <div class="form-group">
+                        <td><textarea name="comment" rows="4" cols="80" id="comment" class="required form-control" tabindex="4"></textarea></td>
+                    </div>
+                    <input type="submit" name="submit" value="Enviar" class="btn btn-info sub">
+                </form>
+            </div>
+        </div>-->
+    </div> 
 
+    <div class="col-sm col-lg-4 bg-light divPerfecto" >
 
-    </div> <!-- fin del row de anuncios -->
-
-
-    <!-- row derecho de vendedor y publicidades -->
-    <div class="col-lg-4">
         <!-- aqui publicidad -->
-        <br>
         <div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
@@ -82,30 +132,31 @@
             <div class="tab-content border perfilPequeno" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="row">
-                        <div class="col-lg-4">
-                            <br>
+                        <div class="col-sm">
                             <div id="userphoto">
-                                <p class='image-thumb'><img alt='' src='https://secure.gravatar.com/avatar/bedc9843e5f998be04d94eae87ec0fae?s=140&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/bedc9843e5f998be04d94eae87ec0fae?s=280&amp;d=mm&amp;r=g 2x' class='avatar avatar-140 photo' height='100' width='100' /></p>
+                                <p class='image-thumb'> <img src="<?php echo base_url('Assets/img/userIcon.png'); ?>" width="120" height="100"></p>
                             </div>
                         </div>
-                        <div class="col-lg-8">
-                            <br>
-                            <span> <strong> Listado por:</strong></span>
-                            <br><a href="https://repecho.com/author/gomezjl/"><?php echo $infoAnuncio[0]['nombre'];?></a>
-                            <br>
-                            <span> <strong> Miembro Desde:</strong></span><br>
+                        <div class="col-sm">
+                              <h6>Anunciante:</h6>
+                              <a href="<?php echo base_url()?>Anuncios/AnunciosUsuario/<?php echo $infoAnuncio[0]['idUsuario']; ?> " >
+                                        <?php echo $infoAnuncio[0]['nombre'] ?>
+                                    </a> 
+                              <h6>Miembro Desde:</h6>                
                                 <?php
-                                $string=date_create($infoAnuncio[0]['fechaCreacionUsr']);
-                                echo date_format($string,'Y-m-d');
+                                     $date = date_create($infoAnuncio[0]['fechaCreacionUsr']);
+                                     $fechaCreacion = date_create_from_format('Y-m-d H:i:s', $infoAnuncio[0]['fechaCreacionUsr']);
+                                     echo strftime("%d de %B, %Y",$fechaCreacion->getTimestamp());
                                 ?>
                         </div>
-                    </div><br>
+                    </div>
                     <div class="container">
-                        <h5>Otros artículos enumerados por <?php echo $infoAnuncio[0]['nombre'];?></h5>
-                        <ul>
-                            <li>No se encontraron otros anuncios para este anunciante.</li>
-                        </ul>
-                        <p>Últimos artículos enumerados por <?php echo $infoAnuncio[0]['nombre'];?> &raquo;</p>
+                        <h6>Últimos artículos enumerados por <?php echo $infoAnuncio[0]['nombre'];?></h6>
+                       <h4>
+                       <a href="<?php echo base_url()?>Anuncios/AnunciosUsuario/<?php echo $infoAnuncio[0]['idUsuario']; ?> " >
+                            <i class="fas fa-arrow-circle-right"></i>
+                        </a> 
+                       </h4>
                     </div>
                 </div>
 
@@ -136,18 +187,70 @@
 
             </div> <!--final de zona perfil y contacto-->
         </div> <!--div final de perfil-->
-
-        <!-------------------------------publicidad------------------------------------>
-        <div>
-            <div class="estilo-border-sub espacioEntrePublicidad">
-                <!-- para poner la publicidad se debe quitar el padding de styles de espacioEntrePublicidad -->
-            </div>
-
-            <div class="estilo-border-sub espacioEntrePublicidad">
-                <!-- para poner la publicidad se debe quitar el padding de styles  de espacioEntrePublicidad-->
-            </div>
-        </div> <!-- espacio de la publicidad -->
-
-    </div> <!--terminio del lado derecho-->
-
 </div>
+    <!-- row ooooooooooooooooooooooollllllllllllllllllddddddddddddddddddddddddddddddddddddy respuesta -->
+<div class="modal fade" id="myModalImgDisplay"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      </div>
+      <div class="modal-body">
+            <img  id="imgDentroDeModal" style="width:100%;max-width:300px" src="" alt="">  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+          window.addEventListener("load", suBcategoria);
+///////////////////modal de imagenes en grande////////////
+    function imgGrande(img){
+        var imgEnModal = document.getElementById('imgDentroDeModal');
+        //imgEnModal.style ="width: 75% !important ; max-height: 85% !important ; overflow-y: hidden !important ;";
+    
+        imgEnModal.src = img;
+
+        $('#myModalImgDisplay').modal('show');
+    }
+
+/////////////////// escondiendo los datos/////////
+    function suBcategoria() {
+    
+        var categoria = document.getElementById("categoria");
+     
+            var categoriaActual = categoria.value;
+          
+          
+            if(categoriaActual == 'Accesorios')
+            {
+                document.getElementById("accesorio").style.display = 'block';
+                document.getElementById("marca").style.display = 'block';
+                document.getElementById("modelo").style.display = 'block';
+            }
+            else if(categoriaActual == 'Bicicletas')
+            {
+                document.getElementById("tipo").style.display = 'block';
+                document.getElementById("marca").style.display = 'block';
+                document.getElementById("modelo").style.display = 'block';
+                document.getElementById("tamanoCuadro").style.display = 'block';
+                document.getElementById("tamanoAro").style.display = 'block';
+            }
+            else if(categoriaActual == 'Componentes')
+            {
+                document.getElementById("tipo").style.display = 'block';
+                document.getElementById("marca").style.display = 'block';
+                document.getElementById("modelo").style.display = 'block';
+            }
+            else if(categoriaActual == 'Servicios')
+            {
+               
+            }
+    
+    }
+
+</script>

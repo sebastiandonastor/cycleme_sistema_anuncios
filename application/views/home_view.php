@@ -1,9 +1,6 @@
-<?php echo form_open('Home/Buscar'); ?>
+<?php setlocale(LC_ALL, 'es_ES'); echo form_open('Home/Buscar'); ?>
 <div class="mt-4 border border-dark rounded bg-secondary">
     <div class="input-group ">
-
-
-
 
         <?php echo form_input(array(
             'class' => 'form-control',
@@ -32,50 +29,78 @@
 
 <?php echo form_close(); ?>
 
-<div class="mt-4 row">
+<div class="mt-3 row">
     <h2 class="col-sm-12 col-md-9">Anuncios Recientes</h2>
-    <button class="col-sm-12 col-md-3 btn btn-dark" onclick="location.href ='<?php $redireccion = ($this->session->userdata('idUsuario') == null) ? 'Cuentas' : 'Anuncios' ; echo base_url($redireccion); ?>';">Anunciate</button>
+    <button class="col-sm btn btn-dark" onclick="location.href ='<?php $redireccion = ($this->session->userdata('idUsuario') == null) ? 'Cuentas' : 'Anuncios/opcion/Crear' ; echo base_url($redireccion); ?>';">Anunciate</button>
 </div>
-
-<?php foreach($Anuncios as $anuncio){ ?>
-    <div class="row">
-        <div class="col-lg-9">
-            <div class="container estilo-border-sub">
+<div class="row " >
+    <div class="col-sm col-lg-8" >
+<?php  foreach($Anuncios as $anuncio){ 
+         $foto  = explode(',',  $anuncio['foto']);
+    ?>
+    <div class="col-sm divPerfectoAnuncios" > 
                 <div class="row">
-                    <div class="col-lg-3 text-center">
-                        <a href="#" title="Prueba" class="preview" data-rel="#">
-                            <img  width="150" height="150"  src="/cycleme_sistema_anuncios/temp_img/<?php echo $anuncio['foto'];?>" class="attachment-ad-medium size-ad-medium" alt="promo 2 croco" srcset="" sizes="(max-width: 120px) 100vw, 120px" >
-                        </a>
-                    </div> <!-- fin row img -->
-
-                    <div class="col-lg-9">
-
-                        <h5 class="text-wrap"><a href="<?php $urlAnuncio = 'Anuncios/ver/'.$anuncio['idAnuncio']; echo base_url($urlAnuncio); ?>"><?php echo $anuncio['titulo']; ?></a> </h5>
-                        <p class="post-meta espaciadoDeAnuncio">
-                            <span class="dashicons-before folder"><i class="fa fa-list"></i><a href="#" rel="tag"><font size="-1"> <?php echo $anuncio['categoria'] ?> (subcategoria) </font></a></span> <span class="dashicons-before owner"><i class="fas fa-user-tie"></i><font size="-1"> <?php echo $anuncio['nombre'] ?>(usuario) </font></a></span> <span class="dashicons-before clock"><span><i class="fas fa-clock"></i><font size="-1">22 horas atrás</font></span></span>
-                        </p>
-                        <p class="lead block-with-text espaciadoDeAnuncio"><font size="-1"> <?php echo $anuncio['descripcion'];?> </font> </p>
-                        <p class="text-black-50"><font size="-1"></font></p>
-
-                        <span class="tag-head text-md-left text-center h5 float-left espaciadoDeAnuncio">
-                        <p class="text-black-50"><font size="-1"><?php //echo $numeroVisitas; ?> total vistas</font></p>
-                        </span>
-                        <span class="tag-head text-md-left text-center h5 float-right espaciadoDeAnuncio">
-                            <p class="post-price badge badge-secondary"><?php echo $anuncio['precio']; ?></p>
-                        </span>
-
+                    <div class="col-sm col-lg-3 text-center" onmouseout="hideImage();" class=" rounded"  onmouseover="showImage('/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>');" >
+                        <a href="<?php $urlAnuncio = 'Anuncios/ver/'.$anuncio['idAnuncio']; echo base_url($urlAnuncio); ?>"  >
+                            <img width="120" height="120" class="rounded" src="/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>" > </a>
                     </div>
+           
+                    <div class="col-sm  col-lg-9 anunciosDetalles tituloAnuncio"  >
+                        <div class="row">
+                                    <a href="<?php echo base_url()?>Anuncios/ver/<?php echo $anuncio['idAnuncio']?>">
+                                    <h6 class="limitartitulo"> <?php echo $anuncio['titulo']; ?> </h6>
+                                </a>
+                        </div>
+                        <div class="row contenidoAnuncio">
+                            <span>
+                                <i class="fa fa-list"></i>
+                                <font size="-1">
+                                    <a href="#" rel="tag"> 
+                                        <?php echo $anuncio['categoria'] ?> (subcategoria)     
+                                    </a>
+                                </font>
+                            </span>
+                            <span> 
+                                <i class="fas fa-user-tie"></i>
+                                <font size="-1"> 
+                                <a href="<?php echo base_url()?>Anuncios/AnunciosUsuario/<?php echo $anuncio['idUsuario_fk']; ?> " >
+                                            <?php echo $anuncio['nombre'] ?>
+                                    </a>
+                                </font>
+                            </span>
+                            <span> 
+                                <i class="fas fa-clock"></i>
+                                <font size="-1"> 
+                                    <?php 
+                                    $fechaCreacion = date_create_from_format('Y-m-d H:i:s', $anuncio['fechaCreacion']);
+                                    echo strftime("%d de %B, %Y",$fechaCreacion->getTimestamp());
+                                    ?>
+                                </font>
+                            </span>
+                        </div>
+                        <div class="row contenidoAnuncio">
+                            <font size="-1">
+                                <p class="limitarDescrip">
+                                    <?php echo $anuncio['descripcion'];?>
+                                </p>
+                            </font>
+                        </div>
 
-                    <div class="clr"></div>
-                </div> <!-- fin row texto -->
+                        <div class="row">
+                            <div class="col-sm contenidoAnuncio">
+                                <b>Total de Visitas:</b> <?php echo $anuncio['numeroVisitas']; ?> 
+                            </div>
+                            <div class="col-sm ">
+                                <i class="fas fa-tag"></i><?php echo $anuncio['precio']; ?>
+                            </div>
+                        </div>
+
+                     </div>
+                </div>
             </div>
-        </div>
-    </div>
+    <?php } ?>
 
-
-<?php } ?>
-
-<div class="mx-auto">
+<div >
 <nav aria-label="...">
     <ul class="pagination">
         <?php if($pagina == 1) : ?>
@@ -84,15 +109,17 @@
         </li>
 
             <?php elseif($pagina > 1) : ?>
+            <li class="page-item">
                 <a class="page-link" href="<?php $url = 'Home/index/'.($pagina-1);
                 echo base_url($url);?>">Anterior</a>
-
+            </li>
             <?php endif; ?>
 
             <?php for($i = 0; $i < $cantidadAnuncios; $i++) { ?>
                 <li class="page-item">
                     <a class="page-link" href="<?php $url = 'Home/index/'.($i+1);
-                    echo base_url($url); ?>"><?php echo $i + 1; ?></a></li>
+                    echo base_url($url); ?>"><?php echo $i + 1; ?></a>
+                </li>
 
             <?php } ?>
 
@@ -109,4 +136,29 @@
         <?php endif; ?>
     </ul>
 </nav>
+</div>
+</div>
+
+<div class="col-sm col-lg-4 bg-light divPerfecto" >
+  <h5>Los banners del demomino maximo 3</h5>
+</div>
+
+</div>
+
+<!-- Modal -->
+<div  >
+    <div  class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
+        <div  class="modal-dialog rounded" role="document">
+            <div class="modal-content text-center ">
+                <div class="modal-body">
+                    <img style="width:100%;max-width:300px"   src=""  id="imgModal" >
+                </div>
+                <div class="modal-footer bg-white">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">Cerrar
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
