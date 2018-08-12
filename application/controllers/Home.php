@@ -7,7 +7,6 @@
             if(!is_numeric($id)){
                 redirect('Home');
             }
-
             $data['main_view'] = 'home_view';
             $data['titulo'] = 'CycleMe';
             $data['AccesoriosNum'] = $this->categorias('Accesorios');
@@ -21,8 +20,14 @@
             $inicio = ($pagina > 1) ? ($postPorPagina * $pagina - $postPorPagina) : 0;
             $data['Anuncios'] = $this->Anuncio_model->getAnunciosPorPagina($postPorPagina,$inicio);
             $data['cantidadAnuncios'] = ceil($this->Anuncio_model->getAnunciosVisi() / $postPorPagina);
-
             $data['pagina'] = $id;
+        $this->load->model('Categoria_model');
+            $data['Accesorios'] = $this->Categoria_model->getSubCategoria('Accesorios');
+            $data['Bicicletas'] = $this->Categoria_model->getSubCategoria('Bicicletas');
+            $data['Componentes'] = $this->Categoria_model->getSubCategoria('Componentes');
+            $data['Servicios'] = $this->Categoria_model->getSubCategoria('Servicios');
+
+
             $this->load->model('Usuario');
             $this->load->view('Layouts/main',$data);
         }

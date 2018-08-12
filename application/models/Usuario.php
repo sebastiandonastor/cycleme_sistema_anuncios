@@ -8,9 +8,6 @@ class Usuario extends CI_Model {
         return $this->usrPorEmail($usuarioCrear['e-mail']);
     }
 
-
-
-
     public function existeUsuario($usuarioLogin){
         $this->db->where('e-mail',$usuarioLogin['email']);
         $this->db->where('contrasena',$usuarioLogin['password']);

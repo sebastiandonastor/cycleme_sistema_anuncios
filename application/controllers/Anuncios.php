@@ -4,6 +4,7 @@ class Anuncios extends CI_Controller
 {
     public function index($id = 1)
     {
+        
         if($this->session->userdata('idUsuario') == null){
             redirect('Home');
         }
@@ -272,17 +273,8 @@ class Anuncios extends CI_Controller
     }
 
     function Eliminar($id){
-        $estado = $this->Anuncio_model->delete_anuncios($id);
-
-        if($estado > 0){
-            $data = array('exito'=> "Anuncio Eliminado");
-            $this->session->set_flashdata($data);
-            $this->index();
-        }else{
-            $data = array('error'=> "Anuncio No Encontrado");
-            $this->session->set_flashdata($data);
-            $this->index();
-        }
+        $this->Anuncio_model->delete_anuncios($id);
+        $this->index();
     }
 
     function Estado($id){
@@ -440,8 +432,6 @@ class Anuncios extends CI_Controller
                 'marca'=> $marca,'tamanoCuadro'=> $tamanoCuadro,'modelo'=> $modelo, 'tamanoAro'=> $tamanoAro, 'foto'=>  $urlImg  );
             }
         
-
-
             $this->Anuncio_model->update_anuncios( $idAnuncio ,$data );
 
             $this->index();
@@ -507,6 +497,8 @@ class Anuncios extends CI_Controller
         $this->load->view('Layouts/main',$data);
 
     }
+
+
 
 
 
