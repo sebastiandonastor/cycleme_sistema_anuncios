@@ -1,4 +1,5 @@
-<?php setlocale(LC_ALL, 'es_ES'); echo form_open('Home/Buscar'); ?>
+<?php setlocale(LC_ALL, 'es_ES'); ?>
+<?php echo form_open('Buscar/index',array('method' => 'GET')); ?>
 <div class="mt-4 border border-dark rounded bg-secondary">
     <div class="input-group ">
 
@@ -15,11 +16,24 @@
         </div>
 
         <div class="input-group-append">
-            <select id="" class="custom-select text-white bg-dark btn btn-dark btn-block">
-                <option selected >Categoria</option>
-                <option>Accesorios</option>
-                <option>Bicicletas</option>
-                <option>Servicios</option>
+            <select id="s" name="categoria" class="custom-select text-white bg-dark btn btn-dark btn-block" style="max-width: 109px">
+                <option value="todos">Todos</option>
+                <option value="Accesorios">Accesorios</option>
+                <?php foreach($Accesorios as $accesorio) : ?>
+                    <option value="<?php echo $accesorio['categoria']?>">&nbsp;&nbsp;&nbsp;<?php echo $accesorio['categoria']?></option>
+                <?php endforeach; ?>
+                <option value="Bicicletas">Bicicletas</option>
+                <?php foreach($Bicicletas as $bicicleta) : ?>
+                    <option value="<?php echo $bicicleta['categoria']?>">&nbsp;&nbsp;&nbsp;<?php echo $bicicleta['categoria']?></option>
+                <?php endforeach; ?>
+                <option value="Componentes">Componentes</option>
+                <?php foreach($Componentes as $componente) : ?>
+                    <option value="<?php echo $componente['categoria']?>">&nbsp;&nbsp;&nbsp;<?php echo $componente['categoria']?></option>
+                <?php endforeach; ?>
+                <option value="Servicios">Servicios</option>
+                <?php foreach($Servicios as $servicio) : ?>
+                    <option value="<?php echo $servicio['categoria']; ?>">&nbsp;&nbsp;&nbsp;<?php echo $servicio['categoria']; ?></option>
+                <?php endforeach; ?>
             </select>
         </div>
 
@@ -35,7 +49,7 @@
 </div>
 <div class="row " >
     <div class="col-sm col-lg-8" >
-<?php  foreach($Anuncios as $anuncio){ 
+<?php  foreach($Anuncios as $anuncio){
          $foto  = explode(',',  $anuncio['foto']);
     ?>
     <div class="col-sm divPerfectoAnuncios" > 

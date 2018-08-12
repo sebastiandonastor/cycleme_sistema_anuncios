@@ -91,9 +91,9 @@ class Anuncio_model extends CI_Model {
         $result  = $this->db->get('categorias');
         return $result->result();
     }
-    
+
     function GetsubCategorias( $id){
-        $this->db->where(['idCategoria' => $id]); 
+        $this->db->where(['idCategoria' => $id]);
         $result  = $this->db->get('categorias');
         return $result->row(0);
     }
@@ -192,6 +192,78 @@ class Anuncio_model extends CI_Model {
         $data = array('numeroVisitas' => $cantidad + 1);
         $this->db->where('idAnuncio',$id);
         $this->db->update('anuncios', $data);
+    }
+
+    public function getAnunciosVisibles(){
+
+        $this->db->select('*');
+        $this->db->from('anuncios');
+        $this->db->join('categorias','idCategorias_fk = idCategoria');
+        $this->db->join('usuario','idUsuario_fk = idUsuario');
+
+        $this->db->where('estado',1);
+        $resultado = $this->db->get()->result_array();
+        return $resultado;
+    }
+
+    public function getAnunciosLike($buscar,$categoria){
+        $tipoCategoria = 'categoria';
+
+        if($this->esCategoriaPrincipal($categoria)){
+            $tipoCategoria = 'categoriaPrincipal';
+        }
+
+        $this->db->select('*');
+        $this->db->from('anuncios');
+        $this->db->join('categorias','idCategorias_fk = idCategoria');
+        $this->db->join('usuario','idUsuario_fk = idUsuario');
+
+
+        $this->db->like('titulo',$buscar,'both');
+        $this->db->or_like('descripcion',$buscar,'both');
+        $this->db->or_like('accesorio',$buscar,'both');
+        $this->db->having('estado',1);
+        $this->db->order_by('idAnuncio', 'DESC');
+        if($categoria != 'todos') {
+            $this->db->having($tipoCategoria, trim($categoria));
+        }
+
+        $resultados = $this->db->get()->result_array();
+        return $resultados;
+
+
+    }
+
+    public function esCategoriaPrincipal($categoria){
+        $categoriasPrincipales = array('Accesorios','Bicicletas','Componentes','Servicios');
+
+        foreach($categoriasPrincipales as $cp){
+            if($cp == $categoria){
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    public function getAnunciosPorCategoriaPrin($categoria){
+        $tipoCategoria = 'categoria';
+
+        if($this->esCategoriaPrincipal($categoria)){
+            $tipoCategoria = 'categoriaPrincipal';
+        }
+
+        $this->db->select('*');
+        $this->db->from('anuncios');
+        $this->db->join('categorias','idCategorias_fk = idCategoria');
+        $this->db->join('usuario','idUsuario_fk = idUsuario');
+
+        $this->db->where('estado',1);
+        $this->db->where($tipoCategoria,trim($categoria));
+
+        $resultados = $this->db->get()->result_array();
+        return $resultados;
     }
 
 
