@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lora|Montserrat" rel="stylesheet">
     
-    <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/bootstrap.min.css"> -->
+
     <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/lightbox.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/lity.min.css">
@@ -62,9 +62,20 @@
                         <div class="dropdown-menu logOutAria" x-placement="bottom-start ">
                         <a class="dropdown-item" href="<?php echo base_url('Anuncios/opcion/Crear') ?>" >Publicar Anuncio</a>
                         <a class="dropdown-item" href="<?php echo base_url('Anuncios') ?>" >Manejar Anuncio</a>
+                            <?php if($this->session->userdata('tipoUsuario') == 'admin'): ?>
+                                <div class="dropdown-divider"></div>
+
+                                <a class="dropdown-item text-info" href="<?php echo base_url('Admin/crearAdm') ?>" >Crear admin</a>
+                                <a class="dropdown-item text-info" href="<?php echo base_url('Admin/publicidad') ?>" >Manejar publicidad</a>
+                                <a class="dropdown-item text-info" href="<?php echo base_url('Admin/noticias') ?>" >Crear Noticias</a>
+                                <a class="dropdown-item text-info" href="<?php echo base_url('Admin/eventos') ?>" >Crear Evento</a>
+
+                            <?php endif; ?>
+
                         <div class="dropdown-divider"  ></div>
                         <a class="dropdown-item log-out" href="<?php echo base_url('Cuentas/cerrar') ?>"> Cerrar Sesion </a>
                         </div>
+
                     </li>
                 <?php endif; ?> 
 

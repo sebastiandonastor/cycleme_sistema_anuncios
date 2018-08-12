@@ -20,7 +20,7 @@
             </div>
 
             <div class="form-group">
-                <?php echo form_label('Nombre','nombre'); ?>
+                <?php echo form_label('Apodo','nombre'); ?>
 
                 <?php $datos= array(
                     'class' => 'form-control',
