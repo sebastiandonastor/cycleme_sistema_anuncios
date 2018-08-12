@@ -40,7 +40,7 @@
     ?>
     <div class="col-sm divPerfectoAnuncios" > 
                 <div class="row">
-                    <div class="col-sm col-lg-3 text-center" onmouseout="hideImage();" class=" rounded"  onmouseover="showImage('/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>');" >
+                    <div class="col-sm col-lg-3 text-center"  class=" rounded"  onclick="showImage('/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>');" >
                         <a href="<?php $urlAnuncio = 'Anuncios/ver/'.$anuncio['idAnuncio']; echo base_url($urlAnuncio); ?>"  >
                             <img width="120" height="120" class="rounded" src="/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>" > </a>
                     </div>
@@ -154,7 +154,7 @@
                     <img style="width:100%;max-width:300px"   src=""  id="imgModal" >
                 </div>
                 <div class="modal-footer bg-white">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">Cerrar
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>

@@ -1,6 +1,6 @@
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
-  })
+  });
 
     function showImage(src){
         //$('#myModal').modal({ backdrop: false});

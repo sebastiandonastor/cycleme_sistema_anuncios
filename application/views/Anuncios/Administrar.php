@@ -58,7 +58,7 @@
                         if($anuncio['estado'] > 0 ){ ?>
                             <td > <b class="text-success" >Activo</b>  <br><i class="small">( <?php echo strftime("%d de %B, %Y",$fechaCaducidad->getTimestamp()); ?> )</i></td>
                             <td >
-                                <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio['idAnuncio'] ?>" 
+                                <a href="<?php echo base_url('Anuncios/Editar/'.$anuncio['idAnuncio']); ?>" 
                                 class="btn btn-sm text-warning" data-toggle="tooltip" data-placement="bottom" 
                                 title="Editar Anuncio"><i class="fas fa-pencil-alt"></i></a>
                             
@@ -74,7 +74,7 @@
                         <?php }else{  ?>
                         <td >Inactivo</td>
                         <td >
-                        <a href="<?php echo base_url(); ?>Anuncios/Editar/<?php echo $anuncio['idAnuncio'] ?>" 
+                            <a href="<?php echo base_url('Anuncios/Editar/'.$anuncio['idAnuncio']); ?>" 
                             class="btn btn-sm text-warning" data-toggle="tooltip" data-placement="bottom" 
                             title="Editar Anuncio"><i class="fas fa-pencil-alt"></i></a>
 
