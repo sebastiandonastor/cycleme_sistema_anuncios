@@ -26,4 +26,8 @@ class Admin extends CI_Controller {
         $this->load->view('Layouts/main',$data);
     }
 
+    function crearAdmin(){
+        $this->load->model('Usuario');
+    }
+
 }
