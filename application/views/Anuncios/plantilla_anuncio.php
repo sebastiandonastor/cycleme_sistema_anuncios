@@ -114,7 +114,7 @@ setlocale(LC_ALL, 'es_ES');
         </div>-->
     </div> 
 
-    <div class="col-sm col-lg-4 bg-light divPerfecto" >
+    <div class="col-sm col-lg-4  divPerfecto" >
 
         <!-- aqui publicidad -->
         <div>
@@ -129,7 +129,7 @@ setlocale(LC_ALL, 'es_ES');
 
             <!-------------------------------perfil------------------------------------>
 
-            <div class="tab-content border perfilPequeno" id="myTabContent">
+            <div class="tab-content border perfilPequeno bg-light" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="row">
                         <div class="col-sm">
@@ -187,6 +187,15 @@ setlocale(LC_ALL, 'es_ES');
 
             </div> <!--final de zona perfil y contacto-->
         </div> <!--div final de perfil-->
+        <div class="col-sm  " style="   text-align:center; ">
+            <?php  foreach($publicidades as $publicidad){ ?>
+                <div class="cols-sm col-lg bg-light text-center" id="publicidad">
+                    <a href="<?php echo $publicidad['href']; ?> ">
+                        <img style="max-width: 100%; max-height: 100%;" class="rounded"  src="/cycleme_sistema_anuncios/publicidad/<?php echo $publicidad['img']; ?> ">
+                    </a>
+                </div>
+            <?php } ?>
+        <div>
 </div>
     <!-- row ooooooooooooooooooooooollllllllllllllllllddddddddddddddddddddddddddddddddddddy respuesta -->
 <div class="modal fade" id="myModalImgDisplay"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">

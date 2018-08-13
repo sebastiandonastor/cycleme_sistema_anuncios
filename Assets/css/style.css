@@ -101,7 +101,10 @@ select.btn-mini {
     border-radius: 20px;
     text-align:center; 
 }
-
+#publicidad{
+    margin:20px 0 20px 0;
+    padding:15px;
+}
 .plantilla-Anuncio{
     padding:15px;
     margin:15px 0 15px 0;
@@ -135,7 +138,6 @@ select.btn-mini {
     padding:15px;
     margin:15px;
     max-width: 275px;
-    background-color:rgba(134, 156, 170, 0.486); 
     top:0;  
     max-height:250px;   
     border-radius: 20px; 
@@ -193,7 +195,6 @@ select.btn-mini {
     padding:15px;
     margin:15px;
     max-width: 750px;
-    background-color:rgba(134, 156, 170, 0.486); 
     top:0; 
     border-radius: 20px; 
 }
@@ -202,7 +203,6 @@ select.btn-mini {
     padding:15px;
     margin:15px;
     max-width: 275px;
-    background-color:rgba(134, 156, 170, 0.486); 
     top:0;  
     max-height:250px;   
     border-radius: 20px; 
@@ -338,7 +338,9 @@ span.color{
     margin-bottom: -3px;
     
 }
-
+.icon-sizePublici{
+   font-size:  30px;
+}
 /* styles for '...' */ 
 .block-with-text {
     /* hide text if it more than N lines  */

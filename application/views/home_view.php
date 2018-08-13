@@ -61,9 +61,9 @@
            
                     <div class="col-sm  col-lg-9 anunciosDetalles tituloAnuncio"  >
                         <div class="row">
-                                    <a href="<?php echo base_url()?>Anuncios/ver/<?php echo $anuncio['idAnuncio']?>">
-                                    <h6 class="limitartitulo"> <?php echo $anuncio['titulo']; ?> </h6>
-                                </a>
+                            <a href="<?php echo base_url()?>Anuncios/ver/<?php echo $anuncio['idAnuncio']?>">
+                                <h6 class="limitartitulo"> <?php echo $anuncio['titulo']; ?> </h6>
+                            </a>
                         </div>
                         <div class="row contenidoAnuncio">
                             <span>
@@ -114,53 +114,55 @@
             </div>
     <?php } ?>
 
-<div >
-<nav aria-label="...">
-    <ul class="pagination">
-        <?php if($pagina == 1) : ?>
-        <li class="page-item disabled">
-            <a class="page-link" href="#">Anterior</a>
-        </li>
-
-            <?php elseif($pagina > 1) : ?>
-            <li class="page-item">
-                <a class="page-link" href="<?php $url = 'Home/index/'.($pagina-1);
-                echo base_url($url);?>">Anterior</a>
+    <div >
+    <nav aria-label="...">
+        <ul class="pagination">
+            <?php if($pagina == 1) : ?>
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Anterior</a>
             </li>
-            <?php endif; ?>
 
-            <?php for($i = 0; $i < $cantidadAnuncios; $i++) { ?>
+                <?php elseif($pagina > 1) : ?>
                 <li class="page-item">
-                    <a class="page-link" href="<?php $url = 'Home/index/'.($i+1);
-                    echo base_url($url); ?>"><?php echo $i + 1; ?></a>
+                    <a class="page-link" href="<?php $url = 'Home/index/'.($pagina-1);
+                    echo base_url($url);?>">Anterior</a>
                 </li>
+                <?php endif; ?>
 
-            <?php } ?>
+                <?php for($i = 0; $i < $cantidadAnuncios; $i++) { ?>
+                    <li class="page-item">
+                        <a class="page-link" href="<?php $url = 'Home/index/'.($i+1);
+                        echo base_url($url); ?>"><?php echo $i + 1; ?></a>
+                    </li>
 
-            <?php if($pagina >= $cantidadAnuncios) : ?>
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">Siguiente</a>
+                <?php } ?>
+
+                <?php if($pagina >= $cantidadAnuncios) : ?>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">Siguiente</a>
+                    </li>
+
+            <?php elseif($pagina < $cantidadAnuncios): ?>
+                <li class="page-item">
+                    <a class="page-link" href="<?php $url = 'Home/index/'.($pagina+1);
+                    echo base_url($url);?>">Siguiente</a>
                 </li>
-
-        <?php elseif($pagina < $cantidadAnuncios): ?>
-            <li class="page-item">
-                <a class="page-link" href="<?php $url = 'Home/index/'.($pagina+1);
-                echo base_url($url);?>">Siguiente</a>
-            </li>
-        <?php endif; ?>
-    </ul>
-</nav>
+            <?php endif; ?>
+        </ul>
+    </nav>
+    </div>
 </div>
-</div>
-
-<div class="col-sm col-lg-4 bg-light divPerfecto" >
-  <h5>Los banners del demomino maximo 3</h5>
-</div>
-
-</div>
-
-<!-- Modal -->
+<div class="col-sm  " style="   text-align:center; ">
+    <?php  foreach($publicidades as $publicidad){ ?>
+        <div class="cols-sm col-lg bg-light text-center" id="publicidad">
+            <a href="<?php echo $publicidad['href']; ?> ">
+                <img style="max-width: 100%; max-height: 100%;" class="rounded"  src="/cycleme_sistema_anuncios/publicidad/<?php echo $publicidad['img']; ?> ">
+            </a>
+        </div>
+    <?php } ?>
 <div  >
+<!-- Modal -->
+
     <div  class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false">
         <div  class="modal-dialog rounded" role="document">
             <div class="modal-content text-center ">

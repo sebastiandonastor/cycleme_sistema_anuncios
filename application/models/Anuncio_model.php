@@ -92,6 +92,15 @@ class Anuncio_model extends CI_Model {
         return $result->result();
     }
 
+    function GetCategoriasConteo( $categoriaPrincipal){
+        
+        $this->db->where(['categoriaPrincipal' => $categoriaPrincipal]); 
+        $result  = $this->db->get('categorias');
+        return $result->result();
+    }
+
+
+    
     function GetsubCategorias( $id){
         $this->db->where(['idCategoria' => $id]);
         $result  = $this->db->get('categorias');
@@ -127,7 +136,8 @@ class Anuncio_model extends CI_Model {
         return $this->db->count_all_results('anuncios');
     }
 
-    function getAnunciosPorPaginaUser($limite,$inicio){
+    function getAnunciosPorPaginaUser($limite,$inicio)
+    {
         $this->db->select('*');
         $this->db->from('anuncios');
         $this->db->join('categorias','idCategorias_fk = idCategoria');

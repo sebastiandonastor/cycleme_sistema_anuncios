@@ -151,29 +151,6 @@
   
   window.addEventListener("load", suBcategoria);
 
-  
-function checkMark(){
-    var seleccionado = document.getElementsByClassName("nav-link active show");
-    id = seleccionado[0].id;
-  
-    var iconoNo = document.querySelectorAll('.icono');
-    var iconoSi = document.querySelectorAll('.iconoSi');
-
-    for (var i=0; i<iconoNo.length; i++) 
-    {
-        if(iconoNo[i].id <= id )
-        {
-            iconoNo[i].style.display = 'none';
-        }
-    }
-    for (var i=0; i<iconoSi.length; i++) 
-    {
-        if(iconoSi[i].id <= id )
-        {
-            iconoSi[i].style.display = 'block';
-        }
-    }
-}
 /////////////////// escondiendo los datos/////////
 function suBcategoria() {
 

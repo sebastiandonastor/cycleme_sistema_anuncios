@@ -66,7 +66,7 @@
                                 <div class="dropdown-divider"></div>
 
                                 <a class="dropdown-item text-info" href="<?php echo base_url('Admin/crearAdm') ?>" >Crear admin</a>
-                                <a class="dropdown-item text-info" href="<?php echo base_url('Admin/publicidad') ?>" >Manejar publicidad</a>
+                                <a class="dropdown-item text-info" href="<?php echo base_url('Publicidad/index') ?>" >Manejar publicidad</a>
                                 <a class="dropdown-item text-info" href="<?php echo base_url('Admin/noticias') ?>" >Crear Noticias</a>
                                 <a class="dropdown-item text-info" href="<?php echo base_url('Admin/eventos') ?>" >Crear Evento</a>
 
@@ -113,12 +113,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="<?php echo base_url(); ?>/Assets/js/bootstrap.js"></script>
     <script src="<?php echo base_url(); ?>/Assets/js/javascript.js"></script>
-    <script src="js/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
-    <script src="js/popper.js"></script> 
-    <script src="js/bootstrap.min.js"></script> 
-    <script src="js/core.js"></script>
-    <script src="js/lightbox-plus-jquery.min.js"></script> 
-    <script src="js/lity.min.js"></script> 
+    <script src="<?php echo base_url(); ?>/Assets/js/popper.js"></script>
+    <script src="<?php echo base_url(); ?>/Assets/js/core.js"></script>
+    <script src="<?php echo base_url(); ?>/Assets/js/lity.min.js"></script>
+
+    <!-- errores <script src="<?php echo base_url(); ?>/Assets/js/lightbox-plus-jquery.min.js"></script> -->
+    
 
 </body>
 </html>

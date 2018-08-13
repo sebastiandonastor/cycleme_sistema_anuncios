@@ -27,6 +27,8 @@
             $data['Componentes'] = $this->Categoria_model->getSubCategoria('Componentes');
             $data['Servicios'] = $this->Categoria_model->getSubCategoria('Servicios');
 
+            $this->load->model('Publicidad_model');
+            $data['publicidades'] = $this->Publicidad_model->publicidadRamdon();
 
             $this->load->model('Usuario');
             $this->load->view('Layouts/main',$data);
@@ -38,6 +40,9 @@
         }
 
         public function pag_categorias(){
+            $this->load->model('Publicidad_model');
+            $data['publicidades'] = $this->Publicidad_model->publicidadRamdon();
+
             $data['main_view'] = 'Categorias/Todas_categorias';
             $data['titulo'] = 'CycleMe categorias';
             $data['AccesoriosNum'] = $this->categorias('Accesorios');
@@ -49,6 +54,9 @@
         }
 
         public function categorias_principales($categoria){
+            $this->load->model('Publicidad_model');
+            $data['publicidades'] = $this->Publicidad_model->publicidadRamdon();
+            
             $data['main_view'] = 'Categorias/categoria';
             $data['titulo'] = 'CycleMe categorias';
             $data['categoria_deseada'] = $categoria;

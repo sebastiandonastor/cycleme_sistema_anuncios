@@ -28,6 +28,9 @@ class Anuncios extends CI_Controller
 
         $data['pagina'] = $id;
 
+        $this->load->model('Publicidad_model');
+        $data['publicidades'] = $this->Publicidad_model->publicidadRamdon();
+
         $data['main_view'] = 'Anuncios/Administrar';
         $this->load->view('Layouts/main',$data);
 
@@ -35,7 +38,10 @@ class Anuncios extends CI_Controller
 
 
     public function ver($id = 0){
-
+   
+        $this->load->model('Publicidad_model');
+        $data['publicidades'] = $this->Publicidad_model->publicidadRamdon();
+        
         $this->load->model('Anuncio_model');
         if($id == 0 || !(is_numeric($id)) || !($this->Anuncio_model->existeAnuncio($id))){
             redirect('Home');
@@ -103,19 +109,19 @@ class Anuncios extends CI_Controller
         public function Detalles()
         {
             $this->form_validation->set_rules('provincia','Provincia','callback_requerido',array('requerido' => 'Debe seleccionar una Provincia'));
-            $this->form_validation->set_rules('telefono','Telefono','callback_requerido',array('requerido' => 'Debe digitar un Celular/Telefono'));
-            $this->form_validation->set_rules('accion','accion','callback_requerido',array('requerido' => 'Debe seleccionar una Accíon'));
+            $this->form_validation->set_rules('telefono','Telefono','callback_requerido',array('requerido' => 'Debe ingresar un Celular/Telefono'));
+            $this->form_validation->set_rules('accion','Accion','callback_requerido',array('requerido' => 'Debe seleccionar una Accíon'));
             $this->form_validation->set_rules('moneda','Moneda','callback_requerido',array('requerido' => 'Debe seleccionar una Moneda'));
-            $this->form_validation->set_rules('precio','Precio','callback_requerido',array('requerido' => 'Debe digitar un Precio'));
-            $this->form_validation->set_rules('titulo','Titulo','callback_requerido',array('requerido' => 'Debe dscribir un Titulo'));
+            $this->form_validation->set_rules('precio','Precio','callback_requerido',array('requerido' => 'Debe ingresar un Precio'));
+            $this->form_validation->set_rules('titulo','Titulo','callback_requerido',array('requerido' => 'Debe ingresar un Titulo'));
             $this->form_validation->set_rules('descripcion','Descripcion','callback_requerido|min_length[15]|max_length[300]', 
             array('requerido' => 'Debe escribir una Descripcion','min_length' => 'La Descripción debe tener más de 15 caracteres',
-            'max_length' => 'La Descripción debe tener un minimo 300 de  caracteres'));
+            'max_length' => 'La Descripción debe tener un minimo 300 de caracteres'));
     
             $categoria = $this->input->post('categoria');
             
             if( $categoria == 'Accesorios'){
-                $this->form_validation->set_rules('accesorio','Accesorio','callback_requerido',array('requerido' => 'Debe digitar un Accesorio'));
+                $this->form_validation->set_rules('accesorio','Accesorio','callback_requerido',array('requerido' => 'Debe ingresar un Accesorio'));
                 $this->form_validation->set_rules('marca','Marca','callback_requerido',array('requerido' => 'Debe seleccionar una Marca'));
             }else if( $categoria == 'Bicicletas'){
                 $this->form_validation->set_rules('tipo','Tipo','callback_requerido',array('requerido' => 'Debe seleccionar una Tipo'));
@@ -471,6 +477,9 @@ class Anuncios extends CI_Controller
 
     public function AnunciosUsuario( $idUser , $id = 1)
     {
+        $this->load->model('Publicidad_model');
+        $data['publicidades'] = $this->Publicidad_model->publicidadRamdon();
+        
         
         if(!is_numeric($id)){
             redirect('Home');

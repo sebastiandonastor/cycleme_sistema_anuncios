@@ -37,4 +37,12 @@ class Imagenes_model extends  CI_Model{
         }
         return false;
     }
+
+    function limiteImgUna(){
+        $numero_imagenes = sizeof($_FILES['upload']['tmp_name']);
+        if($numero_imagenes <= 1){
+            return true;
+        }
+        return false;
+    }
 }

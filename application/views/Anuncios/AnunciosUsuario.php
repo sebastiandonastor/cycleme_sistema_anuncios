@@ -131,9 +131,15 @@ setlocale(LC_ALL, 'es_ES');
         </div>
     </div>
 
-    <div class="col-sm col-lg-4 bg-light divPerfecto" >
-
-    </div>
+    <div class="col-sm" style="text-align:center; ">
+        <?php  foreach($publicidades as $publicidad){ ?>
+            <div class="cols-sm col-lg bg-light text-center" id="publicidad">
+                <a href="<?php echo $publicidad['href']; ?> ">
+                    <img style="max-width: 100%; max-height: 100%;" class="rounded"  src="/cycleme_sistema_anuncios/publicidad/<?php echo $publicidad['img']; ?> ">
+                </a>
+            </div>
+        <?php } ?>
+    <div>
 
 </div>
 

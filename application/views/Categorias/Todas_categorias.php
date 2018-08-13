@@ -1,7 +1,7 @@
 <br><br>
 
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-lg-8">
         
         <div class="container estilo-border rounded">
             <div class="container">
@@ -86,10 +86,16 @@ TR;
         </div> <!-- Fin del primer container -->
 
     </div> <!-- fin del espacio para las categorias -->
-
-    <div class="col-lg-3">
-        <!-- aqui la publicidad -->
-    </div> <!-- fin del espacio de la publicidad -->
+    <div class="col-sm  " style="   text-align:center; ">
+    <?php  foreach($publicidades as $publicidad){ ?>
+        <div class="cols-sm col-lg bg-light text-center" id="publicidad">
+            <a href="<?php echo $publicidad['href']; ?> ">
+                <img style="max-width: 100%; max-height: 100%;" class="rounded"  src="/cycleme_sistema_anuncios/publicidad/<?php echo $publicidad['img']; ?> ">
+            </a>
+        </div>
+    <?php } ?>
+<div  >
+    
 </div>
 
 
