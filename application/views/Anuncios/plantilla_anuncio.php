@@ -17,7 +17,8 @@ setlocale(LC_ALL, 'es_ES');
             <div class="row justify-content-between">
                 <div class="col-sm"  >
                     <div class="col-sm text-center"  >
-                    <img onclick="imgGrande('/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>');" src="/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>" width="180" height="200">
+                    <img onclick="imgGrande('/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>');" 
+                    src="/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>" width="180" height="200">
                         <div class="row imgDivStyle">
                         <?php $fotosTotal = sizeof($foto);
                                 if($fotosTotal > 1){  
@@ -190,7 +191,7 @@ setlocale(LC_ALL, 'es_ES');
             <?php  foreach($publicidades as $publicidad){ ?>
                 <div class="cols-sm col-lg bg-light text-center" id="publicidad">
                     <a href="<?php echo $publicidad['href']; ?> ">
-                        <img style="max-width: 100%; max-height: 100%;" class="rounded"  src="/cycleme_sistema_anuncios/publicidad/<?php echo $publicidad['img']; ?> ">
+                        <img style="max-width: 100%; max-height: 100%;" class="rounded"  src="/publicidad/<?php echo $publicidad['img']; ?> ">
                     </a>
                 </div>
             <?php } ?>

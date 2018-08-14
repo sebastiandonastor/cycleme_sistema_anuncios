@@ -35,10 +35,15 @@ class Categoria_model extends CI_Model{
         $this->db->select('categoria');
         $this->db->from('Categorias');
         $this->db->where('categoriaPrincipal',$categoria);
-        $resultado = $this->db->get()->result_array();
 
+        $poder = $this->db->get();
+
+        if( $poder->num_rows() > 0 ){
+            $resultado = $poder->result_array();
+        }
+      
         return $resultado;
-    }
+    }   
 
     public function getSubCategoriaCount($categoria){
 
