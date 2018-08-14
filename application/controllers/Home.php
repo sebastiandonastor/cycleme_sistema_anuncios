@@ -116,6 +116,8 @@
             $data['ComponentesNum'] = $this->categorias('Componentes');
             $data['ServiciosNum'] = $this->categorias('Servicios');
             $this->load->model('Usuario');
+            $this->load->Model('Noticia_model');
+            $data['noticias'] = $this->Noticia_model->obtenerNoticias();
             $this->load->view('Layouts/main',$data);
         }
 
