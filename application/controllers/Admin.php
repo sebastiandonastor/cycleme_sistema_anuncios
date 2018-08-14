@@ -5,6 +5,7 @@ class Admin extends CI_Controller {
     function crearAdm(){
         $data['titulo'] = 'Crear Administrador';
         $data['main_view'] = 'Admin/crearAdmin';
+        $this->load->model('Usuario');
         $this->load->view('Layouts/main',$data);
     }
 
@@ -24,10 +25,6 @@ class Admin extends CI_Controller {
         $data['titulo'] = 'Eventos';
         $data['main_view'] = 'Admin/publicidad';
         $this->load->view('Layouts/main',$data);
-    }
-
-    function crearAdmin(){
-        $this->load->model('Usuario');
     }
 
 }

@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-<h1>Admin create!</h1>e
-=======
 <section class="container-fluid">
     <section class="row justify-content-center">
         <section class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6">
 
-            <?php echo form_open(base_url('Registro/ValidarAdm'), array('class' => 'cuentas-container mt-4 mb-5', 'id' => 'adminform')); ?>
+            <?php echo form_open(base_url('RegistroAdm/ValidarAdm'), array('class' => 'cuentas-container mt-4 mb-5')); ?>
             <h2 class="text-center">Registro de Admin</h2>
             <div class="form-group">
                 <?php echo form_label('Email', 'email'); ?>
@@ -93,4 +90,3 @@
         </section> <!-- fin cols -->
     </section> <!-- fin row -->
 </section> <!-- fin container-fluid -->
->>>>>>> 113b4dabff866b2ff9d42bba7c6fbe3ca9c1260d

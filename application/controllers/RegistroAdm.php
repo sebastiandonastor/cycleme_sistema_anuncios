@@ -1,12 +1,10 @@
 <?php
 
-class Registro extends CI_Controller {
+class RegistroAdm extends CI_Controller {
 
     public function index(){
-        if($this->session->userdata('idUsuario')!= null){
-            redirect('Home');
-        }
-        $data['main_view'] = 'Cuentas/Registro';
+        
+        $data['main_view'] = 'Admin/crearAdmin';
         $data['titulo'] = 'Registro';
 
         //Esta parte la puse porque no supe como hacer funcionar el boton categorias de otra forma, si encuentras otra eres libre de borrarlo entonces
@@ -20,8 +18,7 @@ class Registro extends CI_Controller {
         $this->load->view('Layouts/main',$data);
     }
 
-
-    public function Validar(){
+    public function ValidarAdm(){
         $this->load->model('Usuario');
         
         $this->form_validation->set_rules('email','Email','callback_requerido|callback_esUnico|min_length[5]',array(
@@ -66,14 +63,14 @@ class Registro extends CI_Controller {
 
         $datos = array(
             'e-mail' => $this->input->post('email'),
-            'tipoUsuario' => 'cliente',
+            'tipoUsuario' => 'admin',
             'fechaCreacionUsr' => date('Y-m-d H:i:s'),
             'contrasena' => password_hash($this->input->post('pass'), PASSWORD_DEFAULT),
             'nombre' => $this->input->post('nombre'),
             'telefono' => $this->input->post('telefono')
         );
 
-        $datosUsr = $this->Usuario->crearUsuario($datos);
+        $datosUsr = $this->Usuario->crearAdmin($datos);
         $this->session->set_userdata($datosUsr[0]);
         redirect('Home/index');
 

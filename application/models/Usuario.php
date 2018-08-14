@@ -51,6 +51,6 @@ class Usuario extends CI_Model {
 
     public function crearAdmin($info){
         $result = $this->db->insert('usuario', $info);
-        return $this->usrPorEmail($usuarioCrear['e-mail']);
+        return $this->usrPorEmail($info['e-mail']);
     }
 }
