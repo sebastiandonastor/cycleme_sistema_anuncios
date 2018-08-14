@@ -68,7 +68,7 @@
                             <span>
                                 <i class="fa fa-list"></i>
                                 <font size="-1">
-                                    <a href="#" rel="tag"> 
+                                    <a href="<?php echo base_url()?>Home/categorias_secundarias/<?php echo $anuncio['categoria'] ?>" rel="tag"> 
                                         <?php echo $anuncio['categoria'] ?> (subcategoria)     
                                     </a>
                                 </font>
