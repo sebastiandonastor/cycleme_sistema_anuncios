@@ -37,6 +37,17 @@ class Usuario extends CI_Model {
         }
     }
 
+    public function existeUser($user){
+        $this->db->where('nombre',$user);
+        $this->db->get('usuario');
+
+        if($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function usrPorEmail($email){
         $this->db->where('e-mail',$email);
         $result = $this->db->get('usuario')->result_array();

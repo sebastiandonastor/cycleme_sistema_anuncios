@@ -28,8 +28,9 @@ class RegistroAdm extends CI_Controller {
             )
         );
 
-        $this->form_validation->set_rules('nombre','Nombre','callback_requerido|min_length[8]',array(
+        $this->form_validation->set_rules('nombre','Nombre','callback_requerido|callback_userEsUnico|min_length[8]',array(
                 'requerido' => 'El campo nombre es requerido',
+                'userEsUnico' => 'El apodo ya existe',
                 'min_length' => '*El campo nombre tiene que tener más de 7 caracteres*'
             )
         );
@@ -90,6 +91,10 @@ class RegistroAdm extends CI_Controller {
 
     function esUnico($valor){
         return !($this->Usuario->existeMail($valor));
+    }
+
+    function userEsUnico($valor){
+        return !($this->Usuario->existeUser($valor));
     }
 
 
