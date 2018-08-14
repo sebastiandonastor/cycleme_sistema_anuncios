@@ -72,7 +72,6 @@ class RegistroAdm extends CI_Controller {
         );
 
         $datosUsr = $this->Usuario->crearAdmin($datos);
-        $this->session->set_userdata($datosUsr[0]);
         redirect('Home/index');
 
 
