@@ -9,7 +9,7 @@ class Categoria_model extends CI_Model{
     }
 
     public function subCategorias($subcategoria){
-        $result = $this->db->query("SELECT * FROM anuncios INNER JOIN categorias ON anuncios.idCategorias_fk = categorias.idCategoria WHERE categorias.categoria='".$subcategoria."'"); 
+        $result = $this->db->query("SELECT * ,usuario.nombre FROM anuncios INNER JOIN categorias ON anuncios.idCategorias_fk = categorias.idCategoria INNER JOIN usuario ON anuncios.idUsuario_fk = usuario.idUsuario WHERE categorias.categoria='".$subcategoria."'"); 
         return $result->result_array();
     }
 
