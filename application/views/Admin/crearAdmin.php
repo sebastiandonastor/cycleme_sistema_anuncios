@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-<h1>Admin create!</h1>e
-=======
+<h1>Admin create!</h1>
 <section class="container-fluid">
     <section class="row justify-content-center">
         <section class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6">
@@ -93,4 +91,3 @@
         </section> <!-- fin cols -->
     </section> <!-- fin row -->
 </section> <!-- fin container-fluid -->
->>>>>>> 113b4dabff866b2ff9d42bba7c6fbe3ca9c1260d

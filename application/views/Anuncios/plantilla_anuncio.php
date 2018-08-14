@@ -160,7 +160,6 @@ setlocale(LC_ALL, 'es_ES');
                     </div>
                 </div>
 
-
                 <!-------------------------------contacta al creador------------------------------------>
 
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

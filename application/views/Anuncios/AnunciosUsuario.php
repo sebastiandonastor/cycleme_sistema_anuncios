@@ -35,10 +35,8 @@ setlocale(LC_ALL, 'es_ES');
                 <div class="col-sm divPerfectoAnuncios" >
                     <div class="row">
                         <div class="col-sm col-lg-3 text-center" class="rounded"  onclick="showImage('/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>');" >
-                            <a href="<?php $urlAnuncio = 'Anuncios/ver/'.$anuncio['idAnuncio']; echo base_url($urlAnuncio); ?>"  >
-                                <img width="120" height="120" class="rounded" src="/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>" >
-                            </a>
-                    </div>
+                            <img width="120" height="120" class="rounded" src="/cycleme_sistema_anuncios/temp_img/<?php echo $foto[0];?>" >
+                        </div>
                     <div class="col-sm  col-lg-9 anunciosDetalles tituloAnuncio"  >
                         <div class="row">
                                     <a href="<?php echo base_url()?>Anuncios/ver/<?php echo $anuncio['idAnuncio']?>">

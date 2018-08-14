@@ -23,7 +23,6 @@ class Publicidad extends CI_Controller
         $data['cantidadPublicidad'] = ceil($this->Publicidad_model->getPublicidad() / $postPorPagina);
         $data['pagina'] = $id;
 
-    
         $this->load->view('Layouts/main',$data);
 
     }

@@ -31,6 +31,7 @@
             $data['publicidades'] = $this->Publicidad_model->publicidadRamdon();
 
             $this->load->model('Usuario');
+
             $this->load->view('Layouts/main',$data);
         }
 
@@ -64,6 +65,10 @@
             $data['BicicletasNum'] = $this->categorias('Bicicletas');
             $data['ComponentesNum'] = $this->categorias('Componentes');
             $data['ServiciosNum'] = $this->categorias('Servicios');
+
+            $this->load->model('Categoria_model');
+            $data['anuncios'] = $this->Categoria_model->anunciosCategoriaPrincipal($categoria);
+
             $this->load->model('Categoria_model');
             $this->load->view('Layouts/main', $data);
         }
@@ -76,6 +81,7 @@
             $data['BicicletasNum'] = $this->categorias('Bicicletas');
             $data['ComponentesNum'] = $this->categorias('Componentes');
             $data['ServiciosNum'] = $this->categorias('Servicios');
+
             $this->load->model('Categoria_model');
             $this->load->view('Layouts/main', $data);
         }

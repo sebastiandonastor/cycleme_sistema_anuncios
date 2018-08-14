@@ -19,7 +19,10 @@ class Categoria_model extends CI_Model{
     }
 
     public function anunciosCategoriaPrincipal($categoria){
-        $result = $this->db->query("SELECT * FROM anuncios INNER JOIN categorias ON anuncios.idCategorias_fk = categorias.idCategoria WHERE categorias.categoriaPrincipal='".$categoria."'");
+        $result = $this->db->query("SELECT * ,usuario.nombre FROM anuncios 
+        INNER JOIN categorias ON anuncios.idCategorias_fk = categorias.idCategoria 
+        INNER JOIN usuario ON anuncios.idUsuario_fk = usuario.idUsuario
+        WHERE categorias.categoriaPrincipal='".$categoria."'");
         return $result->result_array();
     }
 
@@ -36,6 +39,16 @@ class Categoria_model extends CI_Model{
 
         return $resultado;
     }
+
+    public function getSubCategoriaCount($categoria){
+
+
+        $total = $this->db->query("SELECT `categorias`.`categoriaPrincipal` as `cantidad` FROM `anuncios` inner join `categorias` on `anuncios`.`idCategorias_fk` = `categorias`.`idCategoria` where `anuncios`.`estado` = 1 and `categorias`.`categoriaPrincipal` = '$categoria'");
+        return $total->num_rows();
+
+    }
+
+
 
 }
 
