@@ -41,8 +41,8 @@ class Publicidad extends CI_Controller
         public function CrearOEditar()
     {
         $this->form_validation->set_rules('titulo','Titulo','callback_requerido|max_length[40]',array('requerido' => 'Debe ingresar un Titulo',
-        'max_length' => 'El Titulo debe tener un minimo 40 de caracteres'));
-        $this->form_validation->set_rules('href','Enlace de Publicidad','callback_requerido',array('requerido' => 'Debe seleccionar una Accíon'));
+        'max_length' => 'El Titulo debe tener un maximo de 40 caracteres'));
+        $this->form_validation->set_rules('href','Enlace de Publicidad','callback_requerido',array('requerido' => 'Debe ingresar un Enlace'));
             
         $idPublicidad = $this->input->post('idPublicidad');
 

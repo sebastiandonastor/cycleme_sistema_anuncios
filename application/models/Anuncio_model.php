@@ -276,6 +276,10 @@ class Anuncio_model extends CI_Model {
         return $resultados;
     }
 
+    public function limiteCumplido(){
+        $this->db->where('CURDATE() > fechaCaducidad');
+        $this->db->delete('anuncios');
+    }
 
 
 }

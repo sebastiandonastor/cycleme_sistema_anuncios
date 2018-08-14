@@ -13,7 +13,7 @@
         <div class="col-sm divPerfectoAnuncios" > 
                     <div class="row">
                         <div class="col-sm col-lg-3 text-center"  >
-                                <img width="120" height="120" class="rounded" src="/cycleme_sistema_anuncios/publicidad/<?php echo $publicidad['img'];?>" >
+                                <img width="120" height="120" class="rounded" src="/cycleme_sistema_anuncios/publicidad/<?php echo $publicidad->imagen;?>" >
                         </div>
             
                         <div class="col-sm  col-lg-6 anunciosDetalles tituloAnuncio"  >

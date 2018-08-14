@@ -5,7 +5,7 @@
     
        
     <div  class=" crear-div2 mx-auto text-center" >
-            <h4>Crear Anuncio</h4>
+            <h4>Crear Publicidad</h4>
                 <?php echo form_open_multipart(base_url('Publicidad/CrearOEditar'),array('class' => 'mt-4 mb-5 ')); ?>
                     <div name="mainForm" id="mainForm" >
                         <div class="form-group" style="display:none;" name="idPublicidad"  id="idPublicidad">

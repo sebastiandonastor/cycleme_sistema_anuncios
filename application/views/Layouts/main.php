@@ -66,10 +66,10 @@
                             <?php if($this->session->userdata('tipoUsuario') == 'admin'): ?>
                                 <div class="dropdown-divider"></div>
 
-                                <a class="dropdown-item text-info" href="<?php echo base_url('Admin/crearAdm') ?>" >Crear admin</a>
-                                <a class="dropdown-item text-info" href="<?php echo base_url('Publicidad/index') ?>" >Manejar publicidad</a>
+                                <a class="dropdown-item text-info" href="<?php echo base_url('Admin/crearAdm') ?>" >Crear Admin</a>
                                 <a class="dropdown-item text-info" href="<?php echo base_url('Admin/noticias') ?>" >Crear Noticias</a>
-                                <a class="dropdown-item text-info" href="<?php echo base_url('Admin/eventos') ?>" >Crear Evento</a>
+                                <a class="dropdown-item text-info" href="<?php echo base_url('Publicidad/index') ?>" >Manejar Publicidad</a>
+                                <a class="dropdown-item text-info" href="<?php echo base_url('Eventos') ?>" >Manejar Eventos</a>
 
                             <?php endif; ?>
 

@@ -7,6 +7,9 @@
             if(!is_numeric($id)){
                 redirect('Home');
             }
+            
+            $this->Anuncio_model->limiteCumplido();
+
             $data['main_view'] = 'home_view';
             $data['titulo'] = 'CycleMe';
             $data['AccesoriosNum'] = $this->categorias('Accesorios');
@@ -29,6 +32,7 @@
 
             $this->load->model('Publicidad_model');
             $data['publicidades'] = $this->Publicidad_model->publicidadRamdon();
+
 
             $this->load->model('Usuario');
 

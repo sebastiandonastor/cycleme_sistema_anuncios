@@ -12,6 +12,7 @@ class Anuncios extends CI_Controller
             redirect('Anuncios');
         }
      
+     
   
         //Esta parte la puse porque no supe como hacer funcionar el boton categorias de otra forma, si encuentras otra eres libre de borrarlo entonces
         $data['AccesoriosNum'] = $this->categorias('Accesorios');
