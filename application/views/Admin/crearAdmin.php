@@ -1,10 +1,13 @@
+<<<<<<< HEAD
 <h1>Admin create!</h1>
+=======
+>>>>>>> 41a9d7040a9c7c73f5be2e62219d69cccda0ce49
 <section class="container-fluid">
     <section class="row justify-content-center">
         <section class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-6">
 
-            <?php echo form_open(base_url('Registro/ValidarAdm'), array('class' => 'cuentas-container mt-4 mb-5', 'id' => 'adminform')); ?>
-            <h2 class="text-center">Registro de Admin</h2>
+            <?php echo form_open(base_url('RegistroAdm/ValidarAdm'), array('class' => 'cuentas-container mt-4 mb-5')); ?>
+            <h2 class="text-center">Crear Admin</h2>
             <div class="form-group">
                 <?php echo form_label('Email', 'email'); ?>
 

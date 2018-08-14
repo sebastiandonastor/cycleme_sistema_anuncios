@@ -37,6 +37,17 @@ class Usuario extends CI_Model {
         }
     }
 
+    public function existeUser($user){
+        $this->db->where('nombre',$user);
+        $this->db->get('usuario');
+
+        if($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function usrPorEmail($email){
         $this->db->where('e-mail',$email);
         $result = $this->db->get('usuario')->result_array();
@@ -51,6 +62,6 @@ class Usuario extends CI_Model {
 
     public function crearAdmin($info){
         $result = $this->db->insert('usuario', $info);
-        return $this->usrPorEmail($usuarioCrear['e-mail']);
+        return $this->usrPorEmail($info['e-mail']);
     }
 }
