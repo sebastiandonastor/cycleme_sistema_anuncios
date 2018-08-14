@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CycleMe</title>
+    <script src="<?php echo base_url();?>/Assets/ckeditor/ckeditor.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>Assets/img/favicon.ico">
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>Assets/css/bootstrap.css">
